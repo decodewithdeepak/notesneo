@@ -3,14 +3,21 @@ import { Book, GraduationCap, ScrollText } from 'lucide-react';
 import { NoteCard } from '../components/NoteCard';
 import { FilterBar } from '../components/FilterBar';
 import { useFavorites } from '../context/FavoritesContext';
+import { useNotesFilter } from '../context/NotesFilterContext';
 import { notes } from '../data/notesData';
 import type { Note } from '../types';
 
 export function Notes() {
   const [searchQuery] = useState('');
-  const [selectedBranch, setSelectedBranch] = useState('');
-  const [selectedSemester, setSelectedSemester] = useState<number | null>(null);
-  const [selectedSubject, setSelectedSubject] = useState('');
+  const { 
+    selectedBranch, 
+    selectedSemester, 
+    selectedSubject,
+    setSelectedBranch,
+    setSelectedSemester,
+    setSelectedSubject 
+  } = useNotesFilter();
+  
   const { addToFavorites, removeFromFavorites, isFavorite } = useFavorites();
 
   const handleSave = (note: Note) => {
