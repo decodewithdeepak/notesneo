@@ -36,6 +36,9 @@ export function Navbar() {
             <Link to="/notes" className={`nav-link font-semibold text-gray-900 dark:text-gray-100 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors text-base ${isActive('/notes')}`}>
               Notes
             </Link>
+            <Link to="/blog" className={`nav-link font-semibold text-gray-900 dark:text-gray-100 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors text-base ${isActive('/blog')}`}>
+              Blog
+            </Link>
             <Link to="/contact" className={`nav-link font-semibold text-gray-900 dark:text-gray-100 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors text-base ${isActive('/contact')}`}>
               Contact
             </Link>
@@ -91,6 +94,7 @@ export function Navbar() {
             <Link to="/" className={`mobile-nav-link ${isActive('/')}`} onClick={closeMenu}>Home</Link>
             <Link to="/about" className={`mobile-nav-link ${isActive('/about')}`} onClick={closeMenu}>About</Link>
             <Link to="/notes" className={`mobile-nav-link ${isActive('/notes')}`} onClick={closeMenu}>Notes</Link>
+            <Link to="/blog" className={`mobile-nav-link ${isActive('/blog')}`} onClick={closeMenu}>Blog</Link>
             <Link to="/contact" className={`mobile-nav-link ${isActive('/contact')}`} onClick={closeMenu}>Contact</Link>
             <Link to="/login" className="mobile-nav-link bg-indigo-600 text-white" onClick={closeMenu}>Login</Link>
           </div>

@@ -21,3 +21,23 @@ export interface Subject {
   name: string;
   code: string;
 }
+
+export interface BlogPost {
+  id: string;
+  title: string;
+  excerpt: string;
+  content: string;
+  category: string;
+  author: string;
+  date: string;
+  readTime: string;
+  imageUrl: string;
+  tags: string[];
+}
+
+export interface BlogCategory {
+  id: string;
+  name: string;
+  description: string;
+  icon: string;
+}
