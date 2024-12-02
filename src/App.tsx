@@ -11,6 +11,7 @@ import { Login } from './pages/Login';
 import { Notes } from './pages/Notes';
 import { Favorites } from './pages/Favorites';
 import { Blog } from './pages/Blog';
+import { Resources } from './pages/Resources';
 import { FavoritesProvider } from './context/FavoritesContext';
 import { NotesFilterProvider } from './context/NotesFilterContext';
 
@@ -47,6 +48,7 @@ function App() {
                 <Route path="/notes" element={<Notes />} />
                 <Route path="/favorites" element={<Favorites />} />
                 <Route path="/blog" element={<Blog />} />
+                <Route path="/resources" element={<Resources />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/login" element={<Login />} />
               </Routes>
@@ -58,4 +60,5 @@ function App() {
     </FavoritesProvider>
   );
 }
+
 export default App;

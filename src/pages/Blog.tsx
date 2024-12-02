@@ -22,7 +22,7 @@ export function Blog() {
         {/* Header */}
         <div className="text-center mb-12" data-aos="fade-down">
           <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Blog & Resources
+            Blog & Articles
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-400">
             Explore articles, tutorials, and insights for your academic journey

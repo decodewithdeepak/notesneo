@@ -41,3 +41,19 @@ export interface BlogCategory {
   description: string;
   icon: string;
 }
+
+export interface Resource {
+  id: string;
+  title: string;
+  description: string;
+  type: 'paper' | 'video' | 'practice' | 'book';
+  subject: string;
+  branch: string;
+  semester: number;
+  year?: string;
+  downloadUrl?: string;
+  videoUrl?: string;
+  imageUrl: string;
+  author?: string;
+  publisher?: string;
+}
