@@ -1,15 +1,40 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Github, Mail } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Mail } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
 
 export function Login() {
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+  const { signInWithGoogle, user } = useAuth();
+
+  useEffect(() => {
+    if (user) {
+      navigate('/');
+    }
+  }, [user, navigate]);
+
+  const handleGoogleSignIn = async () => {
+    try {
+      setIsLoading(true);
+      setError('');
+      await signInWithGoogle();
+    } catch (error: any) {
+      if (error.code !== 'auth/popup-blocked') {
+        setError('Failed to sign in with Google. Please try again.');
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
+    // Handle email/password form submission
     console.log('Form submitted:', { email, password });
   };
 
@@ -38,11 +63,20 @@ export function Login() {
           </p>
         </div>
 
+        {error && (
+          <div className="bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-200 p-3 rounded-md text-sm">
+            {error}
+          </div>
+        )}
+
         {/* Social Login Buttons */}
         <div className="space-y-3" data-aos="fade-up" data-aos-delay="100">
           <button
-            type="button"
-            className="w-full flex items-center justify-center px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm text-sm font-medium text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"
+            onClick={handleGoogleSignIn}
+            disabled={isLoading}
+            className={`w-full flex items-center justify-center px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm text-sm font-medium text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors ${
+              isLoading ? 'opacity-50 cursor-not-allowed' : ''
+            }`}
           >
             <svg className="h-5 w-5 mr-2" viewBox="0 0 24 24">
               <path
@@ -62,16 +96,9 @@ export function Login() {
                 fill="#EA4335"
               />
             </svg>
-            Continue with Google
+            {isLoading ? 'Signing in...' : 'Continue with Google'}
           </button>
 
-          <button
-            type="button"
-            className="w-full flex items-center justify-center px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm text-sm font-medium text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"
-          >
-            <Github className="h-5 w-5 mr-2" />
-            Continue with GitHub
-          </button>
         </div>
 
         <div className="relative">
@@ -150,7 +177,10 @@ export function Login() {
           <div>
             <button
               type="submit"
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors"
+              disabled={isLoading}
+              className={`group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors ${
+                isLoading ? 'opacity-50 cursor-not-allowed' : ''
+              }`}
             >
               {isLogin ? 'Sign in' : 'Sign up'}
             </button>

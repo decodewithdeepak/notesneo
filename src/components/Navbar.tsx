@@ -1,15 +1,27 @@
-import { Menu, X, Heart } from 'lucide-react';
+import { Menu, X, Heart, LogOut } from 'lucide-react';
 import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ThemeToggle } from './ThemeToggle';
 import { useFavorites } from '../context/FavoritesContext';
+import { useAuth } from '../context/AuthContext';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const { favorites } = useFavorites();
+  const { user, signOut } = useAuth();
 
   const closeMenu = () => setIsOpen(false);
+
+  const handleSignOut = async () => {
+    try {
+      await signOut();
+      navigate('/');
+    } catch (error) {
+      console.error('Error signing out:', error);
+    }
+  };
 
   const isActive = (path: string) => location.pathname === path ? 'text-indigo-600 dark:text-indigo-400 font-semibold' : '';
 
@@ -58,12 +70,29 @@ export function Navbar() {
               )}
             </Link>
             <ThemeToggle />
-            <Link
-              to="/login"
-              className="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition-colors focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 text-base"
-            >
-              Login
-            </Link>
+            {user ? (
+              <div className="flex items-center space-x-4">
+                <img
+                  src={user.photoURL || ''}
+                  alt={user.displayName || 'User'}
+                  className="w-8 h-8 rounded-full"
+                />
+                <button
+                  onClick={handleSignOut}
+                  className="flex items-center space-x-2 text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400"
+                >
+                  <LogOut className="w-4 h-4" />
+                  <span>Sign Out</span>
+                </button>
+              </div>
+            ) : (
+              <Link
+                to="/login"
+                className="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition-colors focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 text-base"
+              >
+                Login
+              </Link>
+            )}
           </div>
 
           {/* Mobile menu button */}
@@ -100,7 +129,22 @@ export function Navbar() {
             <Link to="/resources" className={`mobile-nav-link ${isActive('/resources')}`} onClick={closeMenu}>Resources</Link>
             <Link to="/blog" className={`mobile-nav-link ${isActive('/blog')}`} onClick={closeMenu}>Blog</Link>
             <Link to="/contact" className={`mobile-nav-link ${isActive('/contact')}`} onClick={closeMenu}>Contact</Link>
-            <Link to="/login" className="mobile-nav-link bg-indigo-600 text-white" onClick={closeMenu}>Login</Link>
+            {user ? (
+              <button
+                onClick={() => {
+                  handleSignOut();
+                  closeMenu();
+                }}
+                className="mobile-nav-link flex items-center space-x-2"
+              >
+                <LogOut className="w-4 h-4" />
+                <span>Sign Out</span>
+              </button>
+            ) : (
+              <Link to="/login" className="mobile-nav-link bg-indigo-600 text-white" onClick={closeMenu}>
+                Login
+              </Link>
+            )}
           </div>
         </div>
       )}
