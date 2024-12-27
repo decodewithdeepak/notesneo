@@ -1,5 +1,5 @@
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState } from 'react';
 
 interface Testimonial {
   name: string;
@@ -15,8 +15,19 @@ interface TestimonialSliderProps {
 
 export function TestimonialSlider({ testimonials }: TestimonialSliderProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const [slidesToShow, setSlidesToShow] = useState(3);
 
+  const totalSlides = testimonials.length;
+
+  // Clone slides for seamless infinite scrolling
+  const loopTestimonials = [
+    ...testimonials.slice(-slidesToShow), // Clone last few slides
+    ...testimonials,
+    ...testimonials.slice(0, slidesToShow), // Clone first few slides
+  ];
+
+  // Handle responsive slidesToShow
   useEffect(() => {
     const handleResize = () => {
       setSlidesToShow(window.innerWidth < 768 ? 1 : 3); // 1 slide on small screens, 3 on larger screens
@@ -26,54 +37,73 @@ export function TestimonialSlider({ testimonials }: TestimonialSliderProps) {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const nextTestimonial = () => {
-    setCurrentIndex((prevIndex) => {
-      const nextIndex = prevIndex + 1;
-      return nextIndex >= testimonials.length - slidesToShow + 1 ? 0 : nextIndex;
-    });
+  // Next slide handler
+  const handleNext = () => {
+    if (!isTransitioning) {
+      setIsTransitioning(true);
+      setCurrentIndex((prev) => prev + 1);
+    }
   };
 
-  const previousTestimonial = () => {
-    setCurrentIndex((prevIndex) => {
-      const nextIndex = prevIndex - 1;
-      return nextIndex < 0 ? testimonials.length - slidesToShow : nextIndex;
-    });
+  // Previous slide handler
+  const handlePrev = () => {
+    if (!isTransitioning) {
+      setIsTransitioning(true);
+      setCurrentIndex((prev) => prev - 1);
+    }
   };
 
+  // Auto-slide effect
   useEffect(() => {
-    const timer = setInterval(nextTestimonial, 5000);
+    const timer = setInterval(() => handleNext(), 5000);
     return () => clearInterval(timer);
   }, []);
 
-  const translateX = -(currentIndex * (100 / slidesToShow));
+  // Reset currentIndex after transitions
+  const handleTransitionEnd = () => {
+    setIsTransitioning(false);
+    if (currentIndex >= totalSlides) {
+      setCurrentIndex(0); // Reset to first slide (no transition)
+    } else if (currentIndex < 0) {
+      setCurrentIndex(totalSlides - 1); // Reset to last slide (no transition)
+    }
+  };
+
+  // Compute active dot index
+  const activeDotIndex = (currentIndex + totalSlides) % totalSlides;
+
+  // Translate value for sliding effect
+  const translateX = -(currentIndex + slidesToShow) * (100 / slidesToShow);
 
   return (
-    <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-live="polite">
+    <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
+      {/* Carousel Controls */}
       <div className="flex items-center justify-between">
         {/* Previous Button */}
         <button
-          onClick={previousTestimonial}
+          onClick={handlePrev}
           className="p-2 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
           aria-label="Previous testimonial"
         >
           <ChevronLeft className="w-6 h-6 text-gray-600 dark:text-gray-300" />
         </button>
 
+        {/* Testimonial Slider */}
         <div className="overflow-hidden w-full">
           <div
-            className="flex transition-transform duration-500 ease-in-out"
+            className={`flex transition-transform duration-500 ease-in-out ${isTransitioning ? '' : 'transition-none'
+              }`}
             style={{
               transform: `translateX(${translateX}%)`,
-              transitionProperty: 'transform',
-              transitionTimingFunction: 'ease-in-out',
             }}
+            onTransitionEnd={handleTransitionEnd}
           >
-            {testimonials.map((testimonial, index) => (
+            {loopTestimonials.map((testimonial, index) => (
               <div
                 key={`${testimonial.name}-${index}`}
                 className="flex-shrink-0 px-4 py-2"
                 style={{
-                  width: `${100 / slidesToShow}%`, // Ensure 3 full cards are shown at once
+                  width: `${100 / slidesToShow}%`,
                 }}
                 role="group"
                 aria-roledescription="testimonial"
@@ -114,7 +144,7 @@ export function TestimonialSlider({ testimonials }: TestimonialSliderProps) {
 
         {/* Next Button */}
         <button
-          onClick={nextTestimonial}
+          onClick={handleNext}
           className="p-2 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
           aria-label="Next testimonial"
         >
@@ -122,17 +152,20 @@ export function TestimonialSlider({ testimonials }: TestimonialSliderProps) {
         </button>
       </div>
 
-      {/* Navigation Dots */}
-      <div className="flex justify-center mt-6 space-x-3">
-        {Array.from({ length: Math.ceil(testimonials.length / slidesToShow) }).map((_, index) => (
+      {/* Dots Navigation */}
+      <div className="flex justify-center mt-6 space-x-3 overflow-visible">
+        {Array.from({ length: totalSlides }).map((_, index) => (
           <button
             key={index}
-            onClick={() => setCurrentIndex(index * slidesToShow)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 border-2 ${Math.floor(currentIndex / slidesToShow) === index
-                ? 'bg-white border-indigo-600 shadow-lg scale-125 ring-2 ring-indigo-300'  // Active dot with white background, border, shadow, and glow
-                : 'bg-gray-200 border-gray-400 opacity-80 hover:opacity-100'  // Inactive dot with gray and reduced opacity
+            onClick={() => setCurrentIndex(index)}
+            className={`w-3 h-3 rounded-full border-2 transition-all duration-300 ${activeDotIndex === index
+                ? 'bg-white border-indigo-600 shadow-lg scale-125 ring-2 ring-indigo-300'
+                : 'bg-gray-200 border-gray-400 opacity-80 hover:opacity-100'
               }`}
-            aria-label={`Go to testimonial group ${index + 1}`}
+            style={{
+              marginBottom: '0.5rem', // Add spacing below to prevent cutting
+            }}
+            aria-label={`Go to testimonial ${index + 1}`}
           />
         ))}
       </div>
