@@ -1,4 +1,4 @@
-import { Facebook, Github, Instagram, Linkedin, Mail, Twitter } from 'lucide-react';
+import { Facebook, Github, Instagram, Linkedin, Mail, Twitter, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export function Footer() {
@@ -6,7 +6,6 @@ export function Footer() {
     <footer className="bg-gray-100 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-y-8 gap-8">
-
           {/* Brand Section */}
           <div className="col-span-1">
             <Link to="/" className="text-3xl font-bold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition duration-300">
@@ -74,34 +73,37 @@ export function Footer() {
         {/* Bottom Section */}
         <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-base text-gray-500 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300 cursor-pointer">
+            <p className="text-base text-gray-500 dark:text-gray-400">
               © {new Date().getFullYear()} NotesNeo. All rights reserved.
             </p>
-            <div className="mt-4 md:mt-0 flex space-x-6">
-              <Link
-                to="/privacy"
-                className="text-sm text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300"
-              >
-                Privacy Policy
-              </Link>
-              <Link
-                to="/terms"
-                className="text-sm text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300"
-              >
-                Terms of Service
-              </Link>
-              <Link
-                to="/about"
-                className="text-sm text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300"
-              >
-                About Us
-              </Link>
-              <Link
-                to="/contact"
-                className="text-sm text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300"
-              >
-                Contact Us
-              </Link>
+            <div className="mt-4 md:mt-0 flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">
+              <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-400">
+                <span>Made with</span>
+                <Heart className="w-4 h-4 text-red-500 fill-current" />
+                <span>by</span>
+                <a
+                  href="https://deepakmodi.vercel.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 font-medium"
+                >
+                  Deepak Modi
+                </a>
+              </div>
+              <div className="flex space-x-4">
+                <Link
+                  to="/privacy"
+                  className="text-sm text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300"
+                >
+                  Privacy Policy
+                </Link>
+                <Link
+                  to="/terms"
+                  className="text-sm text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300"
+                >
+                  Terms of Service
+                </Link>
+              </div>
             </div>
           </div>
         </div>
