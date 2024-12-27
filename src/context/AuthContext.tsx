@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { 
   User,
   GoogleAuthProvider, 
@@ -22,6 +23,8 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -29,20 +32,27 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setLoading(false);
     });
 
-    // Check for redirect result on initial load
-    getRedirectResult(auth).catch((error) => {
-      console.error('Redirect sign-in error:', error);
-    });
+    // Check for redirect result only on initial load
+    if (location.pathname === '/login') {
+      getRedirectResult(auth).then((result) => {
+        if (result?.user) {
+          navigate('/dashboard');
+        }
+      }).catch(console.error);
+    }
 
     return unsubscribe;
-  }, []);
+  }, [navigate, location.pathname]);
 
   const signInWithGoogle = async () => {
     try {
       const provider = new GoogleAuthProvider();
       // Try popup first
       try {
-        await signInWithPopup(auth, provider);
+        const result = await signInWithPopup(auth, provider);
+        if (result.user) {
+          navigate('/dashboard');
+        }
       } catch (error: any) {
         // If popup is blocked, fall back to redirect
         if (error.code === 'auth/popup-blocked') {
@@ -60,6 +70,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const signOut = async () => {
     try {
       await firebaseSignOut(auth);
+      navigate('/');
     } catch (error) {
       console.error('Error signing out:', error);
       throw error;

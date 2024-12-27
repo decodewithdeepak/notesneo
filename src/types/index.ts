@@ -57,3 +57,11 @@ export interface Resource {
   author?: string;
   publisher?: string;
 }
+
+export interface Activity {
+  id: string;
+  type: 'view' | 'download' | 'favorite';
+  noteId: string;
+  noteTitle: string;
+  timestamp: string;
+}

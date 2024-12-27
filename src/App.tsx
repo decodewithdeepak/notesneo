@@ -12,6 +12,7 @@ import { Notes } from './pages/Notes';
 import { Favorites } from './pages/Favorites';
 import { Blog } from './pages/Blog';
 import { Resources } from './pages/Resources';
+import { Dashboard } from './pages/Dashboard';
 import { FavoritesProvider } from './context/FavoritesContext';
 import { NotesFilterProvider } from './context/NotesFilterContext';
 import { AuthProvider } from './context/AuthContext';
@@ -26,7 +27,7 @@ function ScrollToTopOnRouteChange() {
   return null;
 }
 
-function App() {
+function AppContent() {
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -36,31 +37,38 @@ function App() {
   }, []);
 
   return (
-    <AuthProvider>
-      <FavoritesProvider>
-        <NotesFilterProvider>
-          <Router>
-            <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col">
-              <ScrollToTopOnRouteChange />
-              <Navbar />
-              <div className="flex-grow">
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/about" element={<About />} />
-                  <Route path="/notes" element={<Notes />} />
-                  <Route path="/favorites" element={<Favorites />} />
-                  <Route path="/blog" element={<Blog />} />
-                  <Route path="/resources" element={<Resources />} />
-                  <Route path="/contact" element={<Contact />} />
-                  <Route path="/login" element={<Login />} />
-                </Routes>
-              </div>
-              <Footer />
-            </div>
-          </Router>
-        </NotesFilterProvider>
-      </FavoritesProvider>
-    </AuthProvider>
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col">
+      <ScrollToTopOnRouteChange />
+      <Navbar />
+      <div className="flex-grow">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/notes" element={<Notes />} />
+          <Route path="/favorites" element={<Favorites />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/resources" element={<Resources />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Routes>
+      </div>
+      <Footer />
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <AuthProvider>
+        <FavoritesProvider>
+          <NotesFilterProvider>
+            <AppContent />
+          </NotesFilterProvider>
+        </FavoritesProvider>
+      </AuthProvider>
+    </Router>
   );
 }
 

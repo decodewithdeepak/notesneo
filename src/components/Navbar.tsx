@@ -1,27 +1,18 @@
-import { Menu, X, Heart, LogOut } from 'lucide-react';
+import { Menu, X, Heart } from 'lucide-react';
 import { useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ThemeToggle } from './ThemeToggle';
+import { UserMenu } from './UserMenu';
 import { useFavorites } from '../context/FavoritesContext';
 import { useAuth } from '../context/AuthContext';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate();
   const { favorites } = useFavorites();
-  const { user, signOut } = useAuth();
+  const { user } = useAuth();
 
   const closeMenu = () => setIsOpen(false);
-
-  const handleSignOut = async () => {
-    try {
-      await signOut();
-      navigate('/');
-    } catch (error) {
-      console.error('Error signing out:', error);
-    }
-  };
 
   const isActive = (path: string) => location.pathname === path ? 'text-indigo-600 dark:text-indigo-400 font-semibold' : '';
 
@@ -71,20 +62,7 @@ export function Navbar() {
             </Link>
             <ThemeToggle />
             {user ? (
-              <div className="flex items-center space-x-4">
-                <img
-                  src={user.photoURL || ''}
-                  alt={user.displayName || 'User'}
-                  className="w-8 h-8 rounded-full"
-                />
-                <button
-                  onClick={handleSignOut}
-                  className="flex items-center space-x-2 text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400"
-                >
-                  <LogOut className="w-4 h-4" />
-                  <span>Sign Out</span>
-                </button>
-              </div>
+              <UserMenu />
             ) : (
               <Link
                 to="/login"
@@ -109,6 +87,7 @@ export function Navbar() {
               )}
             </Link>
             <ThemeToggle />
+            {user && <UserMenu />}
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 rounded-md text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-white transition-colors"
@@ -129,18 +108,7 @@ export function Navbar() {
             <Link to="/resources" className={`mobile-nav-link ${isActive('/resources')}`} onClick={closeMenu}>Resources</Link>
             <Link to="/blog" className={`mobile-nav-link ${isActive('/blog')}`} onClick={closeMenu}>Blog</Link>
             <Link to="/contact" className={`mobile-nav-link ${isActive('/contact')}`} onClick={closeMenu}>Contact</Link>
-            {user ? (
-              <button
-                onClick={() => {
-                  handleSignOut();
-                  closeMenu();
-                }}
-                className="mobile-nav-link flex items-center space-x-2"
-              >
-                <LogOut className="w-4 h-4" />
-                <span>Sign Out</span>
-              </button>
-            ) : (
+            {!user && (
               <Link to="/login" className="mobile-nav-link bg-indigo-600 text-white" onClick={closeMenu}>
                 Login
               </Link>
