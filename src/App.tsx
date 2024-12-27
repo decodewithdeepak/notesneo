@@ -16,6 +16,7 @@ import { Dashboard } from './pages/Dashboard';
 import { FavoritesProvider } from './context/FavoritesContext';
 import { NotesFilterProvider } from './context/NotesFilterContext';
 import { AuthProvider } from './context/AuthContext';
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 function ScrollToTopOnRouteChange() {
   const location = useLocation();
@@ -54,6 +55,7 @@ function AppContent() {
         </Routes>
       </div>
       <Footer />
+      <SpeedInsights />
     </div>
   );
 }
