@@ -257,7 +257,7 @@ export const notes: Note[] = [
 
   // BTech Semester 5 - Computer Networks (CN)
   {
-    id: 'cn301',
+    id: 'cn501',
     title: 'CN Unit 1',
     description: 'Introduction to Computer Networks',
     subject: 'Computer Networks',
@@ -268,7 +268,7 @@ export const notes: Note[] = [
     downloadUrl: 'https://docs.google.com/document/d/1UvPaah98Wjwr4Qywm0MJ6tsX3W62fCSdVebGyL4tcAs/',
   },
   {
-    id: 'cn302',
+    id: 'cn502',
     title: 'CN Unit 2',
     description: 'Network Protocols and Devices',
     subject: 'Computer Networks',
@@ -279,7 +279,7 @@ export const notes: Note[] = [
     downloadUrl: 'https://docs.google.com/document/d/13J1RaO6fPRR_K0SRTseOcJYg4V1gKkIAtTNakduj4_E/',
   },
   {
-    id: 'cn303',
+    id: 'cn503',
     title: 'CN Unit 3',
     description: 'Routing Algorithms, Transport and Application Layer',
     subject: 'Computer Networks',
@@ -290,7 +290,7 @@ export const notes: Note[] = [
     downloadUrl: 'https://docs.google.com/document/d/1zb29KftBpaXf68dLgIv1eGZk84KSD-stFjBI4vr4xIE/',
   },
   {
-    id: 'cn304',
+    id: 'cn504',
     title: 'CN Unit 4',
     description: 'Congestion, QoS, LAN and Security',
     subject: 'Computer Networks',
@@ -299,6 +299,52 @@ export const notes: Note[] = [
     unit: 4,
     imageUrl: 'https://images.unsplash.com/photo-1516116216624-53e697fedbea',
     downloadUrl: 'https://docs.google.com/document/d/1DeGtxmxgqw5E27ogkb5a5wFCzKptaUeEUwSJzHO0998/',
+  },
+
+  // BTech Semester 5 - JAVA
+  {
+    id: 'java501',
+    title: 'JAVA Unit 1',
+    description: 'Introduction to Java',
+    subject: 'JAVA',
+    branch: 'BTech',
+    semester: 5,
+    unit: 1,
+    imageUrl: '',
+    downloadUrl: 'https://docs.google.com/document/d/1l65yzxOqA7VUi_TipvyGXi1ZsYGCrXrIKhg7uwKlRUg/edit?tab=t.0#heading=h.swlkq9pxj69z',
+  },
+  {
+    id: 'java502',
+    title: 'JAVA Unit 2',
+    description: 'OOPS Implementation',
+    subject: 'JAVA',
+    branch: 'BTech',
+    semester: 5,
+    unit: 2,
+    imageUrl: '',
+    downloadUrl: 'https://docs.google.com/document/d/1lDbT-m8cj8ynCHeCm5zRsHBLptpNbvi9bLbGA1K_Q-o/edit?tab=t.0#heading=h.swlkq9pxj69z',
+  },
+  {
+    id: 'java503',
+    title: 'JAVA Unit 3',
+    description: 'Threads, Swing & AWT, Packages, Exception Handling',
+    subject: 'JAVA',
+    branch: 'BTech',
+    semester: 5,
+    unit: 3,
+    imageUrl: '',
+    downloadUrl: 'https://docs.google.com/document/d/1Td2-PeHtrRHunQqEnoPCC7RuRiJOaGbxyaxVzWVbT5g/edit?tab=t.0#heading=h.swlkq9pxj69z',
+  },
+  {
+    id: 'java504',
+    title: 'JAVA Unit 4',
+    description: 'Collections Framework, JDBC, Reflection',
+    subject: 'JAVA',
+    branch: 'BTech',
+    semester: 5,
+    unit: 4,
+    imageUrl: '',
+    downloadUrl: 'https://docs.google.com/document/d/1KrGdWLUEPr7Ryy8GjUYe7ti5zkBAtZFkqGII3W3YvWM/edit?tab=t.0#heading=h.swlkq9pxj69z',
   },
 
   // BCA Semester 1
