@@ -1,6 +1,7 @@
 import { Download, Users, BookOpen, Star, ArrowRight, Smartphone, RefreshCw } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { TestimonialSlider } from '../components/TestimonialSlider';
+import { CreatorSection } from '../components/CreatorSection';
 
 export function Home() {
   return (
@@ -113,6 +114,10 @@ export function Home() {
           <TestimonialSlider testimonials={testimonials} />
         </div>
       </div>
+      
+      {/* Creator Section */}
+      <CreatorSection />
+
     </div>
   );
 }
