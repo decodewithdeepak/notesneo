@@ -2,7 +2,7 @@ import { ExternalLink } from 'lucide-react';
 
 export function CreatorSection() {
   return (
-    <div className="relative overflow-hidden py-16 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600">
+    <div className="relative overflow-hidden py-16 bg-gradient-to-br from-blue-700 via-indigo-700 to-purple-700">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
@@ -16,7 +16,7 @@ export function CreatorSection() {
             About the Creator
           </h2>
           <p className="text-xl text-indigo-100" data-aos="fade-up">
-          A Contribution to Education and a Vision for Empowering Students
+            A Contribution to Education and a Vision for Empowering Students
           </p>
         </div>
 
