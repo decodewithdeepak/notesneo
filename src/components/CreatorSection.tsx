@@ -16,7 +16,7 @@ export function CreatorSection() {
             About the Creator
           </h2>
           <p className="text-xl text-indigo-100" data-aos="fade-up">
-            A Contribution to Education and a Vision for Empowering Studentsion
+          A Contribution to Education and a Vision for Empowering Students
           </p>
         </div>
 
