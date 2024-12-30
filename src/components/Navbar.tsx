@@ -17,7 +17,7 @@ export function Navbar() {
   const isActive = (path: string) => location.pathname === path ? 'text-indigo-600 dark:text-indigo-400 font-semibold' : '';
 
   return (
-    <nav className="bg-white dark:bg-gray-900 fixed w-full z-50 shadow-lg transition-all">
+    <nav className="fixed w-full z-50 bg-white/70 dark:bg-gray-900/70 backdrop-blur-lg border-b border-white/20 dark:border-gray-800/20 shadow-lg transition-all">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-4">
@@ -48,8 +48,8 @@ export function Navbar() {
             <Link to="/contact" className={`nav-link font-semibold text-gray-900 dark:text-gray-100 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors text-base ${isActive('/contact')}`}>
               Contact
             </Link>
-            <Link 
-              to="/favorites" 
+            <Link
+              to="/favorites"
               className={`nav-link font-semibold text-gray-900 dark:text-gray-100 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors text-base flex items-center gap-1 ${isActive('/favorites')}`}
             >
               <Heart className="w-4 h-4" />
@@ -75,7 +75,7 @@ export function Navbar() {
 
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center space-x-2">
-            <Link 
+            <Link
               to="/favorites"
               className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors relative"
             >
