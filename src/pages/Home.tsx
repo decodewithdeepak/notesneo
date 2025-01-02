@@ -69,7 +69,7 @@ export function Home() {
                 <div className="relative" data-aos="fade-left">
                   <img
                     className="w-full h-auto object-contain sm:h-72 md:h-80 lg:h-[60%] xl:h-[80%]  transform hover:scale-105 transition-transform duration-500"
-                    src="/assets/home.svg"
+                    src="/assets/hero.svg"
                     alt="Students studying"
                   />
                 </div>
