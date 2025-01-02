@@ -8,11 +8,16 @@ export function useTheme() {
 
   useEffect(() => {
     const root = window.document.documentElement;
+    
+    // Add transition class before theme change
+    root.classList.add('transition-colors', 'duration-300');
+    
     if (isDark) {
       root.classList.add('dark');
     } else {
       root.classList.remove('dark');
     }
+    
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
   }, [isDark]);
 

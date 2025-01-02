@@ -6,52 +6,76 @@ import { CreatorSection } from '../components/CreatorSection';
 export function Home() {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      {/* Hero Section */}
-      <div className="relative overflow-hidden">
-        <div className="max-w-7xl mx-auto">
-          <div className="relative z-10 pb-8 sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
-            <main className="mt-24 mx-auto max-w-7xl px-4 sm:mt-28 sm:px-6 md:mt-32 lg:mt-36 lg:px-8 xl:mt-48">
-              <div className="sm:text-center lg:text-left" data-aos="fade-right">
-                <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white sm:text-5xl md:text-6xl">
-                  <span className="block xl:inline">Access Academic Notes</span>{' '}
-                  <span className="block text-indigo-600 xl:inline">Anytime, Anywhere</span>
-                </h1>
-                <p className="mt-3 text-base text-gray-500 dark:text-gray-400 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                  Join thousands of students who are already using NotesNeo to access high-quality academic notes. Study smarter, not harder.
-                </p>
-                <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-                  <div className="rounded-md shadow" data-aos="fade-up" data-aos-delay="200">
-                    <a
-                      href="https://chat.whatsapp.com/EtBjr3a2V8n1biCfXYf1iw"
-                      className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
-                    >
-                      <Users className="w-5 h-5 mr-2" />
-                      Join WhatsApp Group
-                    </a>
+
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+        {/* Hero Section */}
+        <div className="relative min-h-[100vh] flex items-center overflow-hidden bg-gradient-to-br from-indigo-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-indigo-950">
+          {/* Background Pattern */}
+          <div className="absolute inset-0 z-0">
+            <div
+              className="absolute inset-0 opacity-[0.15] dark:opacity-[0.07]"
+              style={{
+                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236366f1' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+              }}
+            />
+          </div>
+
+          {/* Animated Gradient Blob */}
+          <div className="absolute top-0 left-16 w-72 h-72 bg-purple-300 dark:bg-purple-900 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-xl opacity-70 animate-blob" />
+          <div className="absolute top-16 right-4 w-72 h-72 bg-indigo-300 dark:bg-indigo-900 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-xl opacity-70 animate-blob animation-delay-2000" />
+          <div className="absolute bottom-32 left-80 w-72 h-72 bg-pink-300 dark:bg-pink-900 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-xl opacity-70 animate-blob animation-delay-4000" />
+
+          {/* Main Content (Grid Layout) */}
+          <div className="max-w-7xl mx-auto relative z-10 pb-8 sm:pb-16 md:pb-20 lg:max-w-7xl lg:w-full lg:pb-28 xl:pb-30">
+            <main className="mt-24 mx-auto max-w-7xl px-4 sm:mt-28 sm:px-6 md:mt-32 lg:mt-16 lg:px-8 xl:mt-30">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-24 items-center justify-center">
+                {/* Text Section */}
+                <div className="sm:text-center lg:text-left" data-aos="fade-right">
+                  <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white sm:text-5xl md:text-6xl lg:text-6xl xl:text-6xl">
+                    <span className="block xl:inline">Access Academic Notes</span>{' '}
+                    <span className="block text-indigo-600 xl:inline">Anytime, Anywhere</span>
+                  </h1>
+                  <p className="mt-3 text-base text-gray-500 dark:text-gray-400 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                    Join thousands of students who are already using NotesNeo to access high-quality academic notes. Study smarter, not harder.
+                  </p>
+
+                  <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+                    {/* WhatsApp Group Button */}
+                    <div className="rounded-md shadow" data-aos="fade-up" data-aos-delay="200">
+                      <a
+                        href="https://chat.whatsapp.com/EtBjr3a2V8n1biCfXYf1iw"
+                        className="w-full flex items-center justify-center px-6 py-3 border border-transparent text-base font-semibold rounded-md text-white bg-indigo-600 hover:bg-indigo-700 hover:scale-105 transition duration-300 ease-in-out shadow-lg hover:shadow-indigo-500/50 md:py-4 md:text-lg md:px-4"
+                      >
+                        <Users className="w-5 h-5 mr-2" />
+                        Join WhatsApp Group
+                      </a>
+                    </div>
+
+                    {/* Download App Button */}
+                    <div className="mt-3 sm:mt-0 sm:ml-3" data-aos="fade-up" data-aos-delay="400">
+                      <a
+                        href="https://drive.google.com/uc?export=download&id=19zqey0UnyHMvLes_Nj-kDlzB2rRRxBdA"
+                        className="w-full flex items-center justify-center px-6 py-3 border border-transparent text-base font-semibold rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 hover:scale-105 transition duration-300 ease-in-out shadow-lg hover:shadow-indigo-300/50 md:py-4 md:text-lg md:px-4"
+                      >
+                        <Download className="w-5 h-5 mr-2" />
+                        Download Android App
+                      </a>
+                    </div>
                   </div>
-                  <div className="mt-3 sm:mt-0 sm:ml-3" data-aos="fade-up" data-aos-delay="400">
-                    <a
-                      href="https://drive.google.com/uc?export=download&id=19zqey0UnyHMvLes_Nj-kDlzB2rRRxBdA"
-                      className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10"
-                    >
-                      <Download className="w-5 h-5 mr-2" />
-                      Download Android App
-                    </a>
-                  </div>
+
+                </div>
+
+                {/* Image Section */}
+                <div className="relative" data-aos="fade-left">
+                  <img
+                    className="w-full h-auto object-contain sm:h-72 md:h-80 lg:h-[60%] xl:h-[80%]  transform hover:scale-105 transition-transform duration-500"
+                    src="/assets/home.svg"
+                    alt="Students studying"
+                  />
                 </div>
               </div>
             </main>
           </div>
-        </div>
-
-        {/* Image Section */}
-        <div className="lg:absolute lg:inset-y-0 lg:right-32 lg:w-[33%]" data-aos="fade-left">
-          <img
-            className="w-full h-auto object-contain sm:h-72 md:h-96 lg:h-full"
-            // src="https://i.ibb.co/z7j55FV/hero.png"
-            src="/assets/home.svg"
-            alt="Students studying"
-          />
         </div>
       </div>
 
@@ -114,7 +138,7 @@ export function Home() {
           <TestimonialSlider testimonials={testimonials} />
         </div>
       </div>
-      
+
       {/* Creator Section */}
       <CreatorSection />
 
