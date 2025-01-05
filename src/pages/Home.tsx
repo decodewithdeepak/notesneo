@@ -2,6 +2,7 @@ import { Download, Users, BookOpen, Star, ArrowRight, Smartphone, RefreshCw } fr
 import { Link } from 'react-router-dom';
 import { TestimonialSlider } from '../components/TestimonialSlider';
 import { CreatorSection } from '../components/CreatorSection';
+import { testimonials } from '../data/testimonialsData';
 
 export function Home() {
   return (
@@ -27,10 +28,10 @@ export function Home() {
 
           {/* Main Content (Grid Layout) */}
           <div className="max-w-7xl mx-auto relative z-10 pb-8 sm:pb-16 md:pb-20 lg:max-w-7xl lg:w-full lg:pb-28 xl:pb-30">
-            <main className="mt-24 mx-auto max-w-7xl px-4 sm:mt-28 sm:px-6 md:mt-32 lg:mt-16 lg:px-8 xl:mt-30">
+            <main className="mt-24 mx-auto max-w-7xl px-4 sm:mt-28 sm:px-6 md:mt-32 lg:mt-20 lg:px-8 xl:mt-30">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-24 items-center justify-center">
                 {/* Text Section */}
-                <div className="sm:text-center lg:text-left" data-aos="fade-right">
+                <div className="text-center" data-aos="fade-right">
                   <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white sm:text-5xl md:text-6xl lg:text-6xl xl:text-6xl">
                     <span className="block xl:inline">Access Academic Notes</span>{' '}
                     <span className="block text-indigo-600 xl:inline">Anytime, Anywhere</span>
@@ -39,12 +40,13 @@ export function Home() {
                     Join thousands of students who are already using NotesNeo to access high-quality academic notes. Study smarter, not harder.
                   </p>
 
-                  <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+                  {/* CTA Buttons */}
+                  <div className="mt-5 sm:mt-8 sm:flex sm:justify-center">
                     {/* WhatsApp Group Button */}
                     <div className="rounded-md shadow" data-aos="fade-up" data-aos-delay="200">
                       <a
                         href="https://chat.whatsapp.com/EtBjr3a2V8n1biCfXYf1iw"
-                        className="w-full flex items-center justify-center px-6 py-3 border border-transparent text-base font-semibold rounded-md text-white bg-indigo-600 hover:bg-indigo-700 hover:scale-105 transition duration-300 ease-in-out shadow-lg hover:shadow-indigo-500/50 md:py-4 md:text-lg md:px-4"
+                        className="w-full flex items-center justify-center px-6 py-3 border border-transparent text-base font-semibold rounded-md text-white bg-indigo-600 hover:bg-indigo-700 transition duration-300 ease-in-out shadow-lg hover:shadow-indigo-500/50 md:py-4 md:text-lg md:px-4"
                       >
                         <Users className="w-5 h-5 mr-2" />
                         Join WhatsApp Group
@@ -55,7 +57,7 @@ export function Home() {
                     <div className="mt-3 sm:mt-0 sm:ml-3" data-aos="fade-up" data-aos-delay="400">
                       <a
                         href="https://drive.google.com/uc?export=download&id=19zqey0UnyHMvLes_Nj-kDlzB2rRRxBdA"
-                        className="w-full flex items-center justify-center px-6 py-3 border border-transparent text-base font-semibold rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 hover:scale-105 transition duration-300 ease-in-out shadow-lg hover:shadow-indigo-300/50 md:py-4 md:text-lg md:px-4"
+                        className="w-full flex items-center justify-center px-6 py-3 border border-transparent text-base font-semibold rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 transition duration-300 ease-in-out shadow-lg hover:shadow-indigo-300/50 md:py-4 md:text-lg md:px-4"
                       >
                         <Download className="w-5 h-5 mr-2" />
                         Download Android App
@@ -63,17 +65,55 @@ export function Home() {
                     </div>
                   </div>
 
+                  {/* Search Notes Button */}
+                  <div className="mt-3 sm:mt-0 sm:ml-3 px-6 py-3 flex justify-center" data-aos="fade-up" data-aos-delay="400">
+                    <Link
+                      to="/notes"
+                      className="group relative inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white bg-gradient-to-r from-purple-600 to-indigo-600 rounded-md hover:from-purple-700 hover:to-indigo-700 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all duration-300 ease-in-out"
+                    >
+                      <BookOpen className="w-5 h-5 mr-2" />
+                      Search Notes Here
+                      <ArrowRight className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-200" />
+                    </Link>
+                  </div>
+
                 </div>
 
                 {/* Image Section */}
                 <div className="relative" data-aos="fade-left">
                   <img
-                    className="w-full h-auto object-contain sm:h-72 md:h-80 lg:h-[60%] xl:h-[80%]  transform hover:scale-105 transition-transform duration-500"
+                    className="w-full h-auto object-contain sm:h-72 md:h-96 lg:h-96 xl:h-[32rem] transform hover:scale-105 transition-transform duration-500"
                     src="/assets/hero.svg"
                     alt="Students studying"
                   />
                 </div>
               </div>
+
+{/* Statistics Section */}
+<div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+  {stats.map((stat) => (
+    <div
+      key={stat.label}
+      className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-lg transition-shadow duration-300"
+    >
+      <div className="flex items-center space-x-4">
+        {/* Solid Color Icon Wrapper */}
+        <div className={`p-3 rounded-lg ${stat.color} ${stat.darkColor}`}>
+          <stat.icon className="w-6 h-6 text-white" />
+        </div>
+        <div>
+          <div className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">
+            {stat.value}
+          </div>
+          <div className="text-sm text-gray-600 dark:text-gray-400">{stat.label}</div>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
+
+
+
             </main>
           </div>
         </div>
@@ -146,6 +186,38 @@ export function Home() {
   );
 }
 
+const stats = [
+  {
+    label: 'Users',
+    value: '1,000+',
+    icon: Users,
+    color: 'bg-blue-600', // Solid color instead of gradient
+    darkColor: 'dark:bg-blue-500', // Dark mode solid color
+  },
+  {
+    label: 'Notes',
+    value: '500+',
+    icon: BookOpen,
+    color: 'bg-purple-600', // Solid color instead of gradient
+    darkColor: 'dark:bg-purple-500', // Dark mode solid color
+  },
+  {
+    label: 'Downloads',
+    value: '5,000+',
+    icon: Download,
+    color: 'bg-green-600', // Solid color instead of gradient
+    darkColor: 'dark:bg-green-500', // Dark mode solid color
+  },
+  {
+    label: 'Rating',
+    value: '4.8/5',
+    icon: Star,
+    color: 'bg-yellow-600', // Solid color instead of gradient
+    darkColor: 'dark:bg-yellow-500', // Dark mode solid color
+  },
+];
+
+
 const features = [
   {
     name: 'Comprehensive Notes',
@@ -176,50 +248,5 @@ const features = [
     name: 'Updated Content',
     description: 'Stay up-to-date with the latest notes and resources for your studies.',
     icon: RefreshCw,
-  },
-];
-
-const testimonials = [
-  {
-    name: 'Deepak Modi',
-    title: 'BTech Student',
-    quote: 'NotesNeo has been a game-changer for my studies. The notes are well-organized and easy to understand.',
-    rating: 5,
-    image: 'https://i.ibb.co/fxHpNCX/deepak-modi.jpg',
-  },
-  {
-    name: 'Nitish Modi',
-    title: 'BCA Student',
-    quote: 'The quality of notes and the community support have helped me improve my academic performance significantly.',
-    rating: 5,
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-  },
-  {
-    name: 'Sandeep Nandi',
-    title: 'BBA Student',
-    quote: 'I love how easy it is to access and download notes. The mobile app is a great addition!',
-    rating: 4,
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-  },
-  {
-    name: 'Vishal Singh',
-    title: 'BBA Student',
-    quote: 'The platform has made studying much more efficient. I can focus on understanding rather than note-taking.',
-    rating: 5,
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-  },
-  {
-    name: 'Shivam Kumar',
-    title: 'BTech Student',
-    quote: 'The subject categorization and unit-wise breakdown makes finding specific topics very convenient.',
-    rating: 5,
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-  },
-  {
-    name: 'Preet Raj',
-    title: 'BCA Student',
-    quote: 'NotesNeo has become an essential part of my study routine. Highly recommended!',
-    rating: 4,
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
   },
 ];

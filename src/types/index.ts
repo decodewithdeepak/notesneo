@@ -65,3 +65,11 @@ export interface Activity {
   noteTitle: string;
   timestamp: string;
 }
+
+export interface Testimonial {
+  name: string;
+  title: string;
+  quote: string;
+  rating: number;
+  image: string;
+}
