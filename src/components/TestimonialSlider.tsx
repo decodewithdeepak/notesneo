@@ -76,7 +76,7 @@ export function TestimonialSlider({ testimonials }: TestimonialSliderProps) {
   const translateX = -(currentIndex + slidesToShow) * (100 / slidesToShow);
 
   return (
-    <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <div className="relative max-w-7xl mx-auto overflow-hidden">
       {/* Carousel Controls */}
       <div className="flex items-center justify-between">
         {/* Previous Button */}
@@ -101,7 +101,7 @@ export function TestimonialSlider({ testimonials }: TestimonialSliderProps) {
             {loopTestimonials.map((testimonial, index) => (
               <div
                 key={`${testimonial.name}-${index}`}
-                className="flex-shrink-0 px-4 py-2"
+                className="flex-shrink-0 px-2 py-2"
                 style={{
                   width: `${100 / slidesToShow}%`,
                 }}
