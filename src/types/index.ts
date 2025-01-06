@@ -73,3 +73,8 @@ export interface Testimonial {
   rating: number;
   image: string;
 }
+
+export interface FAQ {
+  question: string;
+  answer: string;
+}

@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { TestimonialSlider } from '../components/TestimonialSlider';
 import { CreatorSection } from '../components/CreatorSection';
 import { testimonials } from '../data/testimonialsData';
+import { FaqSection } from '../components/FaqSection';
+import { faqs } from '../data/faqData';
 
 export function Home() {
   return (
@@ -89,28 +91,28 @@ export function Home() {
                 </div>
               </div>
 
-{/* Statistics Section */}
-<div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
-  {stats.map((stat) => (
-    <div
-      key={stat.label}
-      className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-lg transition-shadow duration-300"
-    >
-      <div className="flex items-center space-x-4">
-        {/* Solid Color Icon Wrapper */}
-        <div className={`p-3 rounded-lg ${stat.color} ${stat.darkColor}`}>
-          <stat.icon className="w-6 h-6 text-white" />
-        </div>
-        <div>
-          <div className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">
-            {stat.value}
-          </div>
-          <div className="text-sm text-gray-600 dark:text-gray-400">{stat.label}</div>
-        </div>
-      </div>
-    </div>
-  ))}
-</div>
+              {/* Statistics Section */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                {stats.map((stat) => (
+                  <div
+                    key={stat.label}
+                    className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-lg transition-shadow duration-300"
+                  >
+                    <div className="flex items-center space-x-4">
+                      {/* Solid Color Icon Wrapper */}
+                      <div className={`p-3 rounded-lg ${stat.color} ${stat.darkColor}`}>
+                        <stat.icon className="w-6 h-6 text-white" />
+                      </div>
+                      <div>
+                        <div className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">
+                          {stat.value}
+                        </div>
+                        <div className="text-sm text-gray-600 dark:text-gray-400">{stat.label}</div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
 
 
 
@@ -182,6 +184,8 @@ export function Home() {
       {/* Creator Section */}
       <CreatorSection />
 
+      {/* FAQ Section */}
+      <FaqSection faqs={faqs} />
     </div>
   );
 }
