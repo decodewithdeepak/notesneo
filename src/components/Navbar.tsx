@@ -36,27 +36,27 @@ export function Navbar({ onLoginClick }: NavbarProps) {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-10">
-            <Link to="/" className={`nav-link ${isActive('/')} hover:underline transition-all duration-200`}>
+            <Link to="/" className={`nav-link ${isActive('/')}`}>
               Home
             </Link>
-            <Link to="/about" className={`nav-link ${isActive('/about')} hover:underline transition-all duration-200`}>
+            <Link to="/about" className={`nav-link ${isActive('/about')}`}>
               About
             </Link>
-            <Link to="/notes" className={`nav-link ${isActive('/notes')} hover:underline transition-all duration-200`}>
+            <Link to="/notes" className={`nav-link ${isActive('/notes')}`}>
               Notes
             </Link>
-            <Link to="/resources" className={`nav-link ${isActive('/resources')} hover:underline transition-all duration-200`}>
+            <Link to="/resources" className={`nav-link ${isActive('/resources')}`}>
               Resources
             </Link>
-            <Link to="/blog" className={`nav-link ${isActive('/blog')} hover:underline transition-all duration-200`}>
+            <Link to="/blog" className={`nav-link ${isActive('/blog')}`}>
               Blog
             </Link>
-            <Link to="/contact" className={`nav-link ${isActive('/contact')} hover:underline transition-all duration-200`}>
+            <Link to="/contact" className={`nav-link ${isActive('/contact')}`}>
               Contact
             </Link>
             <Link
               to="/favorites"
-              className={`nav-link flex items-center gap-1 ${isActive('/favorites')} hover:underline transition-all duration-200`}
+              className={`nav-link flex items-center gap-1 ${isActive('/favorites')}`}
             >
               <Heart className="w-4 h-4" />
               <span>Favorites</span>
