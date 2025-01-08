@@ -11,10 +11,10 @@ export function NoteCard({ note, onSave, isSaved }: NoteCardProps) {
   return (
     <div className="relative group">
       {/* Glow Effect */}
-      <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-300 z-0" />
+      <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0" />
 
       {/* Note Card */}
-      <div className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden border-2 border-gray-300 dark:border-gray-700 transition-all transform hover:scale-[1.05] hover:shadow-xl hover:bg-gray-50 dark:hover:bg-gray-700 duration-300 ease-in-out z-10">
+      <div className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden border-2 border-gray-300 dark:border-gray-700 hover:scale-[1.05] hover:shadow-lg transition-transform duration-200 z-10">
         <img
           src={note.imageUrl}
           alt={""}
@@ -49,7 +49,7 @@ export function NoteCard({ note, onSave, isSaved }: NoteCardProps) {
                   isSaved
                     ? 'bg-pink-100 dark:bg-pink-900 text-pink-600 dark:text-pink-300'
                     : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300'
-                } hover:bg-pink-200 dark:hover:bg-pink-700 transition-colors duration-200 shadow-md hover:shadow-lg`}
+                } hover:bg-pink-200 dark:hover:bg-pink-700 transition-colors duration-150 shadow-md`}
               >
                 <svg
                   className="w-5 h-5"
@@ -68,7 +68,7 @@ export function NoteCard({ note, onSave, isSaved }: NoteCardProps) {
             )}
             <a
               href={note.downloadUrl}
-              className="flex items-center gap-2 px-4 py-2 rounded-full bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-300 hover:bg-green-200 dark:hover:bg-green-800 transition-all duration-200 ease-in-out shadow-md hover:shadow-lg"
+              className="flex items-center gap-2 px-4 py-2 rounded-full bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-300 hover:bg-green-200 dark:hover:bg-green-800 transition-colors duration-150 shadow-md"
               target="_blank" // open in new tab
             >
               <Download className="w-4 h-4" />
