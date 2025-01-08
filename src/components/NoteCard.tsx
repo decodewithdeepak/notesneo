@@ -17,7 +17,7 @@ export function NoteCard({ note, onSave, isSaved }: NoteCardProps) {
       <div className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden border-2 border-gray-300 dark:border-gray-700 transition-all transform hover:scale-[1.05] hover:shadow-xl hover:bg-gray-50 dark:hover:bg-gray-700 duration-300 ease-in-out z-10">
         <img
           src={note.imageUrl}
-          alt={note.title}
+          alt={""}
           className="w-full h-100 object-cover rounded-t-2xl"
         />
         <div className="p-5">
