@@ -78,3 +78,19 @@ export interface FAQ {
   question: string;
   answer: string;
 }
+
+export interface UserProfile {
+  branch: string;
+  semester: number;
+  uid: string;
+}
+
+export interface ProfileModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  initialData?: {
+    branch: string;
+    semester: number;
+  };
+  onSubmit: (data: { branch: string; semester: number }) => void;
+}

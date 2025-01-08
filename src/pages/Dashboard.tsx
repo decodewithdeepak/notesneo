@@ -1,105 +1,97 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BookOpen, Clock, Download, Heart } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useFavorites } from '../context/FavoritesContext';
 import { DashboardHeader } from '../components/dashboard/DashboardHeader';
 import { ProfileCard } from '../components/dashboard/ProfileCard';
 import { SavedNotes } from '../components/dashboard/SavedNotes';
-import { RecentActivity } from '../components/dashboard/RecentActivity';
-import { RecommendedResources } from '../components/dashboard/RecommendedResources';
-import type { Activity } from '../types';
+import { SubjectNotes } from '../components/dashboard/SubjectNotes';
+import { ProfileSetupModal } from '../components/ProfileSetupModal';
+import { notes } from '../data/notesData';
+import type { Note } from '../types';
 
 export function Dashboard() {
   const navigate = useNavigate();
-  const { user } = useAuth();
+  const { user, userProfile, updateUserProfile } = useAuth();
   const { favorites } = useFavorites();
-  const [searchQuery, setSearchQuery] = useState('');
-  const [recentActivities] = useState<Activity[]>([
-    {
-      id: '1',
-      type: 'view',
-      noteId: 'py1',
-      noteTitle: 'Python Unit 1',
-      timestamp: new Date(Date.now() - 3600000).toISOString(),
-    },
-    {
-      id: '2',
-      type: 'download',
-      noteId: 'dbms301',
-      noteTitle: 'DBMS Unit 1',
-      timestamp: new Date(Date.now() - 7200000).toISOString(),
-    },
-    {
-      id: '3',
-      type: 'favorite',
-      noteId: 'dsa301',
-      noteTitle: 'DSA Unit 1',
-      timestamp: new Date(Date.now() - 10800000).toISOString(),
-    },
-  ]);
+  const [showProfileModal, setShowProfileModal] = useState(false);
+  const [userNotes, setUserNotes] = useState<{ [key: string]: Note[] }>({});
+
+  useEffect(() => {
+    if (user && !userProfile) {
+      setShowProfileModal(true);
+    }
+  }, [user, userProfile]);
+
+  useEffect(() => {
+    if (userProfile) {
+      const filteredNotes = notes.filter(
+        note =>
+          note.branch === userProfile.branch &&
+          note.semester === userProfile.semester
+      );
+
+      const groupedNotes = filteredNotes.reduce((acc, note) => {
+        if (!acc[note.subject]) {
+          acc[note.subject] = [];
+        }
+        acc[note.subject].push(note);
+        return acc;
+      }, {} as { [key: string]: Note[] });
+
+      setUserNotes(groupedNotes);
+    }
+  }, [userProfile]);
 
   useEffect(() => {
     if (!user) {
-      navigate('/login');
+      navigate('/');
     }
   }, [user, navigate]);
 
-  if (!user) {
-    return null;
-  }
+  const handleProfileUpdate = async (data: { branch: string; semester: number }) => {
+    await updateUserProfile(data);
+    setShowProfileModal(false);
+  };
 
-  const stats = [
-    {
-      name: 'Saved Notes',
-      value: favorites.length,
-      icon: Heart,
-      color: 'text-pink-600 dark:text-pink-400',
-      bgColor: 'bg-pink-100 dark:bg-pink-900',
-    },
-    {
-      name: 'Recent Views',
-      value: recentActivities.filter(a => a.type === 'view').length,
-      icon: BookOpen,
-      color: 'text-blue-600 dark:text-blue-400',
-      bgColor: 'bg-blue-100 dark:bg-blue-900',
-    },
-    {
-      name: 'Downloads',
-      value: recentActivities.filter(a => a.type === 'download').length,
-      icon: Download,
-      color: 'text-green-600 dark:text-green-400',
-      bgColor: 'bg-green-100 dark:bg-green-900',
-    },
-    {
-      name: 'Active Days',
-      value: 7,
-      icon: Clock,
-      color: 'text-purple-600 dark:text-purple-400',
-      bgColor: 'bg-purple-100 dark:bg-purple-900',
-    },
-  ];
+  if (!user) return null;
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-24 pb-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <DashboardHeader user={user} stats={stats} />
+      <ProfileSetupModal
+        isOpen={showProfileModal}
+        onClose={() => setShowProfileModal(false)}
+        initialData={userProfile || undefined}
+        onSubmit={handleProfileUpdate}
+      />
 
-        <div className="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Left Column */}
-          <div className="lg:col-span-2 space-y-8">
-            <SavedNotes 
-              favorites={favorites}
-              searchQuery={searchQuery}
-              onSearchChange={setSearchQuery}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <DashboardHeader user={user} />
+
+        <div className="mt-8 space-y-8">
+          {/* Profile Card */}
+          <div className="w-full">
+            <ProfileCard
+              user={user}
+              userProfile={userProfile}
+              onEditProfile={() => setShowProfileModal(true)}
             />
-            <RecommendedResources />
           </div>
 
-          {/* Right Column */}
+          {/* Favorites Section */}
+          <div className="w-full">
+            <SavedNotes
+              favorites={favorites}
+              searchQuery={''}
+              onSearchChange={() => {}}
+            />
+          </div>
+
+          {/* Subject-wise Notes */}
           <div className="space-y-8">
-            <ProfileCard user={user} />
-            <RecentActivity activities={recentActivities} />
+            {Object.entries(userNotes).map(([subject, subjectNotes]) => (
+              <SubjectNotes key={subject} subject={subject} notes={subjectNotes} />
+            ))}
           </div>
         </div>
       </div>

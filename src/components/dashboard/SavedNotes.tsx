@@ -1,6 +1,8 @@
 import { Search } from 'lucide-react';
 import { NoteCard } from '../NoteCard';
 import type { Note } from '../../types';
+import { useFavorites } from '../../context/FavoritesContext';
+
 
 interface SavedNotesProps {
   favorites: Note[];
@@ -9,6 +11,8 @@ interface SavedNotesProps {
 }
 
 export function SavedNotes({ favorites, searchQuery, onSearchChange }: SavedNotesProps) {
+  const { removeFromFavorites } = useFavorites();
+
   const filteredNotes = favorites.filter(
     (note) =>
       note.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -17,6 +21,7 @@ export function SavedNotes({ favorites, searchQuery, onSearchChange }: SavedNote
 
   return (
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+      {/* Header with Search */}
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
           Saved Notes
@@ -33,20 +38,22 @@ export function SavedNotes({ favorites, searchQuery, onSearchChange }: SavedNote
         </div>
       </div>
 
+      {/* Display filtered notes */}
       {filteredNotes.length === 0 ? (
         <p className="text-center text-gray-600 dark:text-gray-400 py-8">
           No saved notes found. Start exploring and save notes for quick access!
         </p>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {filteredNotes.map((note) => (
             <NoteCard
               key={note.id}
               note={note}
               isSaved={true}
-              onSave={() => {/* Handle unsave */}}
+              onSave={() => removeFromFavorites(note.id)} // Removes the note from favorites
             />
           ))}
+
         </div>
       )}
     </div>

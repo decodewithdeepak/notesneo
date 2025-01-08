@@ -1,13 +1,13 @@
+import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { Footer } from './components/Footer';
 import { Navbar } from './components/Navbar';
+import { LoginModal } from './components/LoginModal';
 import { About } from './pages/About';
 import { Contact } from './pages/Contact';
 import { Home } from './pages/Home';
-import { Login } from './pages/Login';
 import { Notes } from './pages/Notes';
 import { Favorites } from './pages/Favorites';
 import { Blog } from './pages/Blog';
@@ -16,8 +16,6 @@ import { Dashboard } from './pages/Dashboard';
 import { FavoritesProvider } from './context/FavoritesContext';
 import { NotesFilterProvider } from './context/NotesFilterContext';
 import { AuthProvider } from './context/AuthContext';
-import { Analytics } from '@vercel/analytics/react';
-import { SpeedInsights } from "@vercel/speed-insights/react"
 
 function ScrollToTopOnRouteChange() {
   const location = useLocation();
@@ -30,6 +28,8 @@ function ScrollToTopOnRouteChange() {
 }
 
 function AppContent() {
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -41,7 +41,11 @@ function AppContent() {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col">
       <ScrollToTopOnRouteChange />
-      <Navbar />
+      <Navbar onLoginClick={() => setIsLoginModalOpen(true)} />
+      <LoginModal 
+        isOpen={isLoginModalOpen} 
+        onClose={() => setIsLoginModalOpen(false)} 
+      />
       <div className="flex-grow">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -51,13 +55,10 @@ function AppContent() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/resources" element={<Resources />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </div>
       <Footer />
-      <Analytics />
-      <SpeedInsights />
     </div>
   );
 }
