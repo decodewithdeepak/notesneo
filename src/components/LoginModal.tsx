@@ -47,7 +47,7 @@ export function LoginModal({ isOpen, onClose }: LoginModalProps) {
               Welcome to NotesNeo
             </h2>
             <p className="text-gray-600 dark:text-gray-400 mb-6">
-              Sign in to access your saved notes and more
+              Sign in to access your personalized dashboard
             </p>
 
             {/* Google Sign In Button */}
