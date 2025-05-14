@@ -59,7 +59,7 @@ export function Home() {
                     <div className="mt-3 sm:mt-0 sm:ml-3" data-aos="fade-up" data-aos-delay="400">
                       <a
                         href="https://drive.google.com/uc?export=download&id=19zqey0UnyHMvLes_Nj-kDlzB2rRRxBdA"
-                        className="w-full flex items-center justify-center px-6 py-3 border border-transparent text-base font-semibold rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 transition duration-300 ease-in-out shadow-lg hover:shadow-indigo-300/50 md:py-4 md:text-lg md:px-4"
+                        className="w-full flex items-center justify-center px-6 py-3 border border-indigo-600 text-base font-semibold rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 transition duration-300 ease-in-out shadow-lg hover:shadow-indigo-300/50 md:py-4 md:text-lg md:px-4"
                       >
                         <Download className="w-5 h-5 mr-2" />
                         Download Android App
