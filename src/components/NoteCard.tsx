@@ -34,7 +34,7 @@ export function NoteCard({ note, onSave, isSaved }: NoteCardProps) {
               Unit {note.unit}
             </span>
           </div>
-          <div className="mt-4 flex justify-between items-center mt-auto">
+          <div className="flex justify-between items-center mt-auto">
             {onSave && (
               <button
                 onClick={onSave}
