@@ -12,7 +12,21 @@ export function NoteCard({ note, onSave, isSaved }: NoteCardProps) {
     <div className="relative group h-full flex flex-col">
       {/* Note Card */}
       <div className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden border-2 border-gray-300 dark:border-gray-700 transition-colors duration-200 z-10 hover:border-indigo-600 dark:hover:border-indigo-500 h-full flex flex-col">
-        {/* Image removed as per request */}
+
+        {/* Concentric Circles Design */}
+        <div className="absolute -top-8 -left-8 opacity-20 group-hover:opacity-40 transition-opacity duration-300 pointer-events-none z-[-10]">
+          <div className="relative">
+            {/* Outer circle - single accent color */}
+            <div className="w-20 h-20 rounded-full border-2 border-indigo-400 dark:border-indigo-500"></div>
+            {/* Middle circle - same accent color */}
+            <div className="absolute top-2 left-2 w-16 h-16 rounded-full border-2 border-indigo-400 dark:border-indigo-500"></div>
+            {/* Inner circle - same accent color */}
+            <div className="absolute top-4 left-4 w-12 h-12 rounded-full border-2 border-indigo-400 dark:border-indigo-500"></div>
+            {/* Center circle - solid accent color */}
+            <div className="absolute top-6 left-6 w-8 h-8 rounded-full bg-indigo-400 dark:bg-indigo-500"></div>
+          </div>
+        </div>
+
         <div className="p-5 flex flex-col flex-1">
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
             {note.title}
@@ -61,7 +75,7 @@ export function NoteCard({ note, onSave, isSaved }: NoteCardProps) {
             <a
               href={note.downloadUrl}
               className="flex items-center gap-2 px-4 py-2 rounded-full bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-300 hover:bg-green-200 dark:hover:bg-green-800 transition-colors duration-150 shadow-md"
-              target="_blank" // open in new tab
+              target="_blank"
             >
               <Download className="w-4 h-4" />
               <span className="text-sm font-medium">Download</span>
