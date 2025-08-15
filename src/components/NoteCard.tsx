@@ -9,25 +9,18 @@ interface NoteCardProps {
 
 export function NoteCard({ note, onSave, isSaved }: NoteCardProps) {
   return (
-    <div className="relative group">
-      {/* Glow Effect */}
-      <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0" />
-
+    <div className="relative group h-full flex flex-col">
       {/* Note Card */}
-      <div className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden border-2 border-gray-300 dark:border-gray-700 hover:scale-[1.05] hover:shadow-lg transition-transform duration-200 z-10">
-        <img
-          src={note.imageUrl}
-          alt={""}
-          className="w-full h-100 object-cover rounded-t-2xl"
-        />
-        <div className="p-5">
+      <div className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden border-2 border-gray-300 dark:border-gray-700 transition-colors duration-200 z-10 hover:border-indigo-600 dark:hover:border-indigo-500 h-full flex flex-col">
+        {/* Image removed as per request */}
+        <div className="p-5 flex flex-col flex-1">
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
             {note.title}
           </h3>
           <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
             {note.description}
           </p>
-          <div className="mt-4 flex flex-wrap gap-2">
+          <div className="my-4 flex flex-wrap gap-2">
             <span className="px-3 py-1 text-xs font-semibold rounded-full bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200">
               {note.branch}
             </span>
@@ -41,15 +34,14 @@ export function NoteCard({ note, onSave, isSaved }: NoteCardProps) {
               Unit {note.unit}
             </span>
           </div>
-          <div className="mt-6 flex justify-between items-center">
+          <div className="mt-4 flex justify-between items-center mt-auto">
             {onSave && (
               <button
                 onClick={onSave}
-                className={`p-2 rounded-full ${
-                  isSaved
-                    ? 'bg-pink-100 dark:bg-pink-900 text-pink-600 dark:text-pink-300'
-                    : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300'
-                } hover:bg-pink-200 dark:hover:bg-pink-700 transition-colors duration-150 shadow-md`}
+                className={`p-2 rounded-full ${isSaved
+                  ? 'bg-pink-100 dark:bg-pink-900 text-pink-600 dark:text-pink-300'
+                  : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300'
+                  } hover:bg-pink-200 dark:hover:bg-pink-700 transition-colors duration-150 shadow-md`}
               >
                 <svg
                   className="w-5 h-5"

@@ -2,29 +2,7 @@ import type { Note } from '../types';
 
 export const notes: Note[] = [
   // ---------------------------- BTech Semester 1 ----------------------------
-  // BTech Semester 1
-  {
-    id: 'math101',
-    title: 'Engineering Mathematics I - Unit 1',
-    description: 'Differential Calculus and Applications',
-    subject: 'Mathematics',
-    branch: 'BTech',
-    semester: 1,
-    unit: 1,
-    imageUrl: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb',
-    downloadUrl: 'https://example.com/notes/math101',
-  },
-  {
-    id: 'phy101',
-    title: 'Engineering Physics - Unit 1',
-    description: 'Mechanics and Wave Motion',
-    subject: 'Physics',
-    branch: 'BTech',
-    semester: 1,
-    unit: 1,
-    imageUrl: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb',
-    downloadUrl: 'https://example.com/notes/phy101',
-  },
+
 
   // ---------------------------- BTech Semester 3 ----------------------------
   // BTech Semester 3 - Python
