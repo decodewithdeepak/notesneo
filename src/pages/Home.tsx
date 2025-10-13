@@ -1,7 +1,7 @@
 import { Download, Users, BookOpen, Star, ArrowRight, Smartphone, RefreshCw } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { TestimonialSlider } from '../components/TestimonialSlider';
-import { CreatorSection } from '../components/CreatorSection';
+// import { CreatorSection } from '../components/CreatorSection';
 import { testimonials } from '../data/testimonialsData';
 import { FaqSection } from '../components/FaqSection';
 import { faqs } from '../data/faqData';
@@ -182,7 +182,7 @@ export function Home() {
       </div>
 
       {/* Creator Section */}
-      <CreatorSection />
+      {/* <CreatorSection /> */}
 
       {/* FAQ Section */}
       <FaqSection faqs={faqs} />
