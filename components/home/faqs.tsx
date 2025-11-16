@@ -74,16 +74,21 @@ export default function FAQs() {
       answer: (
         <div className="space-y-4">
           <p>
-            <strong>NotesNeo</strong> is a free platform for students to access
-            quality academic notes. It helps BTech, BCA, and BBA students find
-            study materials quickly and efficiently.
+            <strong>NotesNeo</strong> is a free platform designed for MDU Rohtak
+            students to access quality academic notes. It helps BTech, BCA, and
+            BBA students find study materials quickly and efficiently.
           </p>
           <p>You can:</p>
           <ul className="list-disc list-inside ml-4 space-y-1">
-            <li>Search and filter notes by branch, semester, and subject</li>
+            <li>
+              Search and filter notes by branch, semester, subject, and unit
+            </li>
             <li>Download notes instantly with one click</li>
             <li>Save your favorite notes for quick access</li>
-            <li>Upload your own notes to help others</li>
+            <li>
+              Create a personalized dashboard based on your branch and semester
+            </li>
+            <li>Upload your own notes to help fellow students</li>
           </ul>
           <p>
             All completely free - no signup required, no hidden costs, no catch.
@@ -115,9 +120,13 @@ export default function FAQs() {
           <p>Yes! NotesNeo is completely free. You get:</p>
           <ul className="list-disc list-inside space-y-1">
             <li>Full access to browse all notes</li>
-            <li>Advanced search and filtering</li>
+            <li>
+              Advanced search and filtering by branch, semester, subject, and
+              unit
+            </li>
             <li>Unlimited downloads</li>
-            <li>Favorites system</li>
+            <li>Favorites system with local storage</li>
+            <li>Personalized dashboard</li>
             <li>No hidden charges ever</li>
           </ul>
           <p>
@@ -130,27 +139,17 @@ export default function FAQs() {
     {
       question: "How do I search for notes?",
       answer:
-        "You can search by note title, subject, or description. Use the filters to narrow down by branch (BTech, BCA, BBA), semester (1-8), subject, or unit. The search is instant and updates as you type.",
+        "You can search by note title, subject, or description using the search bar. Use the dropdown filters to narrow down by branch (BTech, BCA, BBA), semester (1-8), subject, or unit. The filters work independently and dynamically update based on your selections. Your filter preferences are automatically saved for your next visit.",
     },
     {
       question: "What courses are covered?",
       answer:
-        "We cover notes for BTech, BCA, and BBA courses across all semesters. Notes are organized by subject and unit, making it easy to find exactly what you need for your exams.",
+        "We cover notes for BTech, BCA, and BBA courses from Maharshi Dayanand University, Rohtak across all semesters. Notes are organized by subject and unit, making it easy to find exactly what you need for your exams and semester preparations.",
     },
     {
       question: "Can I upload my own notes?",
       answer:
-        "Yes! We welcome contributions from students. You can upload your notes through our upload form. All submissions are reviewed by our team to ensure quality before being added to the collection.",
-    },
-    {
-      question: "How do notes get added?",
-      answer:
-        "Notes are added through student submissions and our own curation. We review each submission to ensure quality, accuracy, and proper formatting before making them available to everyone.",
-    },
-    {
-      question: "Are the notes verified?",
-      answer:
-        "Yes, all notes go through a review process before being published. We check for accuracy, completeness, and proper formatting. However, we recommend cross-referencing with your course materials and textbooks.",
+        "Yes! We welcome contributions from students. Visit the 'Upload Notes' page and fill out the form with your note details (title, description, subject, branch, semester, unit, and Google Drive link). Your submission is sent to us via email, and after review, we'll add it to the collection for everyone to benefit from.",
     },
     {
       question: "Can I download notes without signing up?",
@@ -163,24 +162,24 @@ export default function FAQs() {
         "Most notes are available as PDF files hosted on Google Drive or Google Docs. This ensures easy access, compatibility across devices, and the ability to view them online or download for offline use.",
     },
     {
-      question: "How often are new notes added?",
-      answer:
-        "New notes are added regularly as students submit them and as we curate quality content. We also update existing notes when better versions become available. Check back frequently for new additions!",
-    },
-    {
       question: "Can I save my favorite notes?",
       answer:
-        "Yes! Use the heart icon on any note card to save it to your favorites. Your favorites are stored locally in your browser, so you can quickly access your most-used study materials.",
+        "Yes! Click the heart icon on any note card to save it to your favorites. Your favorites are stored locally in your browser using localStorage, so you can quickly access your most-used study materials anytime. You can view all your favorites on the dedicated Favorites page.",
+    },
+    {
+      question: "What is the Dashboard feature?",
+      answer:
+        "The Dashboard provides a personalized experience based on your branch and semester. When you first visit the dashboard, you'll be prompted to select your branch and semester. Once set, the dashboard will show only the notes relevant to your current studies, making it easier to find what you need quickly.",
     },
     {
       question: "How can I contribute?",
       answer:
-        "You can contribute by uploading your own notes, sharing the platform with fellow students, or providing feedback on existing notes. Your contributions help build a better resource for the entire student community.",
+        "You can contribute by uploading your own notes through the Upload Notes page, sharing NotesNeo with fellow MDU students, joining our WhatsApp community, or providing feedback. Your contributions help build a better resource for the entire student community.",
     },
     {
       question: "Is there a mobile app?",
       answer:
-        "Currently, NotesNeo is a web-based platform that works perfectly on mobile browsers. The responsive design ensures a great experience on phones, tablets, and desktops without needing a separate app.",
+        "Yes! NotesNeo has a dedicated Android app available for download. The app provides the same features as the website with a native mobile experience. You can also access NotesNeo through any mobile browser - the responsive design ensures a great experience on phones, tablets, and desktops.",
     },
   ];
 

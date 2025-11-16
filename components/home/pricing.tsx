@@ -64,7 +64,7 @@ export default function Pricing() {
                 Access quality academic notes
               </p>
               <div className="py-3">
-                <span className="text-3xl sm:text-4xl font-bold">$0</span>
+                <span className="text-3xl sm:text-4xl font-bold">₹0</span>
                 <span className="text-sm sm:text-base text-muted-foreground">
                   /forever
                 </span>
