@@ -30,7 +30,7 @@ export default function HighlightText({
       <motion.div
         className={`absolute inset-0 ${highlightColor} -z-10`}
         initial={{ width: 0, x: -6 }}
-        whileInView={{ width: "110%", x: -6 }}
+        whileInView={{ width: "calc(100% + 12px)", x: -6 }}
         transition={{ duration, delay }}
         viewport={{ once: true }}
       />

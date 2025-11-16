@@ -26,7 +26,7 @@ export default function HeroSection() {
       />
       <div className="mx-auto max-w-full z-50 relative">
         <div className="mx-auto max-w-4xl text-center">
-          <h1 className="text-3xl sm:text-4xl font-librebaskerville md:text-5xl font-normal text-shadow-xs tracking-tight text-foreground leading-tight">
+          <h1 className="text-4xl sm:text-5xl font-librebaskerville md:text-6xl font-normal text-shadow-xs tracking-tight text-foreground leading-tight">
             <HighlightText>
               <span className="font-semibold">MDU Rohtak Notes</span>
             </HighlightText>
