@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
+import emailjs from "@emailjs/browser";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -38,8 +39,10 @@ type UploadNoteFormValues = {
 
 export default function UploadNotePage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [lastSubmission, setLastSubmission] =
     useState<UploadNoteFormValues | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const defaultValues = useMemo<UploadNoteFormValues>(
     () => ({
@@ -53,7 +56,7 @@ export default function UploadNotePage() {
       uploaderName: "",
       uploaderEmail: "",
     }),
-    [],
+    []
   );
 
   const form = useForm<UploadNoteFormValues>({
@@ -62,12 +65,59 @@ export default function UploadNotePage() {
     reValidateMode: "onChange",
   });
 
-  function onSubmit(values: UploadNoteFormValues) {
-    // For now, just print to console
-    // eslint-disable-next-line no-console
-    console.log("Upload Note:", values);
-    setLastSubmission(values);
-    setIsSubmitted(true);
+  async function onSubmit(values: UploadNoteFormValues) {
+    setIsSubmitting(true);
+    setError(null);
+
+    try {
+      // Initialize EmailJS (only needed once, but safe to call multiple times)
+      emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "");
+
+      // Prepare email template parameters
+      const templateParams = {
+        title: values.title,
+        description: values.description,
+        subject: values.subject,
+        branch: values.branch,
+        semester: values.semester,
+        unit: values.unit,
+        downloadUrl: values.downloadUrl,
+        uploaderName: values.uploaderName,
+        uploaderEmail: values.uploaderEmail,
+        // Pre-formatted JSON for easy copy-paste
+        jsonData: JSON.stringify(
+          {
+            id: `${values.subject.toLowerCase().replace(/\s+/g, "-")}-${
+              values.unit
+            }-${Date.now()}`,
+            title: values.title,
+            description: values.description,
+            subject: values.subject,
+            branch: values.branch,
+            semester: parseInt(values.semester),
+            unit: parseInt(values.unit),
+            downloadUrl: values.downloadUrl,
+          },
+          null,
+          2
+        ),
+      };
+
+      // Send email using EmailJS
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "",
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "",
+        templateParams
+      );
+
+      setLastSubmission(values);
+      setIsSubmitted(true);
+    } catch (err) {
+      console.error("EmailJS Error:", err);
+      setError("Failed to submit note. Please try again or contact support.");
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -346,14 +396,26 @@ export default function UploadNotePage() {
                 />
               </div>
 
+              {error && (
+                <div className="rounded-md bg-destructive/10 border border-destructive/20 p-3">
+                  <p className="text-sm text-destructive">{error}</p>
+                </div>
+              )}
+
               <div className="pt-2 flex items-center gap-3">
-                <Button type="submit" size="lg" className="px-6">
-                  Submit
+                <Button
+                  type="submit"
+                  size="lg"
+                  className="px-6"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Submitting..." : "Submit"}
                 </Button>
                 <Button
                   type="button"
                   variant="outline"
                   onClick={() => form.reset(defaultValues)}
+                  disabled={isSubmitting}
                 >
                   Reset
                 </Button>
