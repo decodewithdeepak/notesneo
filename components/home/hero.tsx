@@ -76,19 +76,19 @@ export default function HeroSection() {
           <div className="mt-8 sm:mt-10 flex flex-col items-center justify-center gap-3">
             <div className="flex items-center -space-x-3">
               {/* Profile Pictures */}
-              <div className="w-10 h-10 rounded-full bg-linear-to-br from-blue-500 to-cyan-500 border-2 border-background flex items-center justify-center text-white font-semibold text-sm">
+              <div className="w-10 h-10 rounded-full bg-linear-to-br from-slate-400 to-slate-500 border-2 border-background flex items-center justify-center text-white font-semibold text-sm">
                 A
               </div>
-              <div className="w-10 h-10 rounded-full bg-linear-to-br from-purple-500 to-pink-500 border-2 border-background flex items-center justify-center text-white font-semibold text-sm">
+              <div className="w-10 h-10 rounded-full bg-linear-to-br from-zinc-400 to-zinc-500 border-2 border-background flex items-center justify-center text-white font-semibold text-sm">
                 S
               </div>
-              <div className="w-10 h-10 rounded-full bg-linear-to-br from-green-500 to-emerald-500 border-2 border-background flex items-center justify-center text-white font-semibold text-sm">
+              <div className="w-10 h-10 rounded-full bg-linear-to-br from-gray-400 to-gray-500 border-2 border-background flex items-center justify-center text-white font-semibold text-sm">
                 R
               </div>
-              <div className="w-10 h-10 rounded-full bg-linear-to-br from-orange-500 to-red-500 border-2 border-background flex items-center justify-center text-white font-semibold text-sm">
+              <div className="w-10 h-10 rounded-full bg-linear-to-br from-slate-500 to-slate-600 border-2 border-background flex items-center justify-center text-white font-semibold text-sm">
                 P
               </div>
-              <div className="w-10 h-10 rounded-full bg-linear-to-br from-indigo-500 to-blue-500 border-2 border-background flex items-center justify-center text-white font-semibold text-sm">
+              <div className="w-10 h-10 rounded-full bg-linear-to-br from-zinc-500 to-zinc-600 border-2 border-background flex items-center justify-center text-white font-semibold text-sm">
                 K
               </div>
             </div>
