@@ -55,7 +55,7 @@ export default function Creator() {
               {/* Left - Profile Image */}
               <div className="md:col-span-1 border-b md:border-b-0 md:border-r border-border p-6 sm:p-8 bg-muted/30">
                 <div className="flex md:flex-col items-center md:justify-center gap-4 md:gap-0">
-                  <div className="relative w-20 h-20 md:w-32 md:h-32 md:mb-6 flex-shrink-0">
+                  <div className="relative w-20 h-20 md:w-32 md:h-32 md:mb-6 shrink-0">
                     <div className="absolute inset-0 border-2 border-border bg-muted rounded-full"></div>
                     <div className="absolute inset-2 border border-border rounded-full overflow-hidden bg-background">
                       <Image

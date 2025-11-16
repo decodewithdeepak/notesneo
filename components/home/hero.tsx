@@ -12,7 +12,7 @@ export default function HeroSection() {
       <div
         className={cn(
           "absolute bg-background z-10 inset-0 w-full h-full",
-          "[mask-image:radial-gradient(600px_circle_at_center,white,rgba(255,255,255,0.8),transparent)]",
+          "mask-[radial-gradient(600px_circle_at_center,white,rgba(255,255,255,0.8),transparent)]"
         )}
       ></div>
 
@@ -76,24 +76,27 @@ export default function HeroSection() {
           <div className="mt-8 sm:mt-10 flex flex-col items-center justify-center gap-3">
             <div className="flex items-center -space-x-3">
               {/* Profile Pictures */}
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 border-2 border-background flex items-center justify-center text-white font-semibold text-sm">
+              <div className="w-10 h-10 rounded-full bg-linear-to-br from-blue-500 to-cyan-500 border-2 border-background flex items-center justify-center text-white font-semibold text-sm">
                 A
               </div>
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 border-2 border-background flex items-center justify-center text-white font-semibold text-sm">
+              <div className="w-10 h-10 rounded-full bg-linear-to-br from-purple-500 to-pink-500 border-2 border-background flex items-center justify-center text-white font-semibold text-sm">
                 S
               </div>
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-500 to-emerald-500 border-2 border-background flex items-center justify-center text-white font-semibold text-sm">
+              <div className="w-10 h-10 rounded-full bg-linear-to-br from-green-500 to-emerald-500 border-2 border-background flex items-center justify-center text-white font-semibold text-sm">
                 R
               </div>
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-500 to-red-500 border-2 border-background flex items-center justify-center text-white font-semibold text-sm">
+              <div className="w-10 h-10 rounded-full bg-linear-to-br from-orange-500 to-red-500 border-2 border-background flex items-center justify-center text-white font-semibold text-sm">
                 P
               </div>
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-blue-500 border-2 border-background flex items-center justify-center text-white font-semibold text-sm">
+              <div className="w-10 h-10 rounded-full bg-linear-to-br from-indigo-500 to-blue-500 border-2 border-background flex items-center justify-center text-white font-semibold text-sm">
                 K
               </div>
             </div>
             <p className="text-sm text-muted-foreground">
-              Trusted by <span className="font-semibold text-foreground">1000+ students</span>
+              Trusted by{" "}
+              <span className="font-semibold text-foreground">
+                1000+ students
+              </span>
             </p>
           </div>
         </div>

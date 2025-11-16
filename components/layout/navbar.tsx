@@ -30,7 +30,7 @@ export default function Navbar() {
   return (
     <header
       id="nd-nav"
-      className="fixed py-1 top-0 z-[9999] left-0 right-0 border-b"
+      className="fixed py-1 top-0 z-9999 left-0 right-0 border-b"
       aria-label="Main"
     >
       <div className="max-w-6xl px-2 sm:px-2 mx-auto">

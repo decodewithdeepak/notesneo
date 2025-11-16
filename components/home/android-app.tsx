@@ -48,7 +48,7 @@ export default function AndroidApp() {
                     key={index}
                     className="flex items-start gap-4 p-4 border border-border bg-background hover:bg-muted/50 transition-colors"
                   >
-                    <div className="flex-shrink-0 w-10 h-10 border border-border bg-muted flex items-center justify-center">
+                    <div className="shrink-0 w-10 h-10 border border-border bg-muted flex items-center justify-center">
                       <Icon className="h-5 w-5 text-primary" />
                     </div>
                     <div>
@@ -95,7 +95,7 @@ export default function AndroidApp() {
               {/* Phone Mockup */}
               <div className="relative mx-auto w-full max-w-[300px] aspect-[9/16] border-8 border-border rounded-[2.5rem] bg-background shadow-2xl overflow-hidden">
                 {/* Phone Screen Content */}
-                <div className="h-full w-full bg-gradient-to-br from-primary/10 via-background to-primary/5 flex flex-col items-center justify-center p-6">
+                <div className="h-full w-full bg-linear-to-br from-primary/10 via-background to-primary/5 flex flex-col items-center justify-center p-6">
                   <div className="w-16 h-16 border-2 border-border bg-muted rounded-2xl flex items-center justify-center mb-4">
                     <Smartphone className="h-8 w-8 text-primary" />
                   </div>

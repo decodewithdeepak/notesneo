@@ -92,7 +92,7 @@ export default function Pricing() {
             <div className="space-y-2">
               {coreFeatures.map((feature, index) => (
                 <div key={index} className="flex items-start gap-2">
-                  <Check className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                  <Check className="h-4 w-4 text-primary shrink-0 mt-0.5" />
                   <span className="text-sm text-muted-foreground">
                     {feature}
                   </span>
@@ -112,7 +112,7 @@ export default function Pricing() {
             <div className="space-y-2">
               {uiFeatures.map((feature, index) => (
                 <div key={index} className="flex items-start gap-2">
-                  <Check className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                  <Check className="h-4 w-4 text-primary shrink-0 mt-0.5" />
                   <span className="text-sm text-muted-foreground">
                     {feature}
                   </span>
@@ -134,7 +134,7 @@ export default function Pricing() {
             <div className="space-y-2">
               {contentFeatures.map((feature, index) => (
                 <div key={index} className="flex items-start gap-2">
-                  <Check className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                  <Check className="h-4 w-4 text-primary shrink-0 mt-0.5" />
                   <span className="text-sm text-muted-foreground">
                     {feature}
                   </span>
@@ -156,7 +156,7 @@ export default function Pricing() {
             <div className="space-y-2">
               {accessFeatures.map((feature, index) => (
                 <div key={index} className="flex items-start gap-2">
-                  <Check className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                  <Check className="h-4 w-4 text-primary shrink-0 mt-0.5" />
                   <span className="text-sm text-muted-foreground">
                     {feature}
                   </span>

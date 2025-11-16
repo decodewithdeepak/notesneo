@@ -31,7 +31,7 @@ function FAQItem({ question, answer, index }: FAQItemProps) {
             <h3 className="font-medium text-sm leading-relaxed pr-4">
               {question}
             </h3>
-            <div className="flex-shrink-0">
+            <div className="shrink-0">
               <svg
                 className="h-4 w-4 transition-transform duration-200 ease-in-out"
                 viewBox="0 0 16 16"
@@ -102,9 +102,9 @@ export default function FAQs() {
         <div className="space-y-4">
           <p>NotesNeo is our way of giving back to the student community.</p>
           <p>
-            We believe accessing quality study materials shouldn\'t be difficult
-            or expensive. By making this completely free, we\'re helping
-            students excel in their academics without financial barriers.
+            We believe accessing quality study materials shouldn't be difficult
+            or expensive. By making this completely free, we're helping students
+            excel in their academics without financial barriers.
           </p>
           <p>
             No monetization strategy - just our contribution to help students
