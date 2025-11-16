@@ -8,7 +8,7 @@ import { Search } from "lucide-react";
 
 export default function HeroSection() {
   return (
-    <section className="relative py-16 sm:py-24 md:py-28 lg:py-36">
+    <section className="relative py-16 sm:py-24 md:py-28">
       <div
         className={cn(
           "absolute bg-background z-10 inset-0 w-full h-full",
