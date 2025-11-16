@@ -1,92 +1,204 @@
-# NotesNeo 2.0
+# NotesNeo - MDU Academic Notes Platform
 
-Welcome to NotesNeo, your go-to platform for academic resources designed to empower students with quality education, accessibility, and a supportive community.
+A modern, responsive web application for browsing and downloading academic notes for BTech, BCA, and BBA students at Maharshi Dayanand University (MDU) Rohtak. Built with Next.js 16 and Tailwind CSS v4.
 
-[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://notesneo.vercel.app)
-[![Version](https://img.shields.io/badge/version-2.0.0-blue)](https://notesneo.vercel.app)
-[![License](https://img.shields.io/badge/license-MIT-yellow)](https://notesneo.vercel.app)
+![Next.js](https://img.shields.io/badge/Next.js-16.0-black?style=for-the-badge&logo=next.js)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-v4-38bdf8?style=for-the-badge&logo=tailwind-css)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)
+![React](https://img.shields.io/badge/React-19.2-61dafb?style=for-the-badge&logo=react)
 
-## About NotesNeo
-NotesNeo 2.0 is a comprehensive React-based platform designed for students of MDU Rohtak to access high-quality academic resources, including notes, study materials, and community support. The website aims to make studying more accessible, efficient, and collaborative by offering a seamless experience for users to download and save notes, filter by branch, semester, and subject, and access personalized resources through their dashboard.
+---
 
 ## Features
-- **Comprehensive Notes Database**: Access in-depth, organized notes across a wide range of branches, semesters, and subjects
-- **Smart Filtering System**: Easily find notes by branch, semester, and subject through an intuitive filter interface
-- **User Authentication**: Secure Google sign-in integration using Firebase Authentication
-- **Personalized Dashboard**: Access your favorite notes and profile information in one place
-- **Favorites System**: Save your preferred notes for quick access later
-- **Dark/Light Mode**: Toggle between dark and light themes based on your preference
-- **Responsive Design**: Optimized viewing experience across all devices
-- **Animations**: Smooth animations powered by AOS (Animate On Scroll) library
-- **Analytics Integration**: Performance tracking with Vercel Analytics and Speed Insights
 
-## Tech Stack
-- **Frontend Framework**: React 18 with TypeScript
-- **Routing**: React Router v6
-- **Authentication**: Firebase Authentication
-- **State Management**: React Context API
-- **UI Components**: Custom components with Tailwind CSS
-- **Icons**: Lucide React
-- **Animations**: AOS (Animate On Scroll)
-- **Build Tool**: Vite
-- **Analytics**: Vercel Analytics & Speed Insights
-- **Deployment**: Vercel
-- **Local Storage**: Browser localStorage for persisting user preferences and favorites
+### Core Features
 
-## Data Storage
-- **User Profiles**: Stored in localStorage for persistence
-- **Favorites**: Stored in localStorage for offline access
-- **Filter Preferences**: Branch, semester, and subject selections are saved in localStorage
-- **Theme Preference**: Dark/light mode setting is saved in localStorage
+- **Comprehensive Notes Collection** - 80+ notes across BTech, BCA, and BBA
+- **Personalized Dashboard** - Set your branch and semester for customized note recommendations
+- **Favorites System** - Save your favorite notes for quick access
+- **Smart Filtering** - Independent filters for Branch, Semester, and Subject
+- **Real-time Search** - Search by title, description, or subject
+- **Easy Downloads** - One-click PDF downloads via Google Drive
+- **Beautiful UI** - Modern, responsive design with dark mode support
+- **Mobile-First** - Optimized for all devices with 8px padding
+- **Local Storage** - Persistent favorites and filter preferences
+- **Android App** - Native mobile app available for download
 
-## Components
-- **Authentication**: Google Sign-in with Firebase
-- **Filtering**: Dynamic filtering by branch, semester, and subject
-- **Dashboard**: Personalized user dashboard with saved notes
-- **Theme Toggle**: Switch between dark and light modes
-- **Responsive Navigation**: Adaptive navbar with user menu
-- **Note Cards**: Interactive cards with save functionality
-- **Modal System**: Login and profile setup modals
+### Academic Organization
 
-## Get Started
-1. Visit [NotesNeo](https://notesneo.vercel.app) to start exploring resources
-2. Use the filters to find notes by branch, semester, and subject
-3. Sign in with your Google account to access the dashboard and save favorites
-4. Toggle between dark and light modes using the theme switcher
+- **Branches:** BTech, BCA, BBA
+- **Semesters:** 1-8 (BTech), 1-6 (BCA/BBA)
+- **Subjects:** Python, DBMS, DSA, OS, Java, CN, DAA, SE, and more
+- **Units:** Organized by unit (1-4) for each subject
 
-## Development Setup
+---
+
+## Quick Start
+
+### Prerequisites
+
+- Node.js 18+ and npm
+
+### Installation
+
 ```bash
 # Clone the repository
-git clone https://github.com/decodewithdeepak/NotesNeo.git
-
-# Navigate to project folder
-cd NotesNeo
+git clone https://github.com/decodewithdeepak/notesneo.git
+cd notesneo
 
 # Install dependencies
 npm install
 
-# Start development server
+# Run development server
 npm run dev
-
-# Build for production
-npm run build
 ```
 
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+### Build for Production
+
+```bash
+npm run build
+npm start
+```
+
+---
+
+## Usage
+
+### Dashboard
+
+1. Navigate to **Dashboard** (`/dashboard`)
+2. Select your **Branch** and **Semester** on first visit
+3. View personalized notes for your selection
+4. Change preferences anytime with the settings button
+
+### Browsing Notes
+
+1. Navigate to **Notes** page (`/notes`)
+2. Use **filters** (Branch, Semester, Subject) - all work independently
+3. **Search** by title, description, or subject
+4. **Favorite** notes by clicking the heart icon
+5. **Download** notes with one click
+
+### Favorites
+
+1. Navigate to **Favorites** page (`/favorites`)
+2. View all your saved notes
+3. Search within favorites
+4. Quick access to frequently used materials
+
+### Uploading Notes
+
+1. Navigate to **Upload** page (`/upload-notes`)
+2. Fill in the form with note details
+3. Provide Google Drive download URL
+4. Submit for admin review
+
+---
+
+## Filter System
+
+### Independent Filters
+
+All filters work independently:
+
+- **Branch:** BTech, BCA, BBA
+- **Semester:** 1-8 (dynamic based on branch)
+- **Subject:** Python, DBMS, etc. (dynamic)
+- **Search:** Real-time text search
+
+### Filter Caching
+
+- Last selected filters are saved in localStorage
+- Automatically restored when you return to the page
+- Key: `notesneo_filters`
+
+---
+
+## Local Storage
+
+### Stored Data
+
+1. **Favorites** (`notesneo_favorites`)
+
+   - Array of saved note objects
+   - Synced across all pages via Context API
+
+2. **User Profile** (`notesneo_user_profile`)
+
+   - Branch and semester preferences
+   - Dashboard personalization
+
+3. **Filter Preferences** (`notesneo_filters`)
+   - Last selected branch, semester, subject
+   - Restored on page revisit
+
+---
+
+## Routes
+
+| Route           | Description                                     |
+| --------------- | ----------------------------------------------- |
+| `/`             | Landing page with hero, features, pricing, FAQs |
+| `/dashboard`    | Personalized dashboard with user's notes        |
+| `/notes`        | Main notes browsing page with filters           |
+| `/favorites`    | Saved notes collection                          |
+| `/upload-notes` | Upload notes form                               |
+
+---
+
+## Key Technologies
+
+### Frontend
+
+- **Framework:** Next.js 16 (App Router)
+- **React:** 19.2
+- **Styling:** Tailwind CSS v4
+- **UI Components:** Radix UI + shadcn/ui
+- **Forms:** React Hook Form
+- **Icons:** Lucide React
+- **Theme:** next-themes (Dark/Light mode)
+
+### State Management
+
+- **React Context API** for global state
+- **localStorage** for persistence
+- **Custom hooks** for favorites and user profile
+
+### Features
+
+- **EmailJS** for form submissions
+- **Google Drive** for file hosting
+- **Responsive design** with mobile-first approach
+
+---
+
 ## Contributing
-We welcome contributions! Please fork the repository and submit a pull request with your changes.
 
-## FAQ
-**Q: How can I access the notes?**
-A: You can find and download notes directly from our website by using the filter system to locate resources by branch, semester, and subject.
+We welcome contributions! To contribute:
 
-**Q: Do I need an account to download notes?**
-A: No, you can download notes without signing in. However, creating an account allows you to save favorites and access them from your dashboard.
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-**Q: How does the favorites system work?**
-A: After signing in, you can click the save button on any note to add it to your favorites. Access your saved notes from your dashboard.
 
-**Q: Is my data secure?**
-A: Yes, we use Firebase Authentication for secure sign-in, and we only store minimal necessary information.
+---
 
-## License
-This project is open-source and available for personal and educational use under the MIT License.
+## Acknowledgments
+
+- Built with [Next.js](https://nextjs.org/)
+- UI components from [shadcn/ui](https://ui.shadcn.com/)
+- Icons from [Lucide](https://lucide.dev/)
+- Inspired by the need for accessible education at MDU Rohtak
+
+---
+
+
+---
+
+**Made with ❤️ for MDU Rohtak students**
+
+_If you find this project useful, please consider giving it a ⭐ on GitHub!_
