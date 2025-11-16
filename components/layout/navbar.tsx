@@ -41,7 +41,7 @@ export default function Navbar() {
             href="/"
           >
             <Logo size="xl" />
-            <span className="hidden sm:inline-block font-semibold text-sm sm:text-xl tracking-tighter font-librebaskerville">
+            <span className="font-semibold text-sm sm:text-xl tracking-tighter font-librebaskerville">
               NotesNeo
             </span>
           </Link>
@@ -64,7 +64,7 @@ export default function Navbar() {
           {/* Right Side Actions */}
           <div className="flex flex-row items-center justify-end gap-1.5 flex-1">
             {/* Navigation Links */}
-            <Button size="sm" variant="ghost" asChild>
+            <Button size="sm" variant="ghost" asChild className="hidden sm:flex">
               <Link href="/dashboard">Dashboard</Link>
             </Button>
 
@@ -87,9 +87,9 @@ export default function Navbar() {
               <Link href="/upload-notes">Upload</Link>
             </Button>
 
-            <div className="h-4 w-px bg-border"></div>
+            <div className="h-4 w-px bg-border hidden sm:block"></div>
 
-            <Button size="sm" variant="ghost" asChild className="gap-1.5">
+            <Button size="sm" variant="ghost" asChild className="gap-1.5 hidden sm:flex">
               <Link
                 href="https://github.com/decodewithdeepak/notesneo"
                 target="_blank"

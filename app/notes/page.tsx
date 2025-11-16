@@ -147,7 +147,7 @@ export default function NotesPage() {
 
         {/* Filters */}
         <section className="min-w-full border-x border-b border-border bg-background">
-          <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="max-w-full mx-auto px-0 py-6">
             <div className="flex flex-col sm:flex-row gap-4">
               {/* Search */}
               <Input

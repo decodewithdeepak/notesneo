@@ -1,6 +1,6 @@
-# NotesNeo - MDU Academic Notes Platform
+# NotesNeo - Best Academic Notes for MDU Rohtak
 
-A modern, responsive web application for browsing and downloading academic notes for BTech, BCA, and BBA students at Maharshi Dayanand University (MDU) Rohtak. Built with Next.js 16 and Tailwind CSS v4.
+A modern, responsive web application for browsing and downloading high-quality academic notes for BTech, BCA, and BBA students at Maharshi Dayanand University (MDU) Rohtak. Access personalized study resources for efficient learning. Built with Next.js 16 and Tailwind CSS v4.
 
 ![Next.js](https://img.shields.io/badge/Next.js-16.0-black?style=for-the-badge&logo=next.js)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-v4-38bdf8?style=for-the-badge&logo=tailwind-css)
@@ -20,9 +20,10 @@ A modern, responsive web application for browsing and downloading academic notes
 - **Real-time Search** - Search by title, description, or subject
 - **Easy Downloads** - One-click PDF downloads via Google Drive
 - **Beautiful UI** - Modern, responsive design with dark mode support
-- **Mobile-First** - Optimized for all devices with 8px padding
+- **Mobile-First** - Optimized for all devices
 - **Local Storage** - Persistent favorites and filter preferences
 - **Android App** - Native mobile app available for download
+- **AI Chatbot** - Integrated Tawk.to support for instant help
 
 ### Academic Organization
 
@@ -184,7 +185,6 @@ We welcome contributions! To contribute:
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-
 ---
 
 ## Acknowledgments
@@ -192,10 +192,10 @@ We welcome contributions! To contribute:
 - Built with [Next.js](https://nextjs.org/)
 - UI components from [shadcn/ui](https://ui.shadcn.com/)
 - Icons from [Lucide](https://lucide.dev/)
+- AI Support powered by [Tawk.to](https://www.tawk.to/)
 - Inspired by the need for accessible education at MDU Rohtak
 
 ---
-
 
 ---
 

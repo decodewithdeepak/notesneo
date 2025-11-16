@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
+import Script from "next/script";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import {
   Bricolage_Grotesque,
   Figtree,
@@ -41,9 +44,49 @@ const bricolageGrotesque = Bricolage_Grotesque({
 });
 
 export const metadata: Metadata = {
-  title: "NotesNeo - MDU Rohtak Notes for BTech, BCA & BBA Students",
+  title: "NotesNeo - Best Academic Notes for MDU Rohtak",
   description:
-    "Access 500+ high-quality notes aligned with Maharshi Dayanand University (MDU) Rohtak syllabus. Free downloads for BTech, BCA, and BBA students. Join 1000+ MDU students studying smarter with NotesNeo.",
+    "Access high-quality academic notes for MDU Rohtak. Download, save, and access personalized study resources on NotesNeo for efficient learning.",
+  keywords:
+    "MDU notes, academic notes, MDU Rohtak, study resources, MDU Btech notes, SAITM notes download, NotesNeo",
+  authors: [{ name: "Deepak Modi", url: "https://deepakmodi.tech" }],
+  creator: "Deepak Modi",
+  publisher: "NotesNeo",
+  metadataBase: new URL("https://notesneo.vercel.app"),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: "https://notesneo.vercel.app/",
+    title: "NotesNeo - Best Academic Notes for MDU Rohtak",
+    description:
+      "Access high-quality academic notes for MDU Rohtak. Download, save, and access personalized study resources on NotesNeo for efficient learning.",
+    siteName: "NotesNeo",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "NotesNeo - Academic Notes Platform",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "NotesNeo - Best Academic Notes for MDU Rohtak",
+    description:
+      "Access high-quality academic notes for MDU Rohtak. Download, save, and access personalized study resources on NotesNeo for efficient learning.",
+    images: ["/og-image.png"],
+  },
+  verification: {
+    google: "vvp2OYjF6CFibJc7x2WTbT-4fWFHe6Ue5hYXcaq_LjE",
+  },
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
@@ -69,6 +112,35 @@ export default function RootLayout({
             </FavoritesProvider>
           </UserProfileProvider>
         </ThemeProvider>
+
+        {/* Vercel Analytics & Speed Insights */}
+        <Analytics />
+        <SpeedInsights />
+
+        {/* Tawk.to AI Chatbot */}
+        <Script
+          id="tawk-to-chatbot"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+              Tawk_API.embedded = 'tawk_chat';
+              (function(){
+                var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+                s1.async=true;
+                s1.src='https://embed.tawk.to/67342cb14304e3196ae1909a/1ichst6bo';
+                s1.charset='UTF-8';
+                s1.setAttribute('crossorigin','*');
+                s0.parentNode.insertBefore(s1,s0);
+              })();
+              
+              // Remove hash from URL when chat opens
+              if(window.location.hash === '#max-widget'){
+                history.replaceState(null, null, ' ');
+              }
+            `,
+          }}
+        />
       </body>
     </html>
   );
