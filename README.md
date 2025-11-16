@@ -7,6 +7,12 @@ A modern, responsive web application for browsing and downloading high-quality a
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)
 ![React](https://img.shields.io/badge/React-19.2-61dafb?style=for-the-badge&logo=react)
 
+## Live Versions
+
+> **Notesneo v1** - https://deepakmodi.netlify.app/notesneo  
+> **Notesneo v2** - https://notesneo-o2fie9abo-decodewithdeepaks-projects.vercel.app/  
+> **Notesneo v3** (current) - https://notesneo.vercel.app/
+
 ---
 
 ## Features
