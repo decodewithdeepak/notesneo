@@ -106,7 +106,7 @@ export default function Navbar() {
               onClick={() => setTheme(theme === "light" ? "dark" : "light")}
               className="cursor-pointer"
             >
-              <ThemeToggleIcon className="size-5" />
+              <ThemeToggleIcon className="size-5 mx-1" />
             </div>
 
             {/* GitHub Link */}
