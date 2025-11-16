@@ -44,22 +44,16 @@ export default function HeroSection() {
           </p>
 
           <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-x-6 z-50 px-4 sm:px-0">
-            <Button
-              asChild
-              className="w-full sm:w-auto text-base shadow-inner shadow-black px-4 py-1 text-shadow-xs gap-2"
-            >
+            {/* Download Button */}
+            <Button size="lg" className="w-full sm:w-auto gap-2" asChild>
               <Link href="/notes">
                 <Search className="h-5 w-5" />
                 Search Notes Here
               </Link>
             </Button>
 
-            <Button
-              variant="outline"
-              asChild
-              className="w-full sm:w-auto text-base px-4 py-1 font-medium group gap-2"
-            >
-              <Link href="https://chat.whatsapp.com/EtBjr3a2V8n1biCfXYf1iw">
+            <Button variant="outline" size="lg" className="w-full sm:w-auto gap-2" asChild>
+              <Link href="https://chat.whatsapp.com/EtBjr3a2V8n1biCfXYf1iw" target="_blank" rel="noopener noreferrer">
                 <svg
                   className="h-5 w-5"
                   fill="currentColor"
