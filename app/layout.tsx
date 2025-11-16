@@ -124,7 +124,6 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `
               var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-              Tawk_API.embedded = 'tawk_chat';
               (function(){
                 var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
                 s1.async=true;
@@ -133,11 +132,6 @@ export default function RootLayout({
                 s1.setAttribute('crossorigin','*');
                 s0.parentNode.insertBefore(s1,s0);
               })();
-              
-              // Remove hash from URL when chat opens
-              if(window.location.hash === '#max-widget'){
-                history.replaceState(null, null, ' ');
-              }
             `,
           }}
         />
