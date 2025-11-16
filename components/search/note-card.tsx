@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Note } from "@/lib/types/note";
-import { useFavorites } from "@/lib/hooks/useFavorites";
+import { useFavorites } from "@/lib/contexts/favorites-context";
 
 interface NoteCardProps {
   note: Note;

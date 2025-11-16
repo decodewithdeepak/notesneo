@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { NoteCard } from "@/components/search/note-card";
-import { useFavorites } from "@/lib/hooks/useFavorites";
+import { useFavorites } from "@/lib/contexts/favorites-context";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Heart, Search } from "lucide-react";
