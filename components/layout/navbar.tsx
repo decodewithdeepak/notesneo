@@ -41,7 +41,7 @@ export default function Navbar() {
             href="/"
           >
             <Logo size="xl" />
-            <span className="font-semibold text-sm sm:text-xl tracking-tighter font-librebaskerville">
+            <span className="font-semibold text-base sm:text-xl tracking-tighter font-librebaskerville">
               NotesNeo
             </span>
           </Link>

@@ -8,6 +8,7 @@ import {
   getAllBranches,
   getAllSemesters,
   getAllSubjects,
+  getSubjectsByBranchAndSemester,
   paginateNotes,
 } from "@/lib/utils/search";
 import { SearchFilters } from "@/lib/types/note";
@@ -61,17 +62,22 @@ export default function NotesPage() {
     }
   }, [filters, isInitialized]);
 
-  // Get available options - always show all options (not dependent on other filters)
+  // Get available options - branches are always static
   const branches = useMemo(() => getAllBranches(notes), []);
-  const semesters = useMemo(() => {
-    // Show all semesters available in the data
-    return getAllSemesters(notes);
-  }, []);
 
+  // Semesters filtered by selected branch
+  const semesters = useMemo(() => {
+    return getAllSemesters(notes, filters.branch);
+  }, [filters.branch]);
+
+  // Subjects filtered by selected branch and semester
   const subjects = useMemo(() => {
-    // Show all subjects available in the data
-    return getAllSubjects(notes);
-  }, []);
+    return getSubjectsByBranchAndSemester(
+      notes,
+      filters.branch,
+      filters.semester
+    );
+  }, [filters.branch, filters.semester]);
 
   // Filter notes based on all criteria
   const filteredNotes = useMemo(() => {
@@ -106,8 +112,10 @@ export default function NotesPage() {
 
   const handleBranchChange = (value: string) => {
     setFilters((prev) => ({
-      ...prev,
       branch: value === "all" ? undefined : value,
+      // Reset semester and subject when branch changes
+      semester: undefined,
+      subject: undefined,
     }));
   };
 
@@ -115,6 +123,8 @@ export default function NotesPage() {
     setFilters((prev) => ({
       ...prev,
       semester: value === "all" ? undefined : parseInt(value),
+      // Reset subject when semester changes
+      subject: undefined,
     }));
   };
 
