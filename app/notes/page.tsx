@@ -26,6 +26,7 @@ import {
   ScrollText,
   ChevronLeft,
   ChevronRight,
+  Search,
 } from "lucide-react";
 
 const FILTERS_STORAGE_KEY = "notesneo_filters";
@@ -83,7 +84,7 @@ export default function NotesPage() {
         (note) =>
           note.title.toLowerCase().includes(query) ||
           note.description.toLowerCase().includes(query) ||
-          note.subject.toLowerCase().includes(query),
+          note.subject.toLowerCase().includes(query)
       );
     }
 
@@ -147,16 +148,19 @@ export default function NotesPage() {
 
         {/* Filters */}
         <section className="min-w-full border-x border-b border-border bg-background">
-          <div className="max-w-full mx-auto px-0 py-6">
+          <div className="max-w-full mx-auto p-6">
             <div className="flex flex-col sm:flex-row gap-4">
               {/* Search */}
-              <Input
-                type="text"
-                placeholder="Search notes..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full"
-              />
+              <div className="relative w-full">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                <Input
+                  type="text"
+                  placeholder="Search notes..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-10"
+                />
+              </div>
 
               {/* Branch Filter */}
               <Select
@@ -317,7 +321,7 @@ export default function NotesPage() {
                     <div className="flex items-center gap-1">
                       {Array.from(
                         { length: paginatedResult.totalPages },
-                        (_, i) => i + 1,
+                        (_, i) => i + 1
                       ).map((page) => {
                         // Show first, last, current, and pages around current
                         const showPage =
@@ -367,7 +371,7 @@ export default function NotesPage() {
                       size="sm"
                       onClick={() => {
                         setCurrentPage((prev) =>
-                          Math.min(paginatedResult.totalPages, prev + 1),
+                          Math.min(paginatedResult.totalPages, prev + 1)
                         );
                         window.scrollTo({ top: 0, behavior: "smooth" });
                       }}
