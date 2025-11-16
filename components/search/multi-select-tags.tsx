@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import React, { useState, useRef, useEffect } from 'react';
-import { Search, X, Check } from 'lucide-react';
-import { Input } from '@/components/ui/input';
+import React, { useState, useRef, useEffect } from "react";
+import { Search, X, Check } from "lucide-react";
+import { Input } from "@/components/ui/input";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui/popover';
+} from "@/components/ui/popover";
 import {
   Command,
   CommandEmpty,
@@ -15,9 +15,9 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from '@/components/ui/command';
-import { Badge } from '@/components/ui/badge';
-import { cn } from '@/lib/utils';
+} from "@/components/ui/command";
+import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
 
 interface MultiSelectTagsProps {
   selectedTags: string[];
@@ -32,12 +32,12 @@ export function MultiSelectTags({
   selectedTags,
   availableTags,
   onChange,
-  placeholder = 'Select tags...',
+  placeholder = "Select tags...",
   className,
   disabled = false,
 }: MultiSelectTagsProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
   // Prevent double-toggling when both onSelect and pointer events fire
   const isHandlingRef = useRef<string | null>(null);
@@ -47,7 +47,7 @@ export function MultiSelectTags({
     if (isOpen) {
       // Small delay to ensure input is ready
       setTimeout(() => {
-        setSearchQuery('');
+        setSearchQuery("");
       }, 0);
     }
   }, [isOpen]);
@@ -57,17 +57,18 @@ export function MultiSelectTags({
   const filteredTags = React.useMemo(() => {
     const query = searchQuery.trim().toLowerCase();
     const available = query
-      ? availableTags.filter(tag =>
-        tag.toLowerCase().includes(query)
-      )
+      ? availableTags.filter((tag) => tag.toLowerCase().includes(query))
       : availableTags;
 
     // Filter out already selected tags to avoid duplicates in the list
-    return available.filter(tag => !selectedTags.includes(tag));
+    return available.filter((tag) => !selectedTags.includes(tag));
   }, [availableTags, searchQuery, selectedTags]);
 
   // Handle tag selection
-  const handleToggleTag = (tag: string, e?: React.MouseEvent | KeyboardEvent) => {
+  const handleToggleTag = (
+    tag: string,
+    e?: React.MouseEvent | KeyboardEvent,
+  ) => {
     if (e) {
       e.preventDefault();
       e.stopPropagation();
@@ -76,22 +77,25 @@ export function MultiSelectTags({
     const isSelected = selectedTags.includes(tag);
     if (isSelected) {
       // Remove tag
-      const newTags = selectedTags.filter(t => t !== tag);
+      const newTags = selectedTags.filter((t) => t !== tag);
       onChange(newTags);
     } else {
       // Add tag
       const newTags = [...selectedTags, tag];
       onChange(newTags);
     }
-    setSearchQuery(''); // Clear search after selection
+    setSearchQuery(""); // Clear search after selection
     // Keep popover open so user can select multiple tags
     // Don't close the popover automatically
   };
 
   // Remove tag from selected tags
-  const handleRemoveTag = (tag: string, e: React.MouseEvent | React.KeyboardEvent) => {
+  const handleRemoveTag = (
+    tag: string,
+    e: React.MouseEvent | React.KeyboardEvent,
+  ) => {
     e.stopPropagation();
-    onChange(selectedTags.filter(t => t !== tag));
+    onChange(selectedTags.filter((t) => t !== tag));
   };
 
   // Close popover when clicking outside
@@ -102,33 +106,34 @@ export function MultiSelectTags({
         !inputRef.current.contains(event.target as Node)
       ) {
         setIsOpen(false);
-        setSearchQuery('');
+        setSearchQuery("");
       }
     };
 
     if (isOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-      return () => document.removeEventListener('mousedown', handleClickOutside);
+      document.addEventListener("mousedown", handleClickOutside);
+      return () =>
+        document.removeEventListener("mousedown", handleClickOutside);
     }
   }, [isOpen]);
 
   return (
-    <div className={cn('relative w-full', className)} ref={inputRef}>
+    <div className={cn("relative w-full", className)} ref={inputRef}>
       <Popover open={isOpen} onOpenChange={setIsOpen} modal={false}>
         <PopoverTrigger asChild>
           <button
             type="button"
             disabled={disabled}
             className={cn(
-              'min-h-9 w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-xs transition-[color,box-shadow] outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-              'flex items-center gap-2 flex-wrap cursor-pointer text-left',
-              disabled && 'cursor-not-allowed opacity-50'
+              "min-h-9 w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-xs transition-[color,box-shadow] outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]",
+              "flex items-center gap-2 flex-wrap cursor-pointer text-left",
+              disabled && "cursor-not-allowed opacity-50",
             )}
           >
             {/* Selected tags as badges */}
             {selectedTags.length > 0 ? (
               <div className="flex items-center gap-1 flex-wrap flex-1">
-                {selectedTags.map(tag => (
+                {selectedTags.map((tag) => (
                   <Badge
                     key={tag}
                     variant="secondary"
@@ -145,7 +150,7 @@ export function MultiSelectTags({
                         handleRemoveTag(tag, e);
                       }}
                       onKeyDown={(e) => {
-                        if (e.key === 'Enter' || e.key === ' ') {
+                        if (e.key === "Enter" || e.key === " ") {
                           e.preventDefault();
                           e.stopPropagation();
                           handleRemoveTag(tag, e);
@@ -160,7 +165,9 @@ export function MultiSelectTags({
                 ))}
               </div>
             ) : (
-              <span className="text-muted-foreground flex-1">{placeholder}</span>
+              <span className="text-muted-foreground flex-1">
+                {placeholder}
+              </span>
             )}
             <Search className="ml-auto h-4 w-4 text-muted-foreground shrink-0" />
           </button>
@@ -173,7 +180,9 @@ export function MultiSelectTags({
             e.preventDefault();
             // Focus the search input after a brief delay to ensure it's mounted
             setTimeout(() => {
-              const input = document.querySelector('[data-slot="command-input"]') as HTMLInputElement;
+              const input = document.querySelector(
+                '[data-slot="command-input"]',
+              ) as HTMLInputElement;
               if (input) {
                 input.focus();
               }
@@ -187,14 +196,15 @@ export function MultiSelectTags({
               value={searchQuery}
               onValueChange={(value) => {
                 // Update search query when user types - ensure we handle empty strings
-                const newValue = value === undefined || value === null ? '' : String(value);
+                const newValue =
+                  value === undefined || value === null ? "" : String(value);
                 setSearchQuery(newValue);
               }}
               onKeyDown={(e) => {
                 // Prevent popover from closing on Escape if there's text
-                if (e.key === 'Escape' && searchQuery) {
+                if (e.key === "Escape" && searchQuery) {
                   e.stopPropagation();
-                  setSearchQuery('');
+                  setSearchQuery("");
                 }
               }}
             />
@@ -241,8 +251,8 @@ export function MultiSelectTags({
                     >
                       <Check
                         className={cn(
-                          'mr-2 h-4 w-4',
-                          isSelected ? 'opacity-100' : 'opacity-0'
+                          "mr-2 h-4 w-4",
+                          isSelected ? "opacity-100" : "opacity-0",
                         )}
                       />
                       {tag}
@@ -257,4 +267,3 @@ export function MultiSelectTags({
     </div>
   );
 }
-

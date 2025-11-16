@@ -83,7 +83,7 @@ export default function NotesPage() {
         (note) =>
           note.title.toLowerCase().includes(query) ||
           note.description.toLowerCase().includes(query) ||
-          note.subject.toLowerCase().includes(query)
+          note.subject.toLowerCase().includes(query),
       );
     }
 
@@ -225,7 +225,8 @@ export default function NotesPage() {
                   Select Your Course
                 </h2>
                 <p className="text-muted-foreground mb-12 max-w-2xl mx-auto">
-                  Choose your branch, semester, and subject to access your study materials
+                  Choose your branch, semester, and subject to access your study
+                  materials
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
@@ -316,7 +317,7 @@ export default function NotesPage() {
                     <div className="flex items-center gap-1">
                       {Array.from(
                         { length: paginatedResult.totalPages },
-                        (_, i) => i + 1
+                        (_, i) => i + 1,
                       ).map((page) => {
                         // Show first, last, current, and pages around current
                         const showPage =
@@ -366,7 +367,7 @@ export default function NotesPage() {
                       size="sm"
                       onClick={() => {
                         setCurrentPage((prev) =>
-                          Math.min(paginatedResult.totalPages, prev + 1)
+                          Math.min(paginatedResult.totalPages, prev + 1),
                         );
                         window.scrollTo({ top: 0, behavior: "smooth" });
                       }}

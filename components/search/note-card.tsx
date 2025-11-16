@@ -70,7 +70,7 @@ export function NoteCard({
         isFirstRowMobile && "border-t",
         isFirstRowTablet && !isFirstRowMobile && "md:border-t",
         isFirstRowDesktop && !isFirstRowTablet && "lg:border-t",
-        className
+        className,
       )}
     >
       {/* Decorative Concentric Circles - Top Left Corner */}
@@ -142,7 +142,7 @@ export function NoteCard({
                 "h-8 w-8 p-0 hover:scale-105 active:scale-95 transition-all",
                 isFavorite(note.id)
                   ? "bg-red-50 border-red-200 hover:bg-red-100 dark:bg-red-950 dark:border-red-800 dark:hover:bg-red-900"
-                  : "hover:border-red-200 hover:bg-red-50 dark:hover:border-red-800 dark:hover:bg-red-950"
+                  : "hover:border-red-200 hover:bg-red-50 dark:hover:border-red-800 dark:hover:bg-red-950",
               )}
               aria-label={
                 isFavorite(note.id)
@@ -155,7 +155,7 @@ export function NoteCard({
                   "h-4 w-4 transition-all duration-200",
                   isFavorite(note.id)
                     ? "fill-red-500 text-red-500"
-                    : "text-muted-foreground"
+                    : "text-muted-foreground",
                 )}
               />
             </Button>

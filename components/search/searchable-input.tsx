@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import React, { useState, useRef, useEffect } from 'react';
-import { Search } from 'lucide-react';
-import { Input } from '@/components/ui/input';
+import React, { useState, useRef, useEffect } from "react";
+import { Search } from "lucide-react";
+import { Input } from "@/components/ui/input";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui/popover';
+} from "@/components/ui/popover";
 import {
   Command,
   CommandEmpty,
@@ -15,8 +15,8 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from '@/components/ui/command';
-import { cn } from '@/lib/utils';
+} from "@/components/ui/command";
+import { cn } from "@/lib/utils";
 
 interface SearchableInputProps {
   value: string;
@@ -32,7 +32,7 @@ export function SearchableInput({
   value,
   onChange,
   suggestions,
-  placeholder = 'Search...',
+  placeholder = "Search...",
   onSelect,
   className,
   disabled = false,
@@ -42,9 +42,9 @@ export function SearchableInput({
 
   // Filter suggestions based on current value
   const filteredSuggestions = value
-    ? suggestions.filter(suggestion =>
-      suggestion.toLowerCase().includes(value.toLowerCase())
-    )
+    ? suggestions.filter((suggestion) =>
+        suggestion.toLowerCase().includes(value.toLowerCase()),
+      )
     : suggestions.slice(0, 10); // Show first 10 when no input
 
   // Handle suggestion selection
@@ -75,13 +75,14 @@ export function SearchableInput({
     };
 
     if (isOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-      return () => document.removeEventListener('mousedown', handleClickOutside);
+      document.addEventListener("mousedown", handleClickOutside);
+      return () =>
+        document.removeEventListener("mousedown", handleClickOutside);
     }
   }, [isOpen]);
 
   return (
-    <div className={cn('relative w-full', className)} ref={inputRef}>
+    <div className={cn("relative w-full", className)} ref={inputRef}>
       <Popover open={isOpen} onOpenChange={setIsOpen}>
         <PopoverTrigger asChild>
           <div className="relative">

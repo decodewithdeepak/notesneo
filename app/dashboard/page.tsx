@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { useUserProfile } from '@/lib/contexts/user-profile-context';
-import { ProfileSetupDialog } from '@/components/dashboard/profile-setup-dialog';
-import { NoteCard } from '@/components/search/note-card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { notes } from '@/lib/data/notes';
-import { Note } from '@/lib/types/note';
-import { Settings, BookOpen, GraduationCap } from 'lucide-react';
+import { useEffect, useState } from "react";
+import { useUserProfile } from "@/lib/contexts/user-profile-context";
+import { ProfileSetupDialog } from "@/components/dashboard/profile-setup-dialog";
+import { NoteCard } from "@/components/search/note-card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { notes } from "@/lib/data/notes";
+import { Note } from "@/lib/types/note";
+import { Settings, BookOpen, GraduationCap } from "lucide-react";
 
 export default function DashboardPage() {
   const { profile, isLoaded, clearProfile } = useUserProfile();
@@ -27,7 +27,7 @@ export default function DashboardPage() {
     if (profile.branch && profile.semester) {
       const filtered = notes.filter(
         (note) =>
-          note.branch === profile.branch && note.semester === profile.semester
+          note.branch === profile.branch && note.semester === profile.semester,
       );
       setFilteredNotes(filtered);
     }
@@ -50,7 +50,10 @@ export default function DashboardPage() {
 
   return (
     <main className="max-w-full flex flex-col gap-8 min-h-full">
-      <ProfileSetupDialog open={showSetupDialog} onOpenChange={setShowSetupDialog} />
+      <ProfileSetupDialog
+        open={showSetupDialog}
+        onOpenChange={setShowSetupDialog}
+      />
 
       <div className="flex-1 flex flex-col">
         {/* Header Section */}
@@ -100,8 +103,12 @@ export default function DashboardPage() {
               <>
                 <div className="mb-4">
                   <p className="text-sm text-muted-foreground">
-                    Showing {filteredNotes.length} note{filteredNotes.length !== 1 ? 's' : ''} for{' '}
-                    <span className="font-medium text-foreground">{profile.branch}</span> •{' '}
+                    Showing {filteredNotes.length} note
+                    {filteredNotes.length !== 1 ? "s" : ""} for{" "}
+                    <span className="font-medium text-foreground">
+                      {profile.branch}
+                    </span>{" "}
+                    •{" "}
                     <span className="font-medium text-foreground">
                       Semester {profile.semester}
                     </span>
@@ -123,10 +130,13 @@ export default function DashboardPage() {
               <div className="flex items-center justify-center min-h-[40vh] border border-border bg-muted/30">
                 <div className="text-center max-w-md px-4">
                   <BookOpen className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-                  <h3 className="text-lg font-semibold mb-2">No Notes Available</h3>
+                  <h3 className="text-lg font-semibold mb-2">
+                    No Notes Available
+                  </h3>
                   <p className="text-sm text-muted-foreground mb-4">
-                    We don't have any notes for {profile.branch} - Semester{' '}
-                    {profile.semester} yet. Check back soon or try different preferences.
+                    We don't have any notes for {profile.branch} - Semester{" "}
+                    {profile.semester} yet. Check back soon or try different
+                    preferences.
                   </p>
                   <Button variant="outline" onClick={handleChangeProfile}>
                     Change Preferences
@@ -139,9 +149,12 @@ export default function DashboardPage() {
           <div className="flex items-center justify-center min-h-[40vh]">
             <div className="text-center max-w-md px-4">
               <GraduationCap className="h-16 w-16 mx-auto mb-4 text-primary" />
-              <h3 className="text-xl font-semibold mb-2">Welcome to Your Dashboard!</h3>
+              <h3 className="text-xl font-semibold mb-2">
+                Welcome to Your Dashboard!
+              </h3>
               <p className="text-muted-foreground mb-4">
-                Set up your profile to see personalized notes for your branch and semester.
+                Set up your profile to see personalized notes for your branch
+                and semester.
               </p>
               <Button onClick={() => setShowSetupDialog(true)} size="lg">
                 Set Up Profile
@@ -153,4 +166,3 @@ export default function DashboardPage() {
     </main>
   );
 }
-

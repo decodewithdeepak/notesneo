@@ -1,37 +1,40 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog';
-import { Button } from '@/components/ui/button';
-import { Label } from '@/components/ui/label';
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select';
-import { useUserProfile } from '@/lib/contexts/user-profile-context';
+} from "@/components/ui/select";
+import { useUserProfile } from "@/lib/contexts/user-profile-context";
 
 interface ProfileSetupDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }
 
-export function ProfileSetupDialog({ open, onOpenChange }: ProfileSetupDialogProps) {
+export function ProfileSetupDialog({
+  open,
+  onOpenChange,
+}: ProfileSetupDialogProps) {
   const { updateProfile } = useUserProfile();
-  const [branch, setBranch] = useState<'BTech' | 'BCA' | 'BBA' | ''>('');
-  const [semester, setSemester] = useState<string>('');
+  const [branch, setBranch] = useState<"BTech" | "BCA" | "BBA" | "">("");
+  const [semester, setSemester] = useState<string>("");
 
   const handleSubmit = () => {
     if (branch && semester) {
-      updateProfile(branch as 'BTech' | 'BCA' | 'BBA', parseInt(semester));
+      updateProfile(branch as "BTech" | "BCA" | "BBA", parseInt(semester));
       onOpenChange(false);
     }
   };
@@ -44,8 +47,8 @@ export function ProfileSetupDialog({ open, onOpenChange }: ProfileSetupDialogPro
             Welcome to Your Dashboard! 🎓
           </DialogTitle>
           <DialogDescription className="text-base">
-            Let's personalize your experience. Select your branch and semester to see
-            relevant notes.
+            Let's personalize your experience. Select your branch and semester
+            to see relevant notes.
           </DialogDescription>
         </DialogHeader>
 
@@ -55,7 +58,10 @@ export function ProfileSetupDialog({ open, onOpenChange }: ProfileSetupDialogPro
             <Label htmlFor="branch" className="text-base font-medium">
               Select Your Branch
             </Label>
-            <Select value={branch} onValueChange={(value) => setBranch(value as any)}>
+            <Select
+              value={branch}
+              onValueChange={(value) => setBranch(value as any)}
+            >
               <SelectTrigger id="branch" className="h-11">
                 <SelectValue placeholder="Choose your branch" />
               </SelectTrigger>
@@ -101,4 +107,3 @@ export function ProfileSetupDialog({ open, onOpenChange }: ProfileSetupDialogPro
     </Dialog>
   );
 }
-

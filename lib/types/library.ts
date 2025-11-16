@@ -29,4 +29,3 @@ export interface SearchResult {
 export type PopularityCategory = "high" | "medium" | "low";
 
 export type FrameworkOption = "React" | "Vue" | "Angular" | "Svelte" | "All";
-

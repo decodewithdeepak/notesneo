@@ -12,7 +12,7 @@ export default function HeroSection() {
       <div
         className={cn(
           "absolute bg-background z-10 inset-0 w-full h-full",
-          "[mask-image:radial-gradient(600px_circle_at_center,white,rgba(255,255,255,0.8),transparent)]"
+          "[mask-image:radial-gradient(600px_circle_at_center,white,rgba(255,255,255,0.8),transparent)]",
         )}
       ></div>
 

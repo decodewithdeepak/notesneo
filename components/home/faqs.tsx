@@ -71,13 +71,13 @@ export default function FAQs() {
   const faqs = [
     {
       question: "What is NotesNeo?",
-       answer: (
-         <div className="space-y-4">
-           <p>
-             <strong>NotesNeo</strong> is a free platform for students to access
-             quality academic notes. It helps BTech, BCA, and BBA students find 
-             study materials quickly and efficiently.
-           </p>
+      answer: (
+        <div className="space-y-4">
+          <p>
+            <strong>NotesNeo</strong> is a free platform for students to access
+            quality academic notes. It helps BTech, BCA, and BBA students find
+            study materials quickly and efficiently.
+          </p>
           <p>You can:</p>
           <ul className="list-disc list-inside ml-4 space-y-1">
             <li>Search and filter notes by branch, semester, and subject</li>
@@ -132,11 +132,11 @@ export default function FAQs() {
       answer:
         "You can search by note title, subject, or description. Use the filters to narrow down by branch (BTech, BCA, BBA), semester (1-8), subject, or unit. The search is instant and updates as you type.",
     },
-     {
-       question: "What courses are covered?",
-       answer:
-         "We cover notes for BTech, BCA, and BBA courses across all semesters. Notes are organized by subject and unit, making it easy to find exactly what you need for your exams.",
-     },
+    {
+      question: "What courses are covered?",
+      answer:
+        "We cover notes for BTech, BCA, and BBA courses across all semesters. Notes are organized by subject and unit, making it easy to find exactly what you need for your exams.",
+    },
     {
       question: "Can I upload my own notes?",
       answer:

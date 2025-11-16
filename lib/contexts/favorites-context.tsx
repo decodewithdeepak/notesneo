@@ -1,9 +1,15 @@
-'use client';
+"use client";
 
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { Note } from '@/lib/types/note';
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from "react";
+import { Note } from "@/lib/types/note";
 
-const FAVORITES_KEY = 'notesneo_favorites';
+const FAVORITES_KEY = "notesneo_favorites";
 
 interface FavoritesContextType {
   favorites: Note[];
@@ -15,7 +21,9 @@ interface FavoritesContextType {
   isLoaded: boolean;
 }
 
-const FavoritesContext = createContext<FavoritesContextType | undefined>(undefined);
+const FavoritesContext = createContext<FavoritesContextType | undefined>(
+  undefined,
+);
 
 export function FavoritesProvider({ children }: { children: ReactNode }) {
   const [favorites, setFavorites] = useState<Note[]>([]);
@@ -30,7 +38,7 @@ export function FavoritesProvider({ children }: { children: ReactNode }) {
         setFavorites(parsed);
       }
     } catch (error) {
-      console.error('Error loading favorites:', error);
+      console.error("Error loading favorites:", error);
     } finally {
       setIsLoaded(true);
     }
@@ -42,15 +50,15 @@ export function FavoritesProvider({ children }: { children: ReactNode }) {
       try {
         localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
       } catch (error) {
-        console.error('Error saving favorites:', error);
+        console.error("Error saving favorites:", error);
       }
     }
   }, [favorites, isLoaded]);
 
   const addFavorite = (note: Note) => {
-    setFavorites(prev => {
+    setFavorites((prev) => {
       // Check if already exists
-      if (prev.some(fav => fav.id === note.id)) {
+      if (prev.some((fav) => fav.id === note.id)) {
         return prev;
       }
       return [...prev, note];
@@ -58,7 +66,7 @@ export function FavoritesProvider({ children }: { children: ReactNode }) {
   };
 
   const removeFavorite = (noteId: string) => {
-    setFavorites(prev => prev.filter(fav => fav.id !== noteId));
+    setFavorites((prev) => prev.filter((fav) => fav.id !== noteId));
   };
 
   const toggleFavorite = (note: Note) => {
@@ -70,7 +78,7 @@ export function FavoritesProvider({ children }: { children: ReactNode }) {
   };
 
   const isFavorite = (noteId: string): boolean => {
-    return favorites.some(fav => fav.id === noteId);
+    return favorites.some((fav) => fav.id === noteId);
   };
 
   const clearFavorites = () => {
@@ -97,8 +105,7 @@ export function FavoritesProvider({ children }: { children: ReactNode }) {
 export function useFavorites() {
   const context = useContext(FavoritesContext);
   if (context === undefined) {
-    throw new Error('useFavorites must be used within a FavoritesProvider');
+    throw new Error("useFavorites must be used within a FavoritesProvider");
   }
   return context;
 }
-

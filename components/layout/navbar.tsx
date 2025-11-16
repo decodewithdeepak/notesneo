@@ -64,7 +64,12 @@ export default function Navbar() {
           {/* Right Side Actions */}
           <div className="flex flex-row items-center justify-end gap-1.5 flex-1">
             {/* Navigation Links */}
-            <Button size="sm" variant="ghost" asChild className="hidden sm:flex">
+            <Button
+              size="sm"
+              variant="ghost"
+              asChild
+              className="hidden sm:flex"
+            >
               <Link href="/dashboard">Dashboard</Link>
             </Button>
 
@@ -89,7 +94,12 @@ export default function Navbar() {
 
             <div className="h-4 w-px bg-border hidden sm:block"></div>
 
-            <Button size="sm" variant="ghost" asChild className="gap-1.5 hidden sm:flex">
+            <Button
+              size="sm"
+              variant="ghost"
+              asChild
+              className="gap-1.5 hidden sm:flex"
+            >
               <Link
                 href="https://github.com/decodewithdeepak/notesneo"
                 target="_blank"

@@ -3,7 +3,7 @@ export interface Note {
   title: string;
   description: string;
   subject: string;
-  branch: 'BTech' | 'BCA' | 'BBA';
+  branch: "BTech" | "BCA" | "BBA";
   semester: number;
   unit: number;
   downloadUrl: string;
@@ -26,4 +26,3 @@ export interface SearchResult {
 }
 
 export type BranchOption = "BTech" | "BCA" | "BBA" | "All";
-

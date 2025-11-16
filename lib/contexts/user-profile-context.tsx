@@ -1,9 +1,15 @@
-'use client';
+"use client";
 
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from "react";
 
 export interface UserProfile {
-  branch: 'BTech' | 'BCA' | 'BBA' | null;
+  branch: "BTech" | "BCA" | "BBA" | null;
   semester: number | null;
   isSetup: boolean;
 }
@@ -11,14 +17,16 @@ export interface UserProfile {
 interface UserProfileContextType {
   profile: UserProfile;
   setProfile: (profile: UserProfile) => void;
-  updateProfile: (branch: 'BTech' | 'BCA' | 'BBA', semester: number) => void;
+  updateProfile: (branch: "BTech" | "BCA" | "BBA", semester: number) => void;
   clearProfile: () => void;
   isLoaded: boolean;
 }
 
-const UserProfileContext = createContext<UserProfileContextType | undefined>(undefined);
+const UserProfileContext = createContext<UserProfileContextType | undefined>(
+  undefined,
+);
 
-const PROFILE_STORAGE_KEY = 'notesneo_user_profile';
+const PROFILE_STORAGE_KEY = "notesneo_user_profile";
 
 const defaultProfile: UserProfile = {
   branch: null,
@@ -32,14 +40,17 @@ export function UserProfileProvider({ children }: { children: ReactNode }) {
 
   // Load profile from localStorage on mount
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       const storedProfile = localStorage.getItem(PROFILE_STORAGE_KEY);
       if (storedProfile) {
         try {
           const parsed = JSON.parse(storedProfile);
           setProfileState(parsed);
         } catch (error) {
-          console.error('Failed to parse user profile from localStorage', error);
+          console.error(
+            "Failed to parse user profile from localStorage",
+            error,
+          );
           setProfileState(defaultProfile);
         }
       }
@@ -49,7 +60,7 @@ export function UserProfileProvider({ children }: { children: ReactNode }) {
 
   // Save profile to localStorage whenever it changes
   useEffect(() => {
-    if (typeof window !== 'undefined' && isLoaded) {
+    if (typeof window !== "undefined" && isLoaded) {
       localStorage.setItem(PROFILE_STORAGE_KEY, JSON.stringify(profile));
     }
   }, [profile, isLoaded]);
@@ -58,7 +69,7 @@ export function UserProfileProvider({ children }: { children: ReactNode }) {
     setProfileState(newProfile);
   };
 
-  const updateProfile = (branch: 'BTech' | 'BCA' | 'BBA', semester: number) => {
+  const updateProfile = (branch: "BTech" | "BCA" | "BBA", semester: number) => {
     setProfileState({
       branch,
       semester,
@@ -68,7 +79,7 @@ export function UserProfileProvider({ children }: { children: ReactNode }) {
 
   const clearProfile = () => {
     setProfileState(defaultProfile);
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       localStorage.removeItem(PROFILE_STORAGE_KEY);
     }
   };
@@ -85,8 +96,7 @@ export function UserProfileProvider({ children }: { children: ReactNode }) {
 export function useUserProfile() {
   const context = useContext(UserProfileContext);
   if (context === undefined) {
-    throw new Error('useUserProfile must be used within a UserProfileProvider');
+    throw new Error("useUserProfile must be used within a UserProfileProvider");
   }
   return context;
 }
-
