@@ -44,11 +44,26 @@ const bricolageGrotesque = Bricolage_Grotesque({
 });
 
 export const metadata: Metadata = {
-  title: "NotesNeo - Best Academic Notes for MDU Rohtak",
+  title: {
+    default: "NotesNeo - Best Academic Notes for MDU Rohtak",
+    template: "%s | NotesNeo",
+  },
   description:
     "Access high-quality academic notes for MDU Rohtak. Download, save, and access personalized study resources on NotesNeo for efficient learning.",
-  keywords:
-    "MDU notes, academic notes, MDU Rohtak, study resources, MDU Btech notes, SAITM notes download, NotesNeo",
+  keywords: [
+    "MDU notes",
+    "academic notes",
+    "MDU Rohtak",
+    "study resources",
+    "MDU Btech notes",
+    "SAITM notes download",
+    "NotesNeo",
+    "BTech notes",
+    "semester notes",
+    "university notes",
+    "free notes",
+    "engineering notes",
+  ],
   authors: [{ name: "Deepak Modi", url: "https://deepakmodi.tech" }],
   creator: "Deepak Modi",
   publisher: "NotesNeo",
@@ -56,28 +71,32 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     type: "website",
+    locale: "en_US",
     url: "https://notesneo.vercel.app/",
     title: "NotesNeo - Best Academic Notes for MDU Rohtak",
     description:
       "Access high-quality academic notes for MDU Rohtak. Download, save, and access personalized study resources on NotesNeo for efficient learning.",
     siteName: "NotesNeo",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "NotesNeo - Academic Notes Platform",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "NotesNeo - Best Academic Notes for MDU Rohtak",
     description:
       "Access high-quality academic notes for MDU Rohtak. Download, save, and access personalized study resources on NotesNeo for efficient learning.",
-    images: ["/og-image.png"],
+    creator: "@deepakmodi_io",
   },
   verification: {
     google: "vvp2OYjF6CFibJc7x2WTbT-4fWFHe6Ue5hYXcaq_LjE",
@@ -87,6 +106,7 @@ export const metadata: Metadata = {
     shortcut: "/favicon.png",
     apple: "/favicon.png",
   },
+  manifest: "/manifest.json",
 };
 
 export default function RootLayout({
