@@ -79,25 +79,35 @@ export default function NotesPage() {
     );
   }, [filters.branch, filters.semester]);
 
+  // Validate filters when dropdown options change
+  useEffect(() => {
+    setFilters((prev) => {
+      const newFilters = { ...prev };
+
+      // If selected semester is not in available semesters, reset it
+      if (prev.semester && !semesters.includes(prev.semester)) {
+        newFilters.semester = undefined;
+        newFilters.subject = undefined;
+      }
+
+      // If selected subject is not in available subjects, reset it
+      if (prev.subject && !subjects.includes(prev.subject)) {
+        newFilters.subject = undefined;
+      }
+
+      return newFilters;
+    });
+  }, [semesters, subjects]);
+
   // Filter notes based on all criteria
   const filteredNotes = useMemo(() => {
-    let filtered = [...notes];
+    // Combine searchQuery into filters.title for single-pass filtering
+    const combinedFilters = {
+      ...filters,
+      title: searchQuery.trim() || filters.title,
+    };
 
-    // Apply search query first
-    if (searchQuery.trim()) {
-      const query = searchQuery.toLowerCase();
-      filtered = filtered.filter(
-        (note) =>
-          note.title.toLowerCase().includes(query) ||
-          note.description.toLowerCase().includes(query) ||
-          note.subject.toLowerCase().includes(query)
-      );
-    }
-
-    // Apply filters
-    filtered = filterNotes(filtered, filters);
-
-    return filtered;
+    return filterNotes(notes, combinedFilters);
   }, [filters, searchQuery]);
 
   // Paginate filtered notes
@@ -120,9 +130,10 @@ export default function NotesPage() {
   };
 
   const handleSemesterChange = (value: string) => {
+    const newSemester = value === "all" ? undefined : parseInt(value);
     setFilters((prev) => ({
       ...prev,
-      semester: value === "all" ? undefined : parseInt(value),
+      semester: newSemester,
       // Reset subject when semester changes
       subject: undefined,
     }));
@@ -368,7 +379,7 @@ export default function NotesPage() {
                               setCurrentPage(page);
                               window.scrollTo({ top: 0, behavior: "smooth" });
                             }}
-                            className="min-w-[40px]"
+                            className="min-w-10"
                           >
                             {page}
                           </Button>

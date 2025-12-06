@@ -1,174 +1,167 @@
 import { Note, SearchFilters, SearchResult } from "@/lib/types/note";
 
 export function filterNotes(notes: Note[], filters: SearchFilters): Note[] {
-  let filtered = [...notes];
+  return notes.filter((note) => {
+    // Title/description/subject search
+    if (filters.title?.trim()) {
+      const query = filters.title.trim().toLowerCase().replace(/\s+/g, " ");
+      const matchesSearch = [note.title, note.description, note.subject].some(
+        (field) => field.toLowerCase().includes(query)
+      );
+      if (!matchesSearch) return false;
+    }
 
-  // Filter by title (case-insensitive partial match)
-  if (filters.title && filters.title.trim()) {
-    const titleQuery = filters.title.trim().toLowerCase();
-    filtered = filtered.filter(
-      (note) =>
-        note.title.toLowerCase().includes(titleQuery) ||
-        note.description.toLowerCase().includes(titleQuery),
-    );
-  }
+    // Branch filter
+    if (
+      filters.branch &&
+      filters.branch !== "All" &&
+      note.branch !== filters.branch
+    ) {
+      return false;
+    }
 
-  // Filter by branch
-  if (filters.branch && filters.branch !== "All") {
-    filtered = filtered.filter((note) => note.branch === filters.branch);
-  }
+    // Semester filter
+    if (filters.semester && note.semester !== filters.semester) {
+      return false;
+    }
 
-  // Filter by semester
-  if (filters.semester) {
-    filtered = filtered.filter((note) => note.semester === filters.semester);
-  }
+    // Subject filter (exact match, case-insensitive)
+    if (
+      filters.subject?.trim() &&
+      note.subject.toLowerCase() !== filters.subject.trim().toLowerCase()
+    ) {
+      return false;
+    }
 
-  // Filter by subject
-  if (filters.subject && filters.subject.trim()) {
-    filtered = filtered.filter(
-      (note) => note.subject.toLowerCase() === filters.subject?.toLowerCase(),
-    );
-  }
+    // Unit filter
+    if (filters.unit && note.unit !== filters.unit) {
+      return false;
+    }
 
-  // Filter by unit
-  if (filters.unit) {
-    filtered = filtered.filter((note) => note.unit === filters.unit);
-  }
-
-  return filtered;
+    return true;
+  });
 }
 
 export function paginateNotes(
   notes: Note[],
   page: number = 1,
-  pageSize: number = 30,
+  pageSize: number = 30
 ): SearchResult {
   const total = notes.length;
-  const totalPages = Math.ceil(total / pageSize);
-  const startIndex = (page - 1) * pageSize;
-  const endIndex = startIndex + pageSize;
-  const paginatedNotes = notes.slice(startIndex, endIndex);
+  const totalPages = Math.max(1, Math.ceil(total / pageSize));
+  const validPage = Math.max(1, Math.min(page, totalPages));
+  const startIndex = (validPage - 1) * pageSize;
 
   return {
-    notes: paginatedNotes,
+    notes: notes.slice(startIndex, startIndex + pageSize),
     total,
-    page,
+    page: validPage,
     pageSize,
     totalPages,
   };
 }
 
-export function getAllSubjects(notes: Note[]): string[] {
-  const subjectSet = new Set<string>();
-  notes.forEach((note) => {
-    subjectSet.add(note.subject);
-  });
-  return Array.from(subjectSet).sort();
-}
+const getUniqueValues = <T>(notes: Note[], key: keyof Note): T[] =>
+  [...new Set(notes.map((note) => note[key] as T))].sort() as T[];
 
-export function getAllBranches(notes: Note[]): string[] {
-  const branchSet = new Set<string>();
-  notes.forEach((note) => {
-    branchSet.add(note.branch);
-  });
-  return Array.from(branchSet).sort();
-}
+export const getAllSubjects = (notes: Note[]): string[] =>
+  getUniqueValues<string>(notes, "subject");
+
+export const getAllBranches = (notes: Note[]): string[] =>
+  getUniqueValues<string>(notes, "branch");
 
 export function getAllSemesters(notes: Note[], branch?: string): number[] {
-  let filtered = notes;
-  if (branch && branch !== "All") {
-    filtered = notes.filter((note) => note.branch === branch);
-  }
-  const semesterSet = new Set<number>();
-  filtered.forEach((note) => {
-    semesterSet.add(note.semester);
-  });
-  return Array.from(semesterSet).sort((a, b) => a - b);
+  const filtered =
+    branch && branch !== "All"
+      ? notes.filter((note) => note.branch === branch)
+      : notes;
+  return [...new Set(filtered.map((note) => note.semester))].sort(
+    (a, b) => a - b
+  );
 }
 
 export function getSubjectsByBranchAndSemester(
   notes: Note[],
   branch?: string,
-  semester?: number,
+  semester?: number
 ): string[] {
-  let filtered = notes;
-  if (branch && branch !== "All") {
-    filtered = filtered.filter((note) => note.branch === branch);
-  }
-  if (semester) {
-    filtered = filtered.filter((note) => note.semester === semester);
-  }
-  const subjectSet = new Set<string>();
-  filtered.forEach((note) => {
-    subjectSet.add(note.subject);
-  });
-  return Array.from(subjectSet).sort();
+  const filtered = notes.filter(
+    (note) =>
+      (!branch || branch === "All" || note.branch === branch) &&
+      (!semester || note.semester === semester)
+  );
+  return [...new Set(filtered.map((note) => note.subject))].sort();
 }
 
 export function getTitleSuggestions(
   notes: Note[],
   query: string,
-  limit: number = 10,
+  limit: number = 10
 ): string[] {
-  if (!query || query.trim().length === 0) {
-    return [];
-  }
+  if (!query?.trim()) return [];
 
   const queryLower = query.trim().toLowerCase();
-  const matches = notes
+  return notes
     .filter((note) => note.title.toLowerCase().includes(queryLower))
     .slice(0, limit)
     .map((note) => note.title);
-
-  return matches;
 }
 
 export function getSubjectSuggestions(
   notes: Note[],
   query: string,
-  limit: number = 10,
+  limit: number = 10
 ): string[] {
-  if (!query || query.trim().length === 0) {
-    return getAllSubjects(notes).slice(0, limit);
+  const allSubjects = getAllSubjects(notes);
+
+  if (!query?.trim()) {
+    return allSubjects.slice(0, limit);
   }
 
   const queryLower = query.trim().toLowerCase();
-  const allSubjects = getAllSubjects(notes);
-  const matches = allSubjects
+  return allSubjects
     .filter((subject) => subject.toLowerCase().includes(queryLower))
     .slice(0, limit);
-
-  return matches;
 }
 
+const isValid = (value: any): boolean => {
+  if (typeof value === "string") return !!value.trim();
+  if (typeof value === "number") return !isNaN(value);
+  return !!value;
+};
+
 export function getFirstFilterType(filters: SearchFilters): string | null {
-  if (filters.title) return "title";
-  if (filters.branch && filters.branch !== "All") return "branch";
-  if (filters.semester) return "semester";
-  if (filters.subject) return "subject";
-  if (filters.unit) return "unit";
+  const filterMap: [keyof SearchFilters, (val: any) => boolean][] = [
+    ["title", isValid],
+    ["branch", (val) => isValid(val) && val !== "All"],
+    ["semester", isValid],
+    ["subject", isValid],
+    ["unit", isValid],
+  ];
+
+  for (const [key, validator] of filterMap) {
+    if (filters[key] !== undefined && validator(filters[key])) {
+      return key;
+    }
+  }
   return null;
 }
 
 export function buildSearchParams(filters: SearchFilters): URLSearchParams {
   const params = new URLSearchParams();
+  const entries: [string, any][] = [
+    ["title", filters.title],
+    ["branch", filters.branch !== "All" ? filters.branch : undefined],
+    ["semester", filters.semester],
+    ["subject", filters.subject],
+    ["unit", filters.unit],
+  ];
 
-  // Always include all active filters in query params (for complete state)
-  if (filters.title) {
-    params.set("title", filters.title);
-  }
-  if (filters.branch && filters.branch !== "All") {
-    params.set("branch", filters.branch);
-  }
-  if (filters.semester) {
-    params.set("semester", filters.semester.toString());
-  }
-  if (filters.subject) {
-    params.set("subject", filters.subject);
-  }
-  if (filters.unit) {
-    params.set("unit", filters.unit.toString());
-  }
+  entries.forEach(([key, value]) => {
+    if (value !== undefined && value !== null) {
+      params.set(key, String(value));
+    }
+  });
 
   return params;
 }
@@ -178,69 +171,32 @@ export function buildFilterUrl(filters: SearchFilters): {
   query: string;
 } {
   const firstFilter = getFirstFilterType(filters);
+  if (!firstFilter) return { path: "/", query: "" };
 
-  if (!firstFilter) {
-    return { path: "/", query: "" };
-  }
+  const mainValue = filters[firstFilter as keyof SearchFilters];
+  if (!mainValue) return { path: "/", query: "" };
 
-  // Get the value for the first filter
-  let mainValue = "";
-  if (firstFilter === "title" && filters.title) {
-    mainValue = filters.title;
-  } else if (firstFilter === "branch" && filters.branch) {
-    mainValue = filters.branch;
-  } else if (firstFilter === "semester" && filters.semester) {
-    mainValue = filters.semester.toString();
-  } else if (firstFilter === "subject" && filters.subject) {
-    mainValue = filters.subject;
-  } else if (firstFilter === "unit" && filters.unit) {
-    mainValue = filters.unit.toString();
-  }
+  // Build params excluding the main filter
+  const remainingFilters = { ...filters };
+  delete remainingFilters[firstFilter as keyof SearchFilters];
 
-  if (!mainValue) {
-    return { path: "/", query: "" };
-  }
-
-  // Build query params with additional filters (excluding the main filter)
-  const params = new URLSearchParams();
-
-  // Add additional filters to query params
-  if (firstFilter === "title") {
-    if (filters.branch) params.set("branch", filters.branch);
-    if (filters.semester) params.set("semester", filters.semester.toString());
-    if (filters.subject) params.set("subject", filters.subject);
-    if (filters.unit) params.set("unit", filters.unit.toString());
-  } else if (firstFilter === "branch") {
-    if (filters.title) params.set("title", filters.title);
-    if (filters.semester) params.set("semester", filters.semester.toString());
-    if (filters.subject) params.set("subject", filters.subject);
-    if (filters.unit) params.set("unit", filters.unit.toString());
-  } else if (firstFilter === "semester") {
-    if (filters.title) params.set("title", filters.title);
-    if (filters.branch) params.set("branch", filters.branch);
-    if (filters.subject) params.set("subject", filters.subject);
-    if (filters.unit) params.set("unit", filters.unit.toString());
-  } else if (firstFilter === "subject") {
-    if (filters.title) params.set("title", filters.title);
-    if (filters.branch) params.set("branch", filters.branch);
-    if (filters.semester) params.set("semester", filters.semester.toString());
-    if (filters.unit) params.set("unit", filters.unit.toString());
-  } else if (firstFilter === "unit") {
-    if (filters.title) params.set("title", filters.title);
-    if (filters.branch) params.set("branch", filters.branch);
-    if (filters.semester) params.set("semester", filters.semester.toString());
-    if (filters.subject) params.set("subject", filters.subject);
-  }
-
-  const query = params.toString();
-  const path = `/notes-list/${firstFilter}/${encodeURIComponent(mainValue)}`;
+  const query = buildSearchParams(remainingFilters).toString();
+  const path = `/notes-list/${firstFilter}/${encodeURIComponent(
+    String(mainValue)
+  )}`;
 
   return { path, query };
 }
 
+const safeParseInt = (value: string | null): number | undefined => {
+  if (!value) return undefined;
+  const parsed = parseInt(value);
+  return isNaN(parsed) ? undefined : parsed;
+};
+
 export function parseSearchParams(
   searchParams: URLSearchParams | string,
-  pathname?: string,
+  pathname?: string
 ): SearchFilters {
   const params =
     typeof searchParams === "string"
@@ -249,62 +205,65 @@ export function parseSearchParams(
 
   const filters: SearchFilters = {};
 
-  // Parse main filter from pathname
+  // Parse from pathname
   if (pathname) {
     const pathParts = pathname.split("/").filter(Boolean);
     if (pathParts.length >= 3 && pathParts[0] === "notes-list") {
-      const filterType = pathParts[1];
-      const filterValue = decodeURIComponent(pathParts[2]);
+      const [, filterType, encodedValue] = pathParts;
+      const filterValue = decodeURIComponent(encodedValue);
 
-      if (filterType === "title") {
-        filters.title = filterValue;
-      } else if (filterType === "branch") {
-        filters.branch = filterValue;
-      } else if (filterType === "semester") {
-        filters.semester = parseInt(filterValue);
-      } else if (filterType === "subject") {
-        filters.subject = filterValue;
-      } else if (filterType === "unit") {
-        filters.unit = parseInt(filterValue);
-      }
+      const typeMap: Record<string, () => void> = {
+        title: () => {
+          filters.title = filterValue;
+        },
+        branch: () => {
+          filters.branch = filterValue;
+        },
+        semester: () => {
+          filters.semester = safeParseInt(filterValue);
+        },
+        subject: () => {
+          filters.subject = filterValue;
+        },
+        unit: () => {
+          filters.unit = safeParseInt(filterValue);
+        },
+      };
+
+      typeMap[filterType]?.();
     }
   }
 
-  // Parse additional filters from query params
-  const title = params.get("title");
-  if (title && !filters.title) {
-    filters.title = title;
-  }
+  // Parse from query params (only if not already set)
+  const paramMap: [keyof SearchFilters, string, (v: string) => any][] = [
+    ["title", "title", (v) => v],
+    ["branch", "branch", (v) => v],
+    ["semester", "semester", safeParseInt],
+    ["subject", "subject", (v) => v],
+    ["unit", "unit", safeParseInt],
+  ];
 
-  const branch = params.get("branch");
-  if (branch && !filters.branch) {
-    filters.branch = branch;
-  }
-
-  const semester = params.get("semester");
-  if (semester && !filters.semester) {
-    filters.semester = parseInt(semester);
-  }
-
-  const subject = params.get("subject");
-  if (subject && !filters.subject) {
-    filters.subject = subject;
-  }
-
-  const unit = params.get("unit");
-  if (unit && !filters.unit) {
-    filters.unit = parseInt(unit);
-  }
+  paramMap.forEach(([key, paramName, parser]) => {
+    if (!filters[key]) {
+      const value = params.get(paramName);
+      if (value) {
+        const parsed = parser(value);
+        if (parsed !== undefined) {
+          filters[key] = parsed as any;
+        }
+      }
+    }
+  });
 
   return filters;
 }
 
 export function hasActiveFilters(filters: SearchFilters): boolean {
   return !!(
-    (filters.title && filters.title.trim()) ||
+    isValid(filters.title) ||
     (filters.branch && filters.branch !== "All") ||
-    filters.semester ||
-    filters.subject ||
-    filters.unit
+    isValid(filters.semester) ||
+    isValid(filters.subject) ||
+    isValid(filters.unit)
   );
 }
