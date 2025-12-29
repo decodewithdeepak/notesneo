@@ -6,14 +6,12 @@ import { Logo } from "@/components/icons/logo";
 import { Button } from "@/components/ui/button";
 // import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetHeader } from '@/components/ui/sheet';
 // import { Menu, SendIcon, X } from 'lucide-react';
-import { useTheme } from "next-themes";
-import { ThemeToggleIcon } from "../icons/icons";
+import ThemeToggle from "@/components/ui/theme-toggle";
 import { useFavorites } from "@/lib/contexts/favorites-context";
 import { GithubRoundedIcon } from "@/components/icons/github";
 
 export default function Navbar() {
   // const [isOpen, setIsOpen] = useState(false);
-  const { setTheme, theme } = useTheme();
   const { favorites, isLoaded } = useFavorites();
   // const navigationItems = [
   // 	{ href: '/docs', label: 'Documentation' },
@@ -112,12 +110,7 @@ export default function Navbar() {
 
             <div className="h-4 w-px bg-border"></div>
 
-            <div
-              onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-              className="cursor-pointer"
-            >
-              <ThemeToggleIcon className="size-5 mx-1" />
-            </div>
+            <ThemeToggle />
 
             {/* GitHub Link */}
             {/* <Button
