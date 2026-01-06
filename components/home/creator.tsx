@@ -39,9 +39,9 @@ export default function Creator() {
     <section className="py-16 sm:py-20 lg:py-24 border-t border-border">
       <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-12">
-          <h2 className="font-librebaskerville text-2xl sm:text-3xl md:text-4xl font-semibold mb-4">
-            Meet the <HighlightText>Creator</HighlightText>
+        <div className="text-center mb-16">
+          <h2 className="font-librebaskerville text-2xl sm:text-3xl md:text-4xl mb-4">
+            Meet The <HighlightText>Creator</HighlightText>
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
             Dedicated to making education accessible for everyone

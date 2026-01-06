@@ -189,10 +189,10 @@ export default function FAQs() {
         {/* Title Section - Left */}
         <div className="col-span-12 md:col-span-5 ">
           <div className="p-8 pr-12 md:sticky md:top-8 py-16">
-            <h2 className="font-librebaskerville text-3xl font-semibold mb-4">
+            <h2 className="font-librebaskerville text-2xl sm:text-3xl md:text-4xl mb-4">
               Frequently Asked Questions
             </h2>
-            <p className="text-muted-foreground">
+            <p className="text-base sm:text-lg text-muted-foreground">
               Have another question? Contact us on{" "}
               <a
                 href="https://x.com/deepakmodi_io"

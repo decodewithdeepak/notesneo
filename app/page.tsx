@@ -2,6 +2,7 @@ import HeroSection from "@/components/home/hero";
 import Features from "@/components/home/features";
 import AndroidApp from "@/components/home/android-app";
 import Pricing from "@/components/home/pricing";
+import Testimonials from "@/components/home/testimonials";
 import Creator from "@/components/home/creator";
 import FAQs from "@/components/home/faqs";
 import CTA from "@/components/home/cta";
@@ -17,6 +18,8 @@ const page = () => {
         <AndroidApp />
         <div className="h-8 bg-dashed"></div>
         <Pricing />
+        <div className="h-8 bg-dashed"></div>
+        <Testimonials />
         <div className="h-8 bg-dashed"></div>
         <Creator />
         <div className="h-8 bg-dashed"></div>

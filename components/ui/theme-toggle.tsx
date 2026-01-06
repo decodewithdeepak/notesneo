@@ -3,6 +3,7 @@
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { ThemeToggleIcon } from "../icons/icons";
+import { Button } from "./button";
 
 export default function ThemeToggle() {
   const { setTheme, resolvedTheme } = useTheme();
@@ -25,8 +26,12 @@ export default function ThemeToggle() {
     });
   };
 
-  if (!mounted) return <div className="cursor-pointer"><ThemeToggleIcon className="size-5 mx-1" /></div>;
+  if (!mounted) return <Button size="sm" variant="ghost"><ThemeToggleIcon className="size-5" /></Button>;
 
-  return <div onClick={toggleTheme} className="cursor-pointer"><ThemeToggleIcon className="size-5 mx-1" /></div>;
+  return (
+    <Button size="sm" variant="ghost" onClick={toggleTheme}>
+      <ThemeToggleIcon className="size-5" />
+    </Button>
+  );
 }
 

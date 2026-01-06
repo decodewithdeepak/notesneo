@@ -42,11 +42,11 @@ export default function Pricing() {
 
   return (
     <section className="pt-16">
-      <div className="text-center mb-12 px-4 sm:px-6 lg:px-8">
-        <h2 className="font-librebaskerville text-2xl sm:text-3xl font-semibold mb-4">
+      <div className="text-center mb-16 px-4 sm:px-6 lg:px-8">
+        <h2 className="font-librebaskerville text-2xl sm:text-3xl md:text-4xl mb-4">
           100% &nbsp;<HighlightText>Free Forever</HighlightText>
         </h2>
-        <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
+        <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
           A free platform to help students access quality academic notes. No
           hidden costs, no premium tiers, no catch - everything is completely
           free.

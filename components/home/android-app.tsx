@@ -30,8 +30,8 @@ export default function AndroidApp() {
           {/* Left Side - Content */}
           <div className="order-2 lg:order-1">
             <div className="mb-6">
-              <h2 className="font-librebaskerville text-2xl sm:text-3xl md:text-4xl font-semibold mb-4">
-                Get the <HighlightText>Android App</HighlightText>
+              <h2 className="font-librebaskerville text-2xl sm:text-3xl md:text-4xl mb-4">
+                Get The <HighlightText>Android App</HighlightText>
               </h2>
               <p className="text-base sm:text-lg text-muted-foreground">
                 Take your study materials everywhere with our mobile app. Access

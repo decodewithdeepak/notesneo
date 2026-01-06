@@ -38,7 +38,7 @@ export default function CTA() {
         <div className="text-center relative">
           <div className="relative inline-block">
             <h2 className="font-librebaskerville text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight mb-4 sm:mb-6 relative z-10">
-              Ready to get started?
+              Ready To Get Started?
             </h2>
           </div>
           <p className="text-sm sm:text-base lg:text-lg text-muted-foreground mb-6 sm:mb-8 max-w-xl sm:max-w-2xl mx-auto px-2 sm:px-0">
