@@ -9,7 +9,7 @@ import CTA from "@/components/home/cta";
 
 const page = () => {
   return (
-    <main className="max-w-full flex flex-col min-h-full">
+    <main className="max-w-full flex flex-col min-h-full pt-10">
       <div className="flex-1 border border-border">
         <HeroSection />
         <div className="h-8 bg-dashed"></div>

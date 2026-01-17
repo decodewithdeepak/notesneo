@@ -413,6 +413,7 @@ export default function UploadNotePage() {
                 </Button>
                 <Button
                   type="button"
+                  size="lg"
                   variant="outline"
                   onClick={() => form.reset(defaultValues)}
                   disabled={isSubmitting}

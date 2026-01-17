@@ -4,11 +4,13 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { AnimatedGridPattern } from "../ui/animated-grid-pattern";
 import HighlightText from "@/components/ui/highlight-text";
-import { Search } from "lucide-react";
+import { Search, Plus } from "lucide-react";
 
 export default function HeroSection() {
   return (
     <section className="relative py-16 sm:py-24 md:py-28">
+      <Plus className="absolute -top-3 -left-3 size-6 text-muted-foreground/30 z-50" />
+      <Plus className="absolute -bottom-3 -right-3 size-6 text-muted-foreground/30 z-50" />
       <div
         className={cn(
           "absolute bg-background z-10 inset-0 w-full h-full",

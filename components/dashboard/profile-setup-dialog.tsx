@@ -93,11 +93,11 @@ export function ProfileSetupDialog({
           </div>
         </div>
 
-        <div className="flex gap-3">
+        <div className="flex">
           <Button
             onClick={handleSubmit}
             disabled={!branch || !semester}
-            className="flex-1 h-11"
+            className="flex-1"
             size="lg"
           >
             Continue to Dashboard
