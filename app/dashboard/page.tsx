@@ -2,16 +2,17 @@
 
 import { useEffect, useState } from "react";
 import { useUserProfile } from "@/lib/contexts/user-profile-context";
+import { useAllNotes } from "@/lib/hooks/use-all-notes";
 import { ProfileSetupDialog } from "@/components/dashboard/profile-setup-dialog";
 import { NoteCard } from "@/components/search/note-card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { notes } from "@/lib/data/notes";
 import { Note } from "@/lib/types/note";
 import { Settings, BookOpen, GraduationCap } from "lucide-react";
 
 export default function DashboardPage() {
   const { profile, isLoaded, clearProfile } = useUserProfile();
+  const { notes: allNotes, isLoading: notesLoading } = useAllNotes();
   const [showSetupDialog, setShowSetupDialog] = useState(false);
   const [filteredNotes, setFilteredNotes] = useState<Note[]>([]);
 
@@ -25,19 +26,21 @@ export default function DashboardPage() {
   // Filter notes based on user profile
   useEffect(() => {
     if (profile.branch && profile.semester) {
-      const filtered = notes.filter(
+      const filtered = allNotes.filter(
         (note) =>
-          note.branch === profile.branch && note.semester === profile.semester,
+          note.branch === profile.branch && note.semester === profile.semester
       );
       setFilteredNotes(filtered);
+    } else {
+      setFilteredNotes([]);
     }
-  }, [profile]);
+  }, [profile, allNotes]);
 
   const handleChangeProfile = () => {
     setShowSetupDialog(true);
   };
 
-  if (!isLoaded) {
+  if (!isLoaded || notesLoading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
         <div className="text-center">

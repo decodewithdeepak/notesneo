@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Download, Heart } from "lucide-react";
+import { Heart, ArrowUpRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -104,7 +104,7 @@ export function NoteCard({
                 <span>•</span>
                 <span>Sem {note.semester}</span>
                 <span>•</span>
-                <span>Unit {note.unit}</span>
+                <span>{typeof note.unit === "string" ? note.unit : `Unit ${note.unit}`}</span>
               </div>
             </div>
           </div>
@@ -127,7 +127,7 @@ export function NoteCard({
             {note.branch}
           </Badge>
           <Badge variant="outline" className="text-xs">
-            Unit {note.unit}
+            {typeof note.unit === "string" ? note.unit : `Unit ${note.unit}`}
           </Badge>
         </div>
 
@@ -161,20 +161,20 @@ export function NoteCard({
             </Button>
           )}
 
-          {/* Download button */}
+          {/* View button */}
           <Button
             asChild
             size="sm"
             className="gap-2 hover:scale-95 transition-all"
           >
             <Link
-              href={note.downloadUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`Download ${note.title}`}
+              href={note.viewUrl}
+              target={note.viewUrl.startsWith("/") ? undefined : "_blank"}
+              rel={note.viewUrl.startsWith("/") ? undefined : "noopener noreferrer"}
+              aria-label={`View ${note.title}`}
             >
-              <Download className="h-4 w-4" />
-              <span className="hidden sm:inline">Download</span>
+              <span className="hidden sm:inline">View</span>
+              <ArrowUpRight className="h-4 w-4" />
             </Link>
           </Button>
         </div>
