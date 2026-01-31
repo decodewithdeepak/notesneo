@@ -5,8 +5,8 @@ export interface Note {
   subject: string;
   branch: "BTech" | "BCA" | "BBA";
   semester: number;
-  unit: number;
-  downloadUrl: string;
+  unit: number | string;
+  viewUrl: string;
 }
 
 export interface SearchFilters {

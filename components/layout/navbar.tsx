@@ -1,194 +1,209 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, ReactNode } from "react";
 import { Logo } from "@/components/icons/logo";
 import { Button } from "@/components/ui/button";
-// import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetHeader } from '@/components/ui/sheet';
-// import { Menu, SendIcon, X } from 'lucide-react';
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+  SheetClose,
+} from "@/components/ui/sheet";
 import ThemeToggle from "@/components/ui/theme-toggle";
 import { useFavorites } from "@/lib/contexts/favorites-context";
 import { GithubRoundedIcon } from "@/components/icons/github";
+import {
+  Menu,
+  X,
+  Home,
+  LayoutDashboard,
+  BookOpen,
+  Heart,
+  Upload,
+} from "lucide-react";
+
+/* -------------------------------------------------------------------------- */
+/* Types */
+/* -------------------------------------------------------------------------- */
+
+type NavLink = {
+  href: string;
+  label: string;
+  icon: React.ElementType;
+};
+
+/* -------------------------------------------------------------------------- */
+/* Constants */
+/* -------------------------------------------------------------------------- */
+
+const NAV_LINKS: NavLink[] = [
+  { href: "/", label: "Home", icon: Home },
+  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/notes", label: "Notes", icon: BookOpen },
+  { href: "/favorites", label: "Favorites", icon: Heart },
+  { href: "/upload-notes", label: "Upload Notes", icon: Upload },
+];
+
+/* -------------------------------------------------------------------------- */
+/* Small Reusable Components */
+/* -------------------------------------------------------------------------- */
+
+function NavButton({
+  href,
+  children,
+}: {
+  href: string;
+  children: ReactNode;
+}) {
+  return (
+    <Button size="sm" variant="ghost" asChild>
+      <Link href={href}>{children}</Link>
+    </Button>
+  );
+}
+
+function MobileNavItem({
+  href,
+  label,
+  icon: Icon,
+  onClick,
+  rightSlot,
+}: {
+  href: string;
+  label: string;
+  icon: React.ElementType;
+  onClick?: () => void;
+  rightSlot?: ReactNode;
+}) {
+  return (
+    <Link
+      href={href}
+      onClick={onClick}
+      className="flex items-center justify-between h-12 rounded-md hover:bg-accent transition-colors"
+    >
+      <span className="flex items-center gap-3">
+        <Icon className="h-5 w-5" />
+        <span className="text-base">{label}</span>
+      </span>
+      {rightSlot}
+    </Link>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* Navbar */
+/* -------------------------------------------------------------------------- */
 
 export default function Navbar() {
-  // const [isOpen, setIsOpen] = useState(false);
   const { favorites, isLoaded } = useFavorites();
-  // const navigationItems = [
-  // 	{ href: '/docs', label: 'Documentation' },
-  // 	{
-  // 		href: 'https://github.com/decodewithdeepak/notesneo',
-  // 		label: 'Templates',
-  // 	},
-  // 	{ href: '/builder', label: 'Builder' },
-  // 	{ href: '/blog', label: 'Blog' },
-  // 	{ href: '/showcase', label: 'Showcase' },
-  // 	{ href: '/sponsors', label: 'Sponsors' },
-  // ];
+  const [isOpen, setIsOpen] = useState(false);
+
+  const favoritesCount =
+    isLoaded && favorites.length > 0 ? favorites.length : null;
 
   return (
-    <header
-      id="nd-nav"
-      className="fixed py-1 top-0 z-9999 left-0 right-0 border-b"
-      aria-label="Main"
-    >
-      <div className="max-w-6xl px-2 sm:px-2 mx-auto">
-        <nav className="flex h-14 w-full items-center">
+    <header className="fixed py-1 top-0 z-50 left-0 right-0 border-b bg-background/95 backdrop-blur">
+      <div className="max-w-6xl px-2 sm:px-4 mx-auto">
+        <nav className="flex h-14 items-center">
           {/* Logo */}
-          <Link
-            className="inline-flex items-center gap-2.5 font-semibold"
-            href="/"
-          >
+          <Link href="/" className="flex items-center gap-2.5 font-semibold">
             <Logo size="xl" />
-            <span className="font-semibold text-base sm:text-xl tracking-tighter font-librebaskerville">
+            <span className="text-base sm:text-xl tracking-tighter font-librebaskerville">
               NotesNeo
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          {/* <ul className='hidden lg:flex flex-row items-center gap-2 px-6'>
-						{navigationItems.slice(0, 3).map((item) => (
-							<li key={item.href}>
-								<Button
-									variant='ghost'
-									size='sm'
-									asChild
-								>
-									<Link href={item.href}>{item.label}</Link>
-								</Button>
-							</li>
-						))}
-					</ul> */}
+          <div className="hidden md:flex items-center gap-1.5 ml-auto">
+            <NavButton href="/dashboard">Dashboard</NavButton>
+            <NavButton href="/notes">Notes</NavButton>
 
-          {/* Right Side Actions */}
-          <div className="flex flex-row items-center justify-end gap-1.5 flex-1">
-            {/* Navigation Links */}
-            <Button
-              size="sm"
-              variant="ghost"
-              asChild
-              className="hidden sm:flex"
-            >
-              <Link href="/dashboard">Dashboard</Link>
-            </Button>
-
-            <Button size="sm" variant="ghost" asChild>
-              <Link href="/notes">Notes</Link>
-            </Button>
-
-            <Button size="sm" variant="ghost" asChild>
-              <Link href="/favorites" className="flex items-center gap-1.5">
+            <NavButton href="/favorites">
+              <span className="flex items-center gap-1.5">
                 Favorites
-                {isLoaded && favorites.length > 0 && (
-                  <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-primary text-primary-foreground text-xs font-semibold px-1.5">
-                    {favorites.length}
+                {favoritesCount && (
+                  <span className="h-5 min-w-5 px-1.5 rounded-full bg-primary text-primary-foreground text-xs font-semibold flex items-center justify-center">
+                    {favoritesCount}
                   </span>
                 )}
-              </Link>
-            </Button>
+              </span>
+            </NavButton>
 
-            <Button size="sm" variant="ghost" asChild>
-              <Link href="/upload-notes">Upload</Link>
-            </Button>
+            <NavButton href="/upload-notes">Upload</NavButton>
 
-            <div className="h-4 w-px bg-border hidden sm:block"></div>
+            <div className="h-4 w-px bg-border" />
 
-            <Button
-              size="sm"
-              variant="ghost"
-              asChild
-              className="gap-1.5 hidden sm:flex"
-            >
+            <Button size="sm" variant="ghost" asChild className="gap-1.5">
               <Link
                 href="https://github.com/decodewithdeepak/notesneo"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <GithubRoundedIcon className="h-4 w-4" />
-                <span className="hidden sm:inline">Star</span>
+                <GithubRoundedIcon className="h-5 w-5" />
+                <span>Star</span>
               </Link>
             </Button>
 
-            <div className="h-4 w-px bg-border"></div>
+            <div className="h-4 w-px bg-border" />
 
             <ThemeToggle />
+          </div>
 
-            {/* GitHub Link */}
-            {/* <Button
-							variant='ghost'
-							size='sm'
-							asChild
-							className='inline-flex'
-						>
-							<Link
-								href='https://github.com/decodewithdeepak/notesneo'
-								rel='noreferrer noopener'
-								target='_blank'
-							>
-								<GithubIcon className='size-5' />
-							</Link>
-						</Button> */}
+          {/* Mobile Navigation */}
+          <div className="flex md:hidden items-center gap-1 ml-auto">
+            <ThemeToggle />
 
-            {/* Mobile Menu */}
-            {/* <Sheet
-							open={isOpen}
-							onOpenChange={setIsOpen}
-						>
-							<SheetTrigger asChild>
-								<Button
-									variant='ghost'
-									size='sm'
-									className='lg:hidden'
-								>
-									{isOpen ? (
-										<X className='size-5' />
-									) : (
-										<Menu className='size-5' />
-									)}
-									<span className='sr-only'>
-										{isOpen ? 'Close Menu' : 'Open Menu'}
-									</span>
-								</Button>
-							</SheetTrigger>
-							<SheetContent
-								side='right'
-								className='w-[300px] sm:w-[400px] mt-16'
-							>
-								<SheetHeader>
-									<SheetTitle className='text-xl'>Menu</SheetTitle>
-								</SheetHeader>
-								<div className='flex flex-col gap-4 px-4'>
-									<Button
-										size='sm'
-										variant='ghost'
-										className='justify-start rounded-none'
-										asChild
-									>
-										<Link
-											href='#'
-											onClick={() => setIsOpen(false)}
-										>
-											<SendIcon className='size-4 mr-1' />
-											Submit a Library
-										</Link>
-									</Button>
-									<Button
-										variant='ghost'
-										className='justify-start rounded-none'
-										asChild
-									>
-										<Link
-											href='https://github.com/decodewithdeepak/notesneo'
-											rel='noreferrer noopener'
-											target='_blank'
-											onClick={() => setIsOpen(false)}
-										>
-											<GithubIcon className='size-4 mr-1' />
-											GitHub
-										</Link>
-									</Button>
-								</div>
-							</SheetContent>
-						</Sheet> */}
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" className="h-9 w-9">
+                  <Menu className="h-8 w-8" />
+                </Button>
+              </SheetTrigger>
+
+              <SheetContent side="right" className="w-[300px] p-0">
+                <SheetHeader className="px-6 py-4 border-b">
+                  <div className="flex items-center justify-between">
+                    <SheetTitle>Menu</SheetTitle>
+                    <SheetClose asChild>
+                      <Button variant="secondary" size="icon" className="h-8 w-8">
+                        <X className="h-5 w-5" />
+                      </Button>
+                    </SheetClose>
+                  </div>
+                </SheetHeader>
+
+                <nav className="flex flex-col px-6 gap-1">
+                  {NAV_LINKS.map(({ href, label, icon }) => (
+                    <MobileNavItem
+                      key={href}
+                      href={href}
+                      label={label}
+                      icon={icon}
+                      onClick={() => setIsOpen(false)}
+                      rightSlot={
+                        label === "Favorites" && favoritesCount ? (
+                          <span className="h-6 min-w-6 px-2 rounded-full bg-primary text-primary-foreground text-xs font-semibold flex items-center justify-center">
+                            {favoritesCount}
+                          </span>
+                        ) : null
+                      }
+                    />
+                  ))}
+
+                  <div className="h-px bg-border my-3" />
+
+                  <MobileNavItem
+                    href="https://github.com/decodewithdeepak/notesneo"
+                    label="Star on GitHub"
+                    icon={GithubRoundedIcon}
+                    onClick={() => setIsOpen(false)}
+                  />
+                </nav>
+              </SheetContent>
+            </Sheet>
           </div>
         </nav>
       </div>

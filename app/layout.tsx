@@ -138,7 +138,7 @@ export default function RootLayout({
         <SpeedInsights />
 
         {/* Tawk.to AI Chatbot */}
-        <Script
+        {/* <Script
           id="tawk-to-chatbot"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
@@ -154,7 +154,7 @@ export default function RootLayout({
               })();
             `,
           }}
-        />
+        /> */}
       </body>
     </html>
   );
