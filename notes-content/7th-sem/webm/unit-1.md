@@ -1,8 +1,13 @@
-# Unit 1: Data Mining Foundations & Web Mining Overview
+---
+title: "Unit 1: Data Mining Foundations & Web Mining Overview"
+description: "Data mining concepts, web mining taxonomy, hypertext data, and web mining challenges"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
-**Course:** PEC-CSE-405G | **Author:** [Deepak Modi](https://deepakmodi.tech)
+## Syllabus:
 
-**Syllabus:**  
 **Data Mining Foundations:** Basic concepts in Data Mining, Web mining versus Data mining, Discovering knowledge from Hypertext data.  
 **An Overview of Web Mining:** What is Web mining, Web mining taxonomy, Web mining subtasks, issues, challenges.
 

@@ -1,8 +1,13 @@
-# Unit 2: Web Content Mining Web Search and Information Retrieval
+---
+title: "Unit 2: Web Content Mining and Information Retrieval"
+description: "Information retrieval models, text mining, web search, clustering, and classification"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
-**Course:** PEC-CSE-405G | **Author:** [Deepak Modi](https://deepakmodi.tech)
+## Syllabus:
 
-**Syllabus:**  
 Information Retrieval Models, Web Search and IR, Text Mining, Latent Semantic Indexing, Web Spamming, Clustering and Classification of Web Pages, Information Extraction, Web Content Mining.
 
 ---

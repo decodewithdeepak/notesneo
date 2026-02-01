@@ -101,7 +101,7 @@ export async function getMarkdownNotes(): Promise<Note[]> {
   return notes.map((note) => ({
     id: note.slug,
     title: note.title,
-    description: `${note.subject} notes for Semester ${note.semester}`,
+    description: note.description || `${note.subject} notes for Semester ${note.semester}`,
     subject: note.subject,
     branch: "BTech" as const,
     semester: note.semester,

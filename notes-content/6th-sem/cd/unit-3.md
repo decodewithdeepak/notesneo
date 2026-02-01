@@ -1,7 +1,12 @@
-# Unit 3: LR Parsers and Syntax-Directed Translation
+---
+title: "Unit 3: LR Parsers and Syntax-Directed Translation"
+description: "SLR, LALR, Canonical LR parsers, syntax-directed translation, and intermediate code generation"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
-**Syllabus :** *\[PCC-CSE-302G\]*                                           
-**Compiled By:** *Deepak Modi (223100)*  
+## Syllabus:
 
 **LR parsers, SLR, LALR and Canonical LR parser.**  
 

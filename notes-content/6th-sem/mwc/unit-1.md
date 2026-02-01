@@ -1,6 +1,22 @@
-# Unit 1: Introduction to Mobile and Wireless Communication
+---
+title: "Unit 1: Introduction to Mobile and Wireless Communication"
+description: "Wireless communication fundamentals, GSM architecture, frequency reuse, and handoff mechanisms"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
-**Course:** ESC-CSE-308G | **Author:** Deepak Modi
+## Syllabus:
+
+**Introduction:** Application, History, Market Scenario, Reference Model and Overview, Wireless Local Loop and Cellular system.
+
+**Wireless Transmission:** Frequencies, Signals, Antennae, Signal Propagation, Multiplexing, Modulation, Spread Spectrum.
+
+**MAC Layer:** Specialized MAC, SDMA, FDMA, TDMA – Fixed TDM, Classical ALOHA, Slotted, ALOHA, CSMA, DAMA, PKMA, Reservation TDMA. Collision Avoidance, Polling, Inhibit Sense Multiple Access, CDMA.
+
+**Broadcasting:** Unidirectional Distribution Systems, Digital Audio Broadcasting, Digital Video Broadcasting, Convergence of Mobile and Broadcasting Techniques.
+
+---
 
 ## Content Outline
 - **1. Introduction to Mobile and Wireless Communications**

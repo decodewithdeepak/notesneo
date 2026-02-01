@@ -1,4 +1,10 @@
-# Mobile and Wireless Communication Syllabus
+---
+title: "Mobile and Wireless Communication Syllabus"
+description: "Complete syllabus for Mobile and Wireless Communication - ESC-CSE-308G"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
 **Course code:** ESC-CSE-308G  
 **Category:** Engineering Science Course  

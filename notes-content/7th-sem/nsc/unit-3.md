@@ -1,8 +1,13 @@
-# Unit 3: Internet Security Protocols
+---
+title: "Unit 3: Internet Security Protocols"
+description: "SSL, TLS, HTTPS, SET, email security, and electronic money protocols"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
-**Course:** PEC-CSE-411G | **Author:** [Deepak Modi](https://deepakmodi.tech)
+## Syllabus:
 
-**Syllabus:**  
 Basic concepts, Secure Socket Layer (SSL), Transport Layer Security (TLS), Secure Hyper Text Transfer protocol (SHTTP), Time Stamping Protocol (TSP), Secure Electronic Transaction (SET), SSL versus SET, Electronic Money, Email Security.
 
 ---

@@ -1,9 +1,15 @@
-# Unit 4: Data Science Applications
-
+---
+title: "Unit 4: Data Science Applications"
+description: "Real-world applications - predictions, recommendations, business analytics, clustering, and text analytics"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
 ---
 
-**Syllabus :** *\[PEC-CSE-320G\]*                                            **Compiled By:** *Deepak Modi (223100)*  
+## Syllabus:
+
 **Data Science Application:** Prediction and elections, Recommendations and business analytics, clustering and text analytics.  
+
 ---
 
 ## **Data Science Applications**

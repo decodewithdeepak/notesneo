@@ -1,6 +1,12 @@
-# Unit 2: Recovery and Concurrency Control
+---
+title: "Unit 2: Recovery and Concurrency Control"
+description: "Reliability, Transactions, Recovery mechanisms, Buffer management, Concurrency control, Locking schemes, and Deadlock handling"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
-**Course:** PCC-CSE-310G | **Author:** [Deepak Modi](https://deepakmodi.tech) | **Website:** [NotesNeo](https://notesneo.vercel.app)
+## Syllabus:
 
 **Recovery:** Reliability, Transactions, recovery in centralized DBMS, reflecting updates, Buffer management logging schemes, disaster recovery.    
 **Concurrency:** Introduction, Serializability, Concurrency control, Locking schemes, Timestamp based ordering, Optimistic, Scheduling, Multiversion techniques, Deadlocks.

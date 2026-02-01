@@ -1,4 +1,10 @@
-# Web Mining Syllabus
+---
+title: "Web Mining Syllabus"
+description: "Complete syllabus for Web Mining - PEC-CSE-405G"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
 **Course code**: PEC-CSE-405G  
 **Category**: Professional Elective Course  

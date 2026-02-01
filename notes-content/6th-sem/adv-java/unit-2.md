@@ -1,10 +1,17 @@
-# Unit 2: Struts and Mail API
+---
+title: "Unit 2: Struts and Mail API"
+description: "Struts2 architecture, interceptors, validation, Mail API for sending and receiving emails"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
-**Author: Deepak Modi**    
+## Syllabus:
 
-**Syllabus :**      
 **Struts:** Introduction, features, models, components, struts2 architecture, action, configuration, interceptors, validation method, aware Interfaces, stuts2withI18N, zero configuration, struts2withtiles, hibernate with struts2, spring with struts2, UI tags.     
 **Mail API:** Java mail introduction, methods of sending email, sending mail by Gmail, receiving email, sending attachment, receiving attachment, sending html, forwarding, deleting email.
+
+---
 
 ## MDU PYQs:
 ### Struts Framework  

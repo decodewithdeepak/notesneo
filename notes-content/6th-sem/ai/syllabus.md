@@ -1,4 +1,10 @@
-# AI Syllabus
+---
+title: "AI Syllabus"
+description: "Complete syllabus for Artificial Intelligence - PCC-CSE-304G"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
 ## Course Details
 - **Course Code**: PCC-CSE-304G

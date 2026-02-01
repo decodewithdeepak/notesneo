@@ -1,8 +1,13 @@
-# Unit 2: Symmetric and Asymmetric Key Algorithms
+---
+title: "Unit 2: Symmetric and Asymmetric Key Algorithms"
+description: "DES, AES, RSA algorithms, digital signatures, and cryptographic modes"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
-**Course:** PEC-CSE-411G | **Author:** [Deepak Modi](https://deepakmodi.tech)
+## Syllabus:
 
-**Syllabus:**  
 **Symmetric Key Algorithms:** Introduction, algorithms types and modes, DES, AES.  
 **Asymmetric Key Algorithms:** Introduction, history of asymmetric key cryptography, RSA symmetric and asymmetric key cryptography together, Digital signature.
 

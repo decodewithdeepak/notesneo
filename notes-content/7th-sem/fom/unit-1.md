@@ -1,8 +1,13 @@
-# Unit 1: Management Fundamentals and Staffing
+---
+title: "Unit 1: Management Fundamentals and Staffing"
+description: "Management principles, functions, staffing, personnel management, recruitment, and training"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
-**Course:** HSMC-08G | **Author:** [Deepak Modi](https://deepakmodi.tech)
+## Syllabus:
 
-**Syllabus:**  
 Meaning of management, Definitions of Management, Characteristics of management, Management vs. Administration. Management-Art, Science and Profession. Importance of Management. Development of Management thoughts. Principles of Management. The Management Functions, Inter-relationship of Managerial functions. Nature and Significance of staffing, Personnel management, Functions of personnel management, Manpower planning, Process of manpower planning, Recruitment, Selection; Promotion - Seniority Vs. Merit. Training - objectives and types of training.
 
 ---

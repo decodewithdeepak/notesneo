@@ -1,7 +1,12 @@
-# Unit 1: Compilers and Lexical Analysis
+---
+title: "Unit 1: Compilers and Lexical Analysis"
+description: "Compiler phases, lexical analysis, regular expressions, finite automata, and token recognition"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
-**Syllabus :** *\[PCC-CSE-302G\]*                                           
-**Compiled By:** *Deepak Modi (223100)*  
+## Syllabus:
 
 **Introduction to Compilers:** Language Processors, The Structure of compiler: its different phases, Compiler Construction Tools, Applications of Compiler Technology.   
 

@@ -1,4 +1,16 @@
-# Unit 2: Syntax Analysis
+---
+title: "Unit 2: Syntax Analysis"
+description: "Context-free grammars, top-down and bottom-up parsing, LL and LR parsers"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
+
+## Syllabus:
+
+**Syntax Analysis:** Role of parsers, Context-free grammars, Writing grammar, Top-down parsing, Recursive descent parsing, Predictive parsing, LL(1) grammar, Bottom-up parsing, Operator precedence parsing, LR parsers.
+
+---
 
 ## Section 1: Syntax Analysis
 

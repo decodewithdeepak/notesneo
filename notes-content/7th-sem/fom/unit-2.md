@@ -1,8 +1,13 @@
-# Unit 2: Production Management
+---
+title: "Unit 2: Production Management"
+description: "Production planning, control, material management, and inventory control methods"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
-**Course:** HSMC-08G | **Author:** [Deepak Modi](https://deepakmodi.tech)
+## Syllabus:
 
-**Syllabus:**  
 Production Management: Definition, Objectives, Functions and Scope, Production Planning and Control; its significance, stages in production planning and control. Brief introduction to the concepts of material management, inventory control; its importance and various methods.
 
 ---

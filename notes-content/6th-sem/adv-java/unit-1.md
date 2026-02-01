@@ -1,10 +1,17 @@
-# Unit 1: Servlet and JSP
+---
+title: "Unit 1: Servlet and JSP"
+description: "Servlet API, lifecycle, configuration, session management, JSP scripting, implicit objects, and JSTL"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
-**Author: Deepak Modi**    
+## Syllabus:
 
-**Syllabus :**      
 **Servlet:** Servlet introduction, web terminology, servlet API, servlet Interface, generic servlet, Http servlet, servlet lifecycle, servlet with IDE (eclipse, My eclipse, Net beans), servlet request, servlet collaboration, servlet configuration, context, attribute in servlet, session technique in servlet, event and listener, servlet filter, CRUD, pagination, input output stream, annotation, single thread model, SSI.       
 **JSP:** Lifecycle of JSP, JSPAPI, scripting elements, 9Implicit Objects, directive elements, Exceptions, action elements, expression language, MVC in JSP, JSTL, custom tags, pagination, CRUD,JSTL function, formatting, XML, SQL tags.
+
+---
 
 ## MDU PYQs:
 ### Servlet

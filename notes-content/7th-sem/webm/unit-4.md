@@ -1,8 +1,13 @@
-# Unit 4: Web Usage Mining Swarm Intelligence Techniques
+---
+title: "Unit 4: Web Usage Mining and Swarm Intelligence"
+description: "PSO, ACO, Firefly algorithm, swarm technique hybridization, and real-world applications"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
-**Course:** PEC-CSE-405G | **Author:** [Deepak Modi](https://deepakmodi.tech)
+## Syllabus:
 
-**Syllabus:**  
 Particle Swarm Optimization, Ant Colony Optimization, Artificial Bees and Firefly Algorithm etc., Hybridization and Comparisons of Swarm Techniques, Application of Swarm Techniques in Different Domains and Real World Problems.
 
 ---

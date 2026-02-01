@@ -1,8 +1,13 @@
-# Unit 1: Introduction to Cryptography
+---
+title: "Unit 1: Introduction to Cryptography"
+description: "Encryption, decryption, substitution and transposition techniques, symmetric and asymmetric cryptography"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
-**Course:** PEC-CSE-411G | **Author:** [Deepak Modi](https://deepakmodi.tech)
+## Syllabus:
 
-**Syllabus:**  
 Plain text and cipher text, substitution techniques, transposition techniques, encryption and decryption, symmetric and asymmetric key cryptography.
 
 ---

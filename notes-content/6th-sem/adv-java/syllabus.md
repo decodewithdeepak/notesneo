@@ -1,4 +1,10 @@
-# Advanced Java Syllabus
+---
+title: "Advanced Java Syllabus"
+description: "Complete syllabus for Advanced Java - PCC-CSE-306G"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
 **Course code:** PCC-CSE-306G  
 **Category:** Professional Course Code  

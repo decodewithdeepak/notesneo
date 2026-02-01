@@ -1,12 +1,19 @@
-# Unit 2: Classical Neural Network Models
+---
+title: "Unit 2: Classical Neural Network Models"
+description: "MCP model, Hebb network, Perceptron architecture, and linear separability"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
-**Course:** PCC-CSE-401G | **Author:** [Deepak Modi](https://deepakmodi.tech)
+## Syllabus:
 
-**Syllabus:**  
 **McCulloch and Pits Neural Network (MCP Model):** Architecture, Solution of AND, OR function using MCP model.  
 **Hebb Model:** Architecture, training and testing, Hebb network for AND function.  
 **Perceptron Network:** Architecture, training, Testing, single and multi-output model, Perceptron for AND function.  
 **Linear Function:** Application of linear model, linear separability, solution of OR function using linear separability model.
+
+---
 
 ---
 

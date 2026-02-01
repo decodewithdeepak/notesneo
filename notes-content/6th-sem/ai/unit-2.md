@@ -1,8 +1,12 @@
-# Unit 2: Knowledge Representation
+---
+title: "Unit 2: Knowledge Representation"
+description: "Knowledge types, propositional and predicate logic, semantic nets, frames, and rule-based systems"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
-**Subject:** *Artificial Intelligence*  
-**Course Code :** *\[PCC-CSE-304G\]*                                              
-**Compiled By:** *Deepak Modi (223100)*   
+## Syllabus:
 
 **Knowledge Representation:** Types of Knowledge, Knowledge Representation Techniques/schemes: Propositional Logic, Predicate Logic, Semantic nets, Frames. Knowledge representation issues. Rule based systems.  
 

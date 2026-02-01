@@ -1,6 +1,22 @@
-# Unit 2: GSM, Wireless LAN, Bluetooth, and WiMAX
+---
+title: "Unit 2: GSM, Wireless LAN, Bluetooth, and WiMAX"
+description: "GSM architecture, Wireless LAN standards, Bluetooth technology, and WiMAX"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
-**Course:** ESC-CSE-308G | **Author:** Deepak Modi
+## Syllabus:
+
+**GSM:** Mobile Services, Architecture Radio, Interface, Protocol, Localization, Calling Handover, Security, New data services.
+
+**Wireless LAN:** IEEE 802.11 - System and Protocol Architecture, Physical Layer, MAC Layered Management.
+
+**Bluetooth:** User scenarios, Physical layer, MAC Layer, Networking, Security and Link Management.
+
+**Wimax**
+
+---
 
 ## Content Outline
 - **1. GSM (Global System for Mobile Communications)**

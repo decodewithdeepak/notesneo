@@ -1,4 +1,10 @@
-# Compiler Design Syllabus
+---
+title: "Compiler Design Syllabus"
+description: "Complete syllabus for Compiler Design - PCC-CSE-302G"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
 **Course Code**: PCC-CSE-302G  
 **Category**: Professional Core Course  

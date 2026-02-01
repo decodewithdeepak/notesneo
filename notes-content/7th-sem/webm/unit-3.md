@@ -1,8 +1,13 @@
-# Unit 3: Web Structure Mining Optimization
+---
+title: "Unit 3: Web Structure Mining and Optimization"
+description: "Computational intelligence, optimization algorithms, evolutionary computation, and swarm intelligence"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
-**Course:** PEC-CSE-405G | **Author:** [Deepak Modi](https://deepakmodi.tech)
+## Syllabus:
 
-**Syllabus:**  
 Introduction to Models and Concept of Computational Intelligence, Social Behavior as Optimization: Discrete and Continuous Optimization Problems, Classification of Optimization Algorithms, Evolutionary Computation Theory and Paradigm, Swarm and Collective intelligence.
 
 ---

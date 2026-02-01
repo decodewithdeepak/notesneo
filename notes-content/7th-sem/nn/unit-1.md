@@ -1,8 +1,13 @@
-# Unit 1: Biological Neurons and Activation Functions
+---
+title: "Unit 1: Biological Neurons and Activation Functions"
+description: "Biological neuron structure, activation functions, and ANN architectures"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
-**Course:** PCC-CSE-401G | **Author:** [Deepak Modi](https://deepakmodi.tech)
+## Syllabus:
 
-**Syllabus:**  
 **Overview of Biological Neurons:** Structure of biological neuron, neurobiological analogy, Biological neuron equivalencies to artificial neuron model, Evolution of neural network.  
 **Activation Functions:** Threshold functions, Signum function, Sigmoid function, Tan hyperbolic function, Stochastic function, Ramp function, Linear function, Identity function.  
 **ANN Architecture:** Feed forward network, Feed backward network, single and multilayer network, fully recurrent network.

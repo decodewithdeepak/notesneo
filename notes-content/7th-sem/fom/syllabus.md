@@ -1,4 +1,10 @@
-# Fundamentals of Management Syllabus
+---
+title: "Fundamentals of Management Syllabus"
+description: "Complete syllabus for Fundamentals of Management - HSMC-08G"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
 **Course code**: HSMC-08G  
 **Category**: Open Elective Course  

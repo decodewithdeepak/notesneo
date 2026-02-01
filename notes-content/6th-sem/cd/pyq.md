@@ -1,4 +1,10 @@
-# Compiler Design Question Papers
+---
+title: "Compiler Design Previous Year Questions"
+description: "Previous year question papers for Compiler Design"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
 **Course Title**: Compiler Design  
 **Course Code**: PCC-CSE-302-G  

@@ -1,8 +1,13 @@
-# Unit 4: Financial Management
+---
+title: "Unit 4: Financial Management"
+description: "Financial management objectives, functions, capital structure, and sources of finance"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
-**Course:** HSMC-08G | **Author:** [Deepak Modi](https://deepakmodi.tech)
+## Syllabus:
 
-**Syllabus:**  
 Introduction of Financial Management, Objectives of Financial Management, Functions and Importance of Financial Management. Brief Introduction to the concept of capital structure and various sources of finance.
 
 ---

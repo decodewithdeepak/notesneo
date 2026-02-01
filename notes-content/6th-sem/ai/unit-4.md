@@ -1,8 +1,12 @@
-# Unit 4: Learning and Neural Networks
+---
+title: "Unit 4: Learning and Neural Networks"
+description: "Machine learning types, neural networks, expert systems, and current AI trends"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
-**Subject:** *Artificial Intelligence*  
-**Course Code :** *\[PCC-CSE-304G\]*                                              
-**Compiled By:** *Deepak Modi (223100)*  
+## Syllabus:
 
 **Learning:** Introduction to Learning, Types of Learning: Learning by Induction, Rote Learning, Symbol Based Learning, Identification Trees, Explanation Based Learning, Transformational Analogy, Introduction to Neural Networks, Expert Systems, Current trends in Artificial Intelligence.  
 

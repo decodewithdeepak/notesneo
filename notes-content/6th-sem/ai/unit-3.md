@@ -1,8 +1,12 @@
-# Unit 3: Reasoning and Planning
+---
+title: "Unit 3: Reasoning and Planning"
+description: "Probability theory, Bayesian reasoning, Dempster-Shafer theory, and partial-order planning"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
-**Subject:** *Artificial Intelligence*  
-**Course Code:** *[PCC-CSE-304G]*                                              
-**Compiled By:** *Deepak Modi (223100)*  
+## Syllabus:
 
 **Reasoning under Uncertainty:** Basics of Probability Theory, Probabilistic Reasoning, Bayesian Reasoning, Dempster-Shafer Theory.    
 **Planning:** Introduction to Planning, Representation of Planning, Partial-order Planning. 

@@ -1,6 +1,20 @@
-# Unit 4: Satellite Systems and Mobility Support
+---
+title: "Unit 4: Satellite Systems and Mobility Support"
+description: "Satellite communication, orbits, routing, mobile transport layer, and WAP"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
-**Course:** ESC-CSE-308G | **Author:** Deepak Modi
+## Syllabus:
+
+**Satellite Systems:** History, Applications, GEO, LEO, MEO, Routing, Localization, Handover in Satellite System.
+
+**Support for Mobility:** File System, WWW, HTML, System Architecture.
+
+**WAP:** Architecture, Wireless Datagram, Protocol, Wireless Transport Layer Security, Wireless Transaction Protocol, Application Environment, Telephony Applications.
+
+---
 
 ## Content Outline
 - **1. Satellite Systems**

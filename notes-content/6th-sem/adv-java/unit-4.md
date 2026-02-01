@@ -1,10 +1,17 @@
-# Unit 4: Android and Design Pattern
+---
+title: "Unit 4: Android and Design Pattern"
+description: "Android architecture, building blocks, widgets, activities, and Java design patterns"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
-**Author: Deepak Modi**    
+## Syllabus:
 
-**Syllabus :**      
 **Android:** Introduction, history & versions, architecture, building blocks, emulator, android widgets, activity and intents, android fragments, android menu, android service, SQLite, XML & JSON, android speech, multimedia, telephony, maps        
 **Design Pattern:** Java design pattern, creational, structural, behavioral, J2EE patterns, presentation layers
+
+---
 
 ## MDU PYQs:
 ### Android Development  

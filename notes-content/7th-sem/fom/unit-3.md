@@ -1,8 +1,13 @@
-# Unit 3: Marketing Management
+---
+title: "Unit 3: Marketing Management"
+description: "Marketing concepts, functions, marketing research, and advertising strategies"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
-**Course:** HSMC-08G | **Author:** [Deepak Modi](https://deepakmodi.tech)
+## Syllabus:
 
-**Syllabus:**  
 Marketing Management - Definition of marketing, marketing concept, objectives & Functions of marketing. Marketing Research - Meaning; Definition; objectives; Importance; Limitations; Process. Advertising - meaning of advertising, objectives, functions, criticism.
 
 ---

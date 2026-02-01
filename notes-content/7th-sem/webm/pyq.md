@@ -1,4 +1,10 @@
-# Web Mining Question Papers
+---
+title: "Web Mining Previous Year Questions"
+description: "Previous year question papers for Web Mining"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
 **Course Title**: Web Mining  
 **Course Code**: PEC-CSE-405-G  

@@ -1,4 +1,10 @@
-# Advanced Java Question Papers
+---
+title: "Advanced Java Previous Year Questions"
+description: "Previous year question papers for Advanced Java"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
 **Course Title**: Advanced Java  
 **Course Code**: PCC-CSE-306-G  

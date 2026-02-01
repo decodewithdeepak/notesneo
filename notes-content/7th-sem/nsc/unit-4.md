@@ -1,8 +1,13 @@
-# Unit 4: User Authentication and Kerberos
+---
+title: "Unit 4: User Authentication and Kerberos"
+description: "Authentication methods, passwords, biometrics, Kerberos, KDC, and single sign-on"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
-**Course:** PEC-CSE-411G | **Author:** [Deepak Modi](https://deepakmodi.tech)
+## Syllabus:
 
-**Syllabus:**  
 Introduction, Authentication basics, Passwords, authentication tokens, certificate based authentication, biometric based authentication, Kerberos, key distribution center (KDC), Security handshake pitfalls, single Sign on (SSO) approach.
 
 ---

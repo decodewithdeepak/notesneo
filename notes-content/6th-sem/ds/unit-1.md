@@ -1,10 +1,14 @@
-# Unit 1: Introduction to Data Science
+---
+title: "Unit 1: Introduction to Data Science"
+description: "Data Science concepts, Big Data traits, web scraping, statistical and algorithm modeling"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
-**Course**: Data Science (PEC-CSE-320G)  
-**Semester**: 6th Semester (CSE)  
-**Compiled By**: Deepak Modi (223100)
+## Syllabus:
 
-**Syllabus Topics**: Concept of Data Science, Traits of Big data, Web Scraping, Analysis vs Reporting, Collection, storing, processing, describing and modelling, statistical modelling and algorithm modelling, AI and data science, Myths of Data science.
+Concept of Data Science, Traits of Big data, Web Scraping, Analysis vs Reporting, Collection, storing, processing, describing and modelling, statistical modelling and algorithm modelling, AI and data science, Myths of Data science.
 
 ---
 

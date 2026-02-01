@@ -1,8 +1,13 @@
-# Unit 4: Associative Memory
+---
+title: "Unit 4: Associative Memory"
+description: "Auto-associative and hetero-associative memory, Hebb rule, and bidirectional memory"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
-**Course:** PCC-CSE-401G | **Author:** [Deepak Modi](https://deepakmodi.tech)
+## Syllabus:
 
-**Syllabus:**  
 **Associative Memory:** Auto associative and Hetero associative memory and their architecture, training (insertion) and testing (Retrieval) algorithm using Hebb rule and Outer Product rule. Storage capacity, Testing of associative memory for missing and mistaken data, Bidirectional memory.
 
 ---

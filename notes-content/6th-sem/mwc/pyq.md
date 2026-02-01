@@ -1,8 +1,16 @@
-# Mobile and Wireless Communication Question Papers
+---
+title: "Mobile and Wireless Communication Previous Year Questions"
+description: "Previous year question papers for Mobile and Wireless Communication"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
 **Course Title**: Mobile Wireless Communication  
 **Course Code**: ESC-CSE-308-G  
 **Semester**: B.Tech. 6th Semester (CSE)
+
+---
 
 ## May—2024 Examination
 

@@ -1,8 +1,13 @@
-# Unit 3: Learning and Backpropagation Network
+---
+title: "Unit 3: Learning and Backpropagation Network"
+description: "Supervised, unsupervised, reinforcement learning, gradient descent, and backpropagation"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
-**Course:** PCC-CSE-401G | **Author:** [Deepak Modi](https://deepakmodi.tech)
+## Syllabus:
 
-**Syllabus:**  
 **Learning:** Supervised, Unsupervised, reinforcement learning, Gradient Descent algorithm, generalized delta learning rule, Hebbian learning, Competitive learning.  
 **Back Propagation Network:** Architecture, training and testing.
 

@@ -1,4 +1,10 @@
-# Data Science Question Papers
+---
+title: "Data Science Previous Year Questions"
+description: "Previous year question papers for Data Science"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
 **Course Title**: Data Science  
 **Course Code**: PEC-CSE-320G  

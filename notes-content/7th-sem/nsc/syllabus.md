@@ -1,4 +1,10 @@
-# Network Security and Cryptography Syllabus
+---
+title: "Network Security and Cryptography Syllabus"
+description: "Complete syllabus for Network Security and Cryptography - PEC-CSE-411G"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
 **Course code**: PEC-CSE-411G  
 **Category**: Professional Elective Course  

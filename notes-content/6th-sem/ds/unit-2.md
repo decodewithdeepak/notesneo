@@ -1,9 +1,15 @@
-# Unit 2: Programming Tools for Data Science
-
+---
+title: "Unit 2: Programming Tools for Data Science"
+description: "Python toolkits - Matplotlib, NumPy, Scikit-learn, NLTK, data visualization and web scraping"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
 ---
 
-**Syllabus :** *\[PEC-CSE-320G\]*                                            **Compiled By:** *Deepak Modi (223100)*  
+## Syllabus:
+
 **Introduction to Programming Tools for Data Science:** Toolkits using Python: Matplotlib, NumPy, Scikit-learn, NLTK, Visualizing Data: Bar Charts, Line Charts, Scatterplots, Working with data: Reading Files, Scraping the Web.  
+
 ---
 
 ## **I. Introduction to Programming Tools for Data Science**

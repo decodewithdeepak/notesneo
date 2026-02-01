@@ -1,8 +1,14 @@
-# ADBMS Syllabus
+---
+title: "ADBMS Syllabus"
+description: "Complete syllabus for Advanced Database Management System - PEC-CSE-310G"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: "https://example.com/"
+---
 
-**Course code**: PEC-CSE-310G  
+**Course Code**: PEC-CSE-310G  
+**Course Title**: Advanced Database Management System  
 **Category**: Professional Elective Course  
-**Course title**: Advanced Database Management System  
 
 ## Scheme and Credits
 

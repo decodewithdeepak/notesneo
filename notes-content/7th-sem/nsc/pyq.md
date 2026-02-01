@@ -1,4 +1,10 @@
-# Network Security and Cryptography Question Papers
+---
+title: "Network Security and Cryptography Previous Year Questions"
+description: "Previous year question papers for Network Security and Cryptography"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
 **Course Title**: Network Security and Cryptography  
 **Course Code**: PEC-CSE-411-G  

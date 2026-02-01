@@ -1,6 +1,12 @@
-# Unit 3: Parallel and Distributed Databases
+---
+title: "Unit 3: Parallel and Distributed Databases"
+description: "Distributed Data Storage, Fragmentation, Replication, Query Processing, Transaction Management, and Parallel Database Design"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
-**Course:** PCC-CSE-310G | **Author:** [Deepak Modi](https://deepakmodi.tech) | **Website:** [NotesNeo](https://notesneo.vercel.app)
+## Syllabus:
 
 **Parallel and Distributed Databases**: Distributed Data Storage – Fragmentation & Replication, Location and Fragment.    
 Transparency Distributed Query Processing and Optimization, Distributed Transaction Modeling and concurrency Control, Distributed Deadlock, Commit Protocols, Design of Parallel Databases, Parallel Query Evaluation.

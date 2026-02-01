@@ -1,10 +1,15 @@
-# Unit 3: Data Science Methodology
-
+---
+title: "Unit 3: Data Science Methodology"
+description: "Data science lifecycle - business understanding, data preparation, modeling, evaluation, and deployment"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
 ---
 
-**Syllabus :** *\[PEC-CSE-320G\]*                                            
-**Compiled By:** *Deepak Modi (223100)*  
+## Syllabus:
+
 **Data Science Methodology:** Business Understanding, Analytic Approach, Data Requirements, Data Collection, Data Understanding, Data Preparation, Modeling, Evaluation, Deployment, Feedback.  
+
 ---
 
 ## **Data Science Methodology**

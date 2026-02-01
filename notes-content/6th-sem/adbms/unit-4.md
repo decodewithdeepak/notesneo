@@ -1,6 +1,12 @@
-# Unit 4: Object-Oriented and Object-Relational Databases
+---
+title: "Unit 4: Object-Oriented and Object-Relational Databases"
+description: "Complex Data Modeling, Specialization, Generalization, Objects, Object Identity, and OODBMS Architecture"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
-**Course:** PCC-CSE-310G | **Author:** [Deepak Modi](https://deepakmodi.tech) | **Website:** [NotesNeo](https://notesneo.vercel.app)
+## Syllabus:
 
 **Objected Oriented and Object Relational Databases**: Modeling Complex Data Semantics, Specialization, Generalization, Aggregation and Association, Objects, Object Identity, Equality and Object Reference, Architecture of Object Oriented and Object Relational Databases
 

@@ -1,7 +1,12 @@
-# Unit 4: Symbol Table and Code Generation
+---
+title: "Unit 4: Symbol Table and Code Generation"
+description: "Symbol table data structures, error detection, code generation, and optimization"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
-**Syllabus :** *\[PCC-CSE-302G\]*                                           
-**Compiled By:** *Deepak Modi (223100)*  
+## Syllabus:
 
 **Symbol Table & Error Detection and Recovery:** Symbol tables: its contents and data structure for symbol tables; trees, arrays, linked lists, hash tables. Errors, lexical phase error, syntactic phase error, Semantic error.  
 

@@ -59,18 +59,22 @@ export default async function NotePage({ params }: Props) {
           {note.title}
         </h1>
         {(note.description || note.author || note.date) && (
-          <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+          <div className="flex flex-col gap-2 text-sm text-muted-foreground">
             {note.description && <p>{note.description}</p>}
-            {note.author && (
-              <div className="flex items-center gap-1">
-                <User className="h-3.5 w-3.5" />
-                <span>Author: {note.author}</span>
-              </div>
-            )}
-            {note.date && (
-              <div className="flex items-center gap-1">
-                <Calendar className="h-3.5 w-3.5" />
-                <span>Last Updated: {note.date}</span>
+            {(note.author || note.date) && (
+              <div className="flex flex-wrap items-center gap-4">
+                {note.author && (
+                  <div className="flex items-center gap-1">
+                    <User className="h-3.5 w-3.5" />
+                    <span>Author: {note.author}</span>
+                  </div>
+                )}
+                {note.date && (
+                  <div className="flex items-center gap-1">
+                    <Calendar className="h-3.5 w-3.5" />
+                    <span>Last Updated: {note.date}</span>
+                  </div>
+                )}
               </div>
             )}
           </div>

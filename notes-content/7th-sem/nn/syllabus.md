@@ -1,4 +1,10 @@
-# Neural Networks Syllabus
+---
+title: "Neural Networks Syllabus"
+description: "Complete syllabus for Neural Networks - PCC-CSE-401G"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
 **Course code**: PCC-CSE-401G  
 **Category**: Professional Core Course  

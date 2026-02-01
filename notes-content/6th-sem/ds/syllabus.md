@@ -1,4 +1,10 @@
-# Data Science Syllabus
+---
+title: "Data Science Syllabus"
+description: "Complete syllabus for Data Science - PEC-CSE-320G"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
 **Course code**: PEC-CSE-320G  
 **Category**: Professional Elective Course 

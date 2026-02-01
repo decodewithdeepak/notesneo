@@ -1,6 +1,20 @@
-# Unit 3: Mobile Network Layer and Ad Hoc Networks
+---
+title: "Unit 3: Mobile Network Layer and Ad Hoc Networks"
+description: "Mobile IP, routing protocols, ad hoc networks, and MANET"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
-**Course:** ESC-CSE-308G | **Author:** Deepak Modi
+## Syllabus:
+
+**Mobile Network Layer:** Mobile IP-Goals, Assumptions, Requirement, Entities, Terminology, IP Packet delivery, Agent Advertisement and Discovery, Registration, Tunneling, Encapsulation, Optimization, Reserve Tunneling, Security, IPv6, DHCP.
+
+**Mobile Adhoc Networks:** Routing, Destination Sequence Distance Vector, Dynamic Source Routing, Hierarchical algorithms, Performance Metrics.
+
+**Mobile Transport Layer:** Traditional TCP, Indirect TCP, Snooping, TCP, Mobile TCP, Fast-retransmission TCP, Transaction oriented TCP.
+
+---
 
 ## Content Outline
 - **1. Mobile Network Layer**

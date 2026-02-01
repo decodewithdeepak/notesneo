@@ -1,4 +1,10 @@
-# AI Previous Year Question Papers
+---
+title: "AI Previous Year Questions"
+description: "Previous year question papers for Artificial Intelligence"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
 **Course Title**: Artificial Intelligence  
 **Course Code**: PCC-CSE-304-G  

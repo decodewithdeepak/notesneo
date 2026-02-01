@@ -1,4 +1,10 @@
-# ADBMS Question Papers
+---
+title: "ADBMS Previous Year Questions"
+description: "Previous year question papers for Advanced Database Management System"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
 **Course Title**: Advanced Database Management System  
 **Course Code**: PEC-CSE-310-G  

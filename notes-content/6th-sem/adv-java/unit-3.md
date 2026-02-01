@@ -1,10 +1,17 @@
-# Unit 3: Spring and Hibernate
+---
+title: "Unit 3: Spring and Hibernate"
+description: "Hibernate architecture, HQL, transaction management, Spring modules, dependency injection, and AOP"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
-**Author: Deepak Modi** 
+## Syllabus:
 
-**Syllabus :**      
 **Hibernate (HB):** Introduction, architecture, HB with IDE, HB Log4j, inheritance mapping, HB mapping, transaction management, HB query language, HB criteria query language, named query, HB caching, integration, HB lifecycle       
 **Spring:** Introduction, modules, spring with IDE, dependency injection methods, spring AOP, spring Jdbc template, spring ORM, SPEL, MVC tag library, applications, spring remoting, spring OXM, spring web, security models, spring boot, spring with angular
+
+---
 
 ## MDU PYQs:
 ### Hibernate  

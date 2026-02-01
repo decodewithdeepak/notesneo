@@ -1,8 +1,12 @@
-# Unit 1: Introduction to AI and Problem Solving
+---
+title: "Unit 1: Introduction to AI and Problem Solving"
+description: "AI fundamentals, search algorithms (DFS, BFS, A*), hill climbing, genetic algorithms, and game playing"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
-**Subject:** *Artificial Intelligence*  
-**Course Code :** *\[PCC-CSE-304G\]*                                              
-**Compiled By:** *Deepak Modi (223100)*  
+## Syllabus:
 
 **Introduction:** Definition of AI, History of AI, nature of AI problems, examples of AI problems. **Problem solving by search:** Uninformed Search: Depth First Search (DFS), Breadth First Search (BFS). Informed Search: Best First Search, A\*. Local Search: Hill Climbing. Problem Reduction Search: AO\*. Population Based Search: Ant Colony Optimization, Genetic Algorithm. Game Playing: Min Max Algorithm, Alpha-Beta Pruning.   
 

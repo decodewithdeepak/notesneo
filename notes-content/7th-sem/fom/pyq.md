@@ -1,4 +1,10 @@
-# Fundamentals of Management Question Papers
+---
+title: "Fundamentals of Management Previous Year Questions"
+description: "Previous year question papers for Fundamentals of Management"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
 **Course Title**: Fundamentals of Management  
 **Course Code**: HSMC-08G  

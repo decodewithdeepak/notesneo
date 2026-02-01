@@ -1,4 +1,10 @@
-# Neural Networks Question Papers
+---
+title: "Neural Networks Previous Year Questions"
+description: "Previous year question papers for Neural Networks"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: ""
+---
 
 **Course Title**: Neural Networks  
 **Course Code**: PCC-CSE-401-G  
