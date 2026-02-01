@@ -14,7 +14,7 @@ export default function HeroSection() {
       <div
         className={cn(
           "absolute bg-background z-10 inset-0 w-full h-full",
-          "mask-[radial-gradient(600px_circle_at_center,white,rgba(255,255,255,0.8),transparent)]"
+          "mask-[radial-gradient(600px_circle_at_center,white,rgba(255,255,255,0.8),transparent)]",
         )}
       ></div>
 
@@ -54,8 +54,17 @@ export default function HeroSection() {
               </Link>
             </Button>
 
-            <Button variant="outline" size="lg" className="w-full sm:w-auto gap-2" asChild>
-              <Link href="https://chat.whatsapp.com/EtBjr3a2V8n1biCfXYf1iw" target="_blank" rel="noopener noreferrer">
+            <Button
+              variant="outline"
+              size="lg"
+              className="w-full sm:w-auto gap-2"
+              asChild
+            >
+              <Link
+                href="https://chat.whatsapp.com/EtBjr3a2V8n1biCfXYf1iw"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <svg
                   className="h-5 w-5"
                   fill="currentColor"

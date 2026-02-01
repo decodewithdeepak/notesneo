@@ -14,7 +14,7 @@ export interface Heading {
  * Handles strings, React elements, and arrays recursively
  */
 export const cleanText = (text: string | React.ReactNode): string => {
-  if (typeof text === 'string') {
+  if (typeof text === "string") {
     return text
       .replace(/\*\*/g, "")
       .replace(/\*/g, "")
@@ -22,17 +22,17 @@ export const cleanText = (text: string | React.ReactNode): string => {
       .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
       .trim();
   }
-  
+
   // Handle React children (arrays, objects, etc.)
   if (Array.isArray(text)) {
-    return text.map(child => cleanText(child)).join('');
+    return text.map((child) => cleanText(child)).join("");
   }
-  
+
   // Handle React elements
   if (React.isValidElement(text)) {
     return cleanText((text.props as { children?: React.ReactNode }).children);
   }
-  
+
   // Fallback for other types
   return String(text);
 };
@@ -43,7 +43,11 @@ export const cleanText = (text: string | React.ReactNode): string => {
  * @param count - Optional counter for duplicate headings
  */
 export const generateId = (text: string, count = 0): string => {
-  const base = `heading-${text.toLowerCase().replace(/[^\w\s-]/g, "").replace(/\s+/g, "-").substring(0, 50)}`;
+  const base = `heading-${text
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .substring(0, 50)}`;
   return count > 0 ? `${base}-${count}` : base;
 };
 

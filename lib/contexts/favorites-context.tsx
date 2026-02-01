@@ -8,6 +8,7 @@ import {
   ReactNode,
 } from "react";
 import { Note } from "@/lib/types/note";
+import { loadFromStorage } from "@/lib/utils/local-storage";
 
 const FAVORITES_KEY = "notesneo_favorites";
 
@@ -29,19 +30,14 @@ export function FavoritesProvider({ children }: { children: ReactNode }) {
   const [favorites, setFavorites] = useState<Note[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // Load favorites from localStorage on mount
   useEffect(() => {
-    try {
-      const stored = localStorage.getItem(FAVORITES_KEY);
-      if (stored) {
-        const parsed = JSON.parse(stored);
-        setFavorites(parsed);
-      }
-    } catch (error) {
-      console.error("Error loading favorites:", error);
-    } finally {
-      setIsLoaded(true);
-    }
+    const loaded = loadFromStorage(
+      FAVORITES_KEY,
+      (data): data is Note[] => Array.isArray(data),
+      [],
+    );
+    setFavorites(loaded);
+    setIsLoaded(true);
   }, []);
 
   // Save favorites to localStorage whenever they change
@@ -56,13 +52,9 @@ export function FavoritesProvider({ children }: { children: ReactNode }) {
   }, [favorites, isLoaded]);
 
   const addFavorite = (note: Note) => {
-    setFavorites((prev) => {
-      // Check if already exists
-      if (prev.some((fav) => fav.id === note.id)) {
-        return prev;
-      }
-      return [...prev, note];
-    });
+    setFavorites((prev) =>
+      prev.some((fav) => fav.id === note.id) ? prev : [...prev, note],
+    );
   };
 
   const removeFavorite = (noteId: string) => {
@@ -77,9 +69,8 @@ export function FavoritesProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  const isFavorite = (noteId: string): boolean => {
-    return favorites.some((fav) => fav.id === noteId);
-  };
+  const isFavorite = (noteId: string) =>
+    favorites.some((fav) => fav.id === noteId);
 
   const clearFavorites = () => {
     setFavorites([]);

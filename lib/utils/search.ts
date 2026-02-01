@@ -9,7 +9,7 @@ export function filterNotes(notes: Note[], filters: SearchFilters): Note[] {
     if (filters.title?.trim()) {
       const query = filters.title.trim().toLowerCase().replace(/\s+/g, " ");
       const matchesSearch = [note.title, note.description, note.subject].some(
-        (field) => field.toLowerCase().includes(query)
+        (field) => field.toLowerCase().includes(query),
       );
       if (!matchesSearch) return false;
     }
@@ -51,7 +51,7 @@ export function filterNotes(notes: Note[], filters: SearchFilters): Note[] {
 export function paginateNotes(
   notes: Note[],
   page: number = 1,
-  pageSize: number = 30
+  pageSize: number = 30,
 ): SearchResult {
   const total = notes.length;
   const totalPages = Math.max(1, Math.ceil(total / pageSize));
@@ -94,7 +94,7 @@ export function getAllSemesters(notes: Note[], branch?: string): number[] {
       ? notes.filter((note) => note.branch === branch)
       : notes;
   return [...new Set(filtered.map((note) => note.semester))].sort(
-    (a, b) => a - b
+    (a, b) => a - b,
   );
 }
 
@@ -104,12 +104,12 @@ export function getAllSemesters(notes: Note[], branch?: string): number[] {
 export function getSubjectsByBranchAndSemester(
   notes: Note[],
   branch?: string,
-  semester?: number
+  semester?: number,
 ): string[] {
   const filtered = notes.filter(
     (note) =>
       (!branch || branch === "All" || note.branch === branch) &&
-      (!semester || note.semester === semester)
+      (!semester || note.semester === semester),
   );
   return [...new Set(filtered.map((note) => note.subject))].sort();
 }

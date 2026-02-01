@@ -10,6 +10,7 @@ import {
   paginateNotes,
 } from "@/lib/utils/search";
 import { Note, SearchFilters } from "@/lib/types/note";
+import { loadFromStorage } from "@/lib/utils/local-storage";
 import {
   Select,
   SelectContent,
@@ -41,25 +42,18 @@ export function NotesClient({ notes }: NotesClientProps) {
   const [isInitialized, setIsInitialized] = useState(false);
   const pageSize = 30;
 
-  // Load cached filters from localStorage on mount
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const cachedFilters = localStorage.getItem(FILTERS_STORAGE_KEY);
-      if (cachedFilters) {
-        try {
-          const parsed = JSON.parse(cachedFilters);
-          setFilters(parsed);
-        } catch (error) {
-          console.error("Failed to parse cached filters", error);
-        }
-      }
-      setIsInitialized(true);
-    }
+    const loaded = loadFromStorage(
+      FILTERS_STORAGE_KEY,
+      (data): data is SearchFilters => data && typeof data === "object",
+      {},
+    );
+    setFilters(loaded);
+    setIsInitialized(true);
   }, []);
 
-  // Save filters to localStorage whenever they change (only after initial load)
   useEffect(() => {
-    if (typeof window !== "undefined" && isInitialized) {
+    if (isInitialized) {
       localStorage.setItem(FILTERS_STORAGE_KEY, JSON.stringify(filters));
     }
   }, [filters, isInitialized]);
@@ -77,17 +71,21 @@ export function NotesClient({ notes }: NotesClientProps) {
     return getSubjectsByBranchAndSemester(
       notes,
       filters.branch,
-      filters.semester
+      filters.semester,
     );
   }, [notes, filters.branch, filters.semester]);
 
   // Validate filters when dropdown options change
   useEffect(() => {
     if (filters.semester && !semesters.includes(filters.semester)) {
-      setFilters(prev => ({ ...prev, semester: undefined, subject: undefined }));
+      setFilters((prev) => ({
+        ...prev,
+        semester: undefined,
+        subject: undefined,
+      }));
     }
     if (filters.subject && !subjects.includes(filters.subject)) {
-      setFilters(prev => ({ ...prev, subject: undefined }));
+      setFilters((prev) => ({ ...prev, subject: undefined }));
     }
   }, [semesters, subjects, filters.semester, filters.subject]);
 
@@ -138,7 +136,11 @@ export function NotesClient({ notes }: NotesClientProps) {
     }));
   };
 
-  const showEmptyState = !filters.branch && !filters.semester && !filters.subject && !searchQuery.trim();
+  const showEmptyState =
+    !filters.branch &&
+    !filters.semester &&
+    !filters.subject &&
+    !searchQuery.trim();
 
   return (
     <main className="max-w-full flex flex-col gap-8 min-h-full">
@@ -330,7 +332,7 @@ export function NotesClient({ notes }: NotesClientProps) {
                     <div className="flex items-center gap-1">
                       {Array.from(
                         { length: paginatedResult.totalPages },
-                        (_, i) => i + 1
+                        (_, i) => i + 1,
                       ).map((page) => {
                         // Show first, last, current, and pages around current
                         const showPage =
@@ -380,7 +382,7 @@ export function NotesClient({ notes }: NotesClientProps) {
                       size="sm"
                       onClick={() => {
                         setCurrentPage((prev) =>
-                          Math.min(paginatedResult.totalPages, prev + 1)
+                          Math.min(paginatedResult.totalPages, prev + 1),
                         );
                         window.scrollTo({ top: 0, behavior: "smooth" });
                       }}

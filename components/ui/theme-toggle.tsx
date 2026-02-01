@@ -18,15 +18,26 @@ export default function ThemeToggle() {
     if (!document.startViewTransition) return setTheme(newTheme);
 
     // @ts-ignore
-    document.startViewTransition(() => setTheme(newTheme)).ready.then(() => {
-      document.documentElement.animate(
-        { clipPath: ["inset(0 0 100% 0)", "inset(0 0 0 0)"] },
-        { duration: 600, easing: "cubic-bezier(0.4, 0, 0.2, 1)", pseudoElement: "::view-transition-new(root)" }
-      );
-    });
+    document
+      .startViewTransition(() => setTheme(newTheme))
+      .ready.then(() => {
+        document.documentElement.animate(
+          { clipPath: ["inset(0 0 100% 0)", "inset(0 0 0 0)"] },
+          {
+            duration: 600,
+            easing: "cubic-bezier(0.4, 0, 0.2, 1)",
+            pseudoElement: "::view-transition-new(root)",
+          },
+        );
+      });
   };
 
-  if (!mounted) return <Button size="sm" variant="ghost"><ThemeToggleIcon className="size-5" /></Button>;
+  if (!mounted)
+    return (
+      <Button size="sm" variant="ghost">
+        <ThemeToggleIcon className="size-5" />
+      </Button>
+    );
 
   return (
     <Button size="sm" variant="ghost" onClick={toggleTheme}>
@@ -34,4 +45,3 @@ export default function ThemeToggle() {
     </Button>
   );
 }
-

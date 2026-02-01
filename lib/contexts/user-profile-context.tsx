@@ -7,6 +7,7 @@ import {
   useEffect,
   ReactNode,
 } from "react";
+import { loadFromStorage } from "@/lib/utils/local-storage";
 
 export interface UserProfile {
   branch: "BTech" | "BCA" | "BBA" | null;
@@ -34,33 +35,32 @@ const defaultProfile: UserProfile = {
   isSetup: false,
 };
 
+const isValidProfile = (data: any): data is UserProfile =>
+  data &&
+  typeof data === "object" &&
+  (data.branch === null || ["BTech", "BCA", "BBA"].includes(data.branch)) &&
+  (data.semester === null ||
+    (typeof data.semester === "number" &&
+      data.semester >= 1 &&
+      data.semester <= 8)) &&
+  typeof data.isSetup === "boolean";
+
 export function UserProfileProvider({ children }: { children: ReactNode }) {
   const [profile, setProfileState] = useState<UserProfile>(defaultProfile);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // Load profile from localStorage on mount
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const storedProfile = localStorage.getItem(PROFILE_STORAGE_KEY);
-      if (storedProfile) {
-        try {
-          const parsed = JSON.parse(storedProfile);
-          setProfileState(parsed);
-        } catch (error) {
-          console.error(
-            "Failed to parse user profile from localStorage",
-            error,
-          );
-          setProfileState(defaultProfile);
-        }
-      }
-      setIsLoaded(true);
-    }
+    const loaded = loadFromStorage(
+      PROFILE_STORAGE_KEY,
+      isValidProfile,
+      defaultProfile,
+    );
+    setProfileState(loaded);
+    setIsLoaded(true);
   }, []);
 
-  // Save profile to localStorage whenever it changes
   useEffect(() => {
-    if (typeof window !== "undefined" && isLoaded) {
+    if (isLoaded) {
       localStorage.setItem(PROFILE_STORAGE_KEY, JSON.stringify(profile));
     }
   }, [profile, isLoaded]);
@@ -79,9 +79,6 @@ export function UserProfileProvider({ children }: { children: ReactNode }) {
 
   const clearProfile = () => {
     setProfileState(defaultProfile);
-    if (typeof window !== "undefined") {
-      localStorage.removeItem(PROFILE_STORAGE_KEY);
-    }
   };
 
   return (

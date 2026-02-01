@@ -3,7 +3,10 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
-import emailjs from "@emailjs/browser";
+import {
+  submitNote,
+  type UploadNoteFormValues,
+} from "@/app/actions/submit-note";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -25,18 +28,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-type UploadNoteFormValues = {
-  title: string;
-  description: string;
-  subject: string;
-  branch: string;
-  semester: string;
-  unit: string;
-  downloadUrl: string;
-  uploaderName: string;
-  uploaderEmail: string;
-};
-
 export default function UploadNotePage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -56,7 +47,7 @@ export default function UploadNotePage() {
       uploaderName: "",
       uploaderEmail: "",
     }),
-    []
+    [],
   );
 
   const form = useForm<UploadNoteFormValues>({
@@ -69,55 +60,16 @@ export default function UploadNotePage() {
     setIsSubmitting(true);
     setError(null);
 
-    try {
-      // Initialize EmailJS (only needed once, but safe to call multiple times)
-      emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "");
+    const result = await submitNote(values);
 
-      // Prepare email template parameters
-      const templateParams = {
-        title: values.title,
-        description: values.description,
-        subject: values.subject,
-        branch: values.branch,
-        semester: values.semester,
-        unit: values.unit,
-        downloadUrl: values.downloadUrl,
-        uploaderName: values.uploaderName,
-        uploaderEmail: values.uploaderEmail,
-        // Pre-formatted JSON for easy copy-paste
-        jsonData: JSON.stringify(
-          {
-            id: `${values.subject.toLowerCase().replace(/\s+/g, "-")}-${
-              values.unit
-            }-${Date.now()}`,
-            title: values.title,
-            description: values.description,
-            subject: values.subject,
-            branch: values.branch,
-            semester: parseInt(values.semester),
-            unit: parseInt(values.unit),
-            downloadUrl: values.downloadUrl,
-          },
-          null,
-          2
-        ),
-      };
-
-      // Send email using EmailJS
-      await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "",
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "",
-        templateParams
-      );
-
+    if (result.success) {
       setLastSubmission(values);
       setIsSubmitted(true);
-    } catch (err) {
-      console.error("EmailJS Error:", err);
-      setError("Failed to submit note. Please try again or contact support.");
-    } finally {
-      setIsSubmitting(false);
+    } else {
+      setError(result.error || "Failed to submit note. Please try again.");
     }
+
+    setIsSubmitting(false);
   }
 
   return (

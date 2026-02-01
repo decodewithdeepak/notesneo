@@ -3,7 +3,14 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronDown, ChevronRight, BookOpen, FileText, ListChecks, FileQuestion } from "lucide-react";
+import {
+  ChevronDown,
+  ChevronRight,
+  BookOpen,
+  FileText,
+  ListChecks,
+  FileQuestion,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { Note } from "@/lib/types/note";
 
@@ -19,18 +26,22 @@ interface GroupedNotes {
 
 export function NotesSidebar({ notes }: NotesSidebarProps) {
   const pathname = usePathname();
-  const [expandedSemesters, setExpandedSemesters] = useState<Set<string>>(new Set());
-  const [expandedSubjects, setExpandedSubjects] = useState<Set<string>>(new Set());
+  const [expandedSemesters, setExpandedSemesters] = useState<Set<string>>(
+    new Set(),
+  );
+  const [expandedSubjects, setExpandedSubjects] = useState<Set<string>>(
+    new Set(),
+  );
 
   // Auto-expand current note's semester and subject
   useEffect(() => {
-    const activeNote = notes.find(note => note.viewUrl === pathname);
+    const activeNote = notes.find((note) => note.viewUrl === pathname);
     if (activeNote) {
       const semKey = `${activeNote.semester}`;
       const subjectKey = `${activeNote.semester}-${activeNote.subject}`;
 
-      setExpandedSemesters(prev => new Set(prev).add(semKey));
-      setExpandedSubjects(prev => new Set(prev).add(subjectKey));
+      setExpandedSemesters((prev) => new Set(prev).add(semKey));
+      setExpandedSubjects((prev) => new Set(prev).add(subjectKey));
     }
   }, [pathname, notes]);
 
@@ -50,7 +61,9 @@ export function NotesSidebar({ notes }: NotesSidebarProps) {
   }, {} as GroupedNotes);
 
   // Sort semesters
-  const sortedSemesters = Object.keys(groupedNotes).sort((a, b) => parseInt(a) - parseInt(b));
+  const sortedSemesters = Object.keys(groupedNotes).sort(
+    (a, b) => parseInt(a) - parseInt(b),
+  );
 
   const toggleSemester = (sem: string) => {
     const newExpanded = new Set(expandedSemesters);
@@ -121,18 +134,22 @@ export function NotesSidebar({ notes }: NotesSidebarProps) {
                   <div className="ml-2 mt-1 space-y-1">
                     {subjects.map((subject) => {
                       const subjectKey = `${semester}-${subject}`;
-                      const isSubjectExpanded = expandedSubjects.has(subjectKey);
-                      const subjectNotes = groupedNotes[semester][subject].sort((a, b) => {
-                        // Sort: SYLLABUS first (0), then Units 1-4 (1-4), then PYQ (5)
-                        const getOrder = (unit: number | string): number => {
-                          if (unit === "SYLLABUS") return 0;
-                          if (unit === "PYQ" || unit === "PYQ PAPERS") return 5;
-                          if (typeof unit === "number") return unit;
-                          return 99;
-                        };
+                      const isSubjectExpanded =
+                        expandedSubjects.has(subjectKey);
+                      const subjectNotes = groupedNotes[semester][subject].sort(
+                        (a, b) => {
+                          // Sort: SYLLABUS first (0), then Units 1-4 (1-4), then PYQ (5)
+                          const getOrder = (unit: number | string): number => {
+                            if (unit === "SYLLABUS") return 0;
+                            if (unit === "PYQ" || unit === "PYQ PAPERS")
+                              return 5;
+                            if (typeof unit === "number") return unit;
+                            return 99;
+                          };
 
-                        return getOrder(a.unit) - getOrder(b.unit);
-                      });
+                          return getOrder(a.unit) - getOrder(b.unit);
+                        },
+                      );
 
                       return (
                         <div key={subjectKey}>
@@ -163,17 +180,27 @@ export function NotesSidebar({ notes }: NotesSidebarProps) {
                                   <Link
                                     key={note.id}
                                     href={note.viewUrl}
-                                    target={note.viewUrl.startsWith("/") ? undefined : "_blank"}
-                                    rel={note.viewUrl.startsWith("/") ? undefined : "noopener noreferrer"}
+                                    target={
+                                      note.viewUrl.startsWith("/")
+                                        ? undefined
+                                        : "_blank"
+                                    }
+                                    rel={
+                                      note.viewUrl.startsWith("/")
+                                        ? undefined
+                                        : "noopener noreferrer"
+                                    }
                                     className={cn(
                                       "flex items-center gap-2 px-3 py-1.5 text-sm rounded-md transition-colors",
                                       isActive
                                         ? "bg-primary text-primary-foreground font-medium"
-                                        : "text-muted-foreground hover:text-foreground hover:bg-accent"
+                                        : "text-muted-foreground hover:text-foreground hover:bg-accent",
                                     )}
                                   >
                                     <Icon className="h-3.5 w-3.5 shrink-0" />
-                                    <span className="truncate">{getUnitLabel(note.unit)}</span>
+                                    <span className="truncate">
+                                      {getUnitLabel(note.unit)}
+                                    </span>
                                   </Link>
                                 );
                               })}

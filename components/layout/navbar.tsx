@@ -51,13 +51,7 @@ const NAV_LINKS: NavLink[] = [
 /* Small Reusable Components */
 /* -------------------------------------------------------------------------- */
 
-function NavButton({
-  href,
-  children,
-}: {
-  href: string;
-  children: ReactNode;
-}) {
+function NavButton({ href, children }: { href: string; children: ReactNode }) {
   return (
     <Button size="sm" variant="ghost" asChild>
       <Link href={href}>{children}</Link>
@@ -168,7 +162,11 @@ export default function Navbar() {
                   <div className="flex items-center justify-between">
                     <SheetTitle>Menu</SheetTitle>
                     <SheetClose asChild>
-                      <Button variant="secondary" size="icon" className="h-8 w-8">
+                      <Button
+                        variant="secondary"
+                        size="icon"
+                        className="h-8 w-8"
+                      >
                         <X className="h-5 w-5" />
                       </Button>
                     </SheetClose>

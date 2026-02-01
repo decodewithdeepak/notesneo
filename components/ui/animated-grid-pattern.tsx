@@ -11,8 +11,7 @@ import {
 
 import { cn } from "@/lib/utils";
 
-export interface AnimatedGridPatternProps
-  extends ComponentPropsWithoutRef<"svg"> {
+export interface AnimatedGridPatternProps extends ComponentPropsWithoutRef<"svg"> {
   width?: number;
   height?: number;
   x?: number;

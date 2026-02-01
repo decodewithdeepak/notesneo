@@ -7,8 +7,20 @@ import rehypeHighlight from "rehype-highlight";
 import { Search, X, Copy, Check } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetClose } from "@/components/ui/sheet";
-import { cleanText, generateId, extractHeadings, type Heading } from "@/lib/utils/markdown-utils";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+  SheetClose,
+} from "@/components/ui/sheet";
+import {
+  cleanText,
+  generateId,
+  extractHeadings,
+  type Heading,
+} from "@/lib/utils/markdown-utils";
 
 // ========================
 // Code Block with Copy Button
@@ -22,30 +34,32 @@ interface CodeBlockProps {
 
 function CodeBlock({ children, className, ...props }: CodeBlockProps) {
   const [copied, setCopied] = useState(false);
-  
+
   // Extract text content from React children
   const getTextContent = (node: React.ReactNode): string => {
-    if (typeof node === 'string') return node;
-    if (typeof node === 'number') return String(node);
-    if (Array.isArray(node)) return node.map(getTextContent).join('');
+    if (typeof node === "string") return node;
+    if (typeof node === "number") return String(node);
+    if (Array.isArray(node)) return node.map(getTextContent).join("");
     if (React.isValidElement(node)) {
-      const element = node as React.ReactElement<{ children?: React.ReactNode }>;
+      const element = node as React.ReactElement<{
+        children?: React.ReactNode;
+      }>;
       if (element.props.children) {
         return getTextContent(element.props.children);
       }
     }
-    return '';
+    return "";
   };
-  
-  const textContent = getTextContent(children).replace(/\n$/, '');
-  
+
+  const textContent = getTextContent(children).replace(/\n$/, "");
+
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(textContent);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
-      console.error('Failed to copy:', err);
+      console.error("Failed to copy:", err);
     }
   };
 
@@ -72,21 +86,28 @@ function CodeBlock({ children, className, ...props }: CodeBlockProps) {
 
 function useHeadingComponents(headings: Heading[]) {
   return useMemo(() => {
-    const createHeading = (Tag: 'h2' | 'h3' | 'h4', level: number) =>
+    const createHeading =
+      (Tag: "h2" | "h3" | "h4", level: number) =>
       ({ children, ...props }: any) => {
         const text = cleanText(children);
 
         // Find the matching heading by text and level
-        const heading = headings.find(h => h.text === text && h.level === level);
+        const heading = headings.find(
+          (h) => h.text === text && h.level === level,
+        );
         const id = heading ? heading.id : generateId(text);
 
-        return <Tag id={id} {...props}>{children}</Tag>;
+        return (
+          <Tag id={id} {...props}>
+            {children}
+          </Tag>
+        );
       };
 
     return {
-      h2: createHeading('h2', 2),
-      h3: createHeading('h3', 3),
-      h4: createHeading('h4', 4),
+      h2: createHeading("h2", 2),
+      h3: createHeading("h3", 3),
+      h4: createHeading("h4", 4),
       pre: CodeBlock, // Add custom code block component
     };
   }, [headings]);
@@ -135,7 +156,13 @@ interface OutlineSidebarProps {
   onClose?: () => void;
 }
 
-function OutlineSidebar({ headings, onHeadingClick, content, isMobile = false, onClose }: OutlineSidebarProps) {
+function OutlineSidebar({
+  headings,
+  onHeadingClick,
+  content,
+  isMobile = false,
+  onClose,
+}: OutlineSidebarProps) {
   const SEARCH_STORAGE_KEY = "notesneo_outline_search";
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
@@ -180,12 +207,15 @@ function OutlineSidebar({ headings, onHeadingClick, content, isMobile = false, o
     }
 
     const query = searchQuery.toLowerCase();
-    const lines = content.split('\n');
+    const lines = content.split("\n");
     const results: SearchResult[] = [];
 
     // Track which section each line belongs to
     let currentHeading: Heading | null = null;
-    const headingMatches = new Map<string, { count: number; preview: string }>();
+    const headingMatches = new Map<
+      string,
+      { count: number; preview: string }
+    >();
 
     lines.forEach((line, idx) => {
       // Check if this line is a heading
@@ -193,7 +223,8 @@ function OutlineSidebar({ headings, onHeadingClick, content, isMobile = false, o
       if (headingMatch) {
         const level = headingMatch[1].length;
         const text = cleanText(headingMatch[2]);
-        currentHeading = headings.find(h => h.text === text && h.level === level) || null;
+        currentHeading =
+          headings.find((h) => h.text === text && h.level === level) || null;
       }
 
       // Check if line contains search query
@@ -211,7 +242,7 @@ function OutlineSidebar({ headings, onHeadingClick, content, isMobile = false, o
 
     // Convert to results array
     headingMatches.forEach((data, headingId) => {
-      const heading = headings.find(h => h.id === headingId);
+      const heading = headings.find((h) => h.id === headingId);
       if (heading) {
         results.push({
           heading,
@@ -261,7 +292,12 @@ function OutlineSidebar({ headings, onHeadingClick, content, isMobile = false, o
         </div>
         {searchQuery && (
           <p className="text-xs text-muted-foreground mt-2">
-            {searchResults.length} section{searchResults.length !== 1 ? 's' : ''} • {searchResults.reduce((sum, r) => sum + r.matchCount, 0)} match{searchResults.reduce((sum, r) => sum + r.matchCount, 0) !== 1 ? 'es' : ''}
+            {searchResults.length} section
+            {searchResults.length !== 1 ? "s" : ""} •{" "}
+            {searchResults.reduce((sum, r) => sum + r.matchCount, 0)} match
+            {searchResults.reduce((sum, r) => sum + r.matchCount, 0) !== 1
+              ? "es"
+              : ""}
           </p>
         )}
       </div>
@@ -294,8 +330,8 @@ function OutlineSidebar({ headings, onHeadingClick, content, isMobile = false, o
                         className="text-xs font-medium text-foreground"
                         dangerouslySetInnerHTML={{
                           __html: result.heading.text.replace(
-                            new RegExp(`(${searchQuery})`, 'gi'),
-                            '<mark class="bg-yellow-300 dark:bg-yellow-600 px-0.5">$1</mark>'
+                            new RegExp(`(${searchQuery})`, "gi"),
+                            '<mark class="bg-yellow-300 dark:bg-yellow-600 px-0.5">$1</mark>',
                           ),
                         }}
                       />
@@ -308,8 +344,8 @@ function OutlineSidebar({ headings, onHeadingClick, content, isMobile = false, o
                         className="text-xs text-muted-foreground line-clamp-2"
                         dangerouslySetInnerHTML={{
                           __html: result.preview.replace(
-                            new RegExp(`(${searchQuery})`, 'gi'),
-                            '<mark class="bg-yellow-300 dark:bg-yellow-600 px-0.5">$1</mark>'
+                            new RegExp(`(${searchQuery})`, "gi"),
+                            '<mark class="bg-yellow-300 dark:bg-yellow-600 px-0.5">$1</mark>',
                           ),
                         }}
                       />
@@ -359,13 +395,13 @@ export function NoteContent({ content }: { content: string }) {
 
   const scrollToHeading = (id: string) => {
     const el = document.getElementById(id);
-    const container = document.querySelector('.flex-1.min-w-0.overflow-y-auto');
+    const container = document.querySelector(".flex-1.min-w-0.overflow-y-auto");
 
     if (el && container) {
       const elTop = el.getBoundingClientRect().top;
       const containerTop = container.getBoundingClientRect().top;
       const scrollTop = container.scrollTop;
-      const targetScroll = scrollTop + elTop - containerTop - 80;
+      const targetScroll = scrollTop + elTop - containerTop - 20;
 
       container.scrollTo({
         top: targetScroll,
@@ -380,14 +416,18 @@ export function NoteContent({ content }: { content: string }) {
       <MarkdownContent content={content} components={components} />
 
       {/* Desktop Outline Sidebar - Fixed Position (Independent) */}
-      <OutlineSidebar headings={headings} onHeadingClick={scrollToHeading} content={content} />
+      <OutlineSidebar
+        headings={headings}
+        onHeadingClick={scrollToHeading}
+        content={content}
+      />
 
       {/* Mobile Floating Search Button */}
       <Sheet open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
         <SheetTrigger asChild>
           <Button
             size="icon"
-            variant="secondary"
+            variant="default"
             className="fixed bottom-6 left-6 h-10 w-10 rounded-full shadow-lg lg:hidden z-40"
           >
             <Search className="h-8 w-8" />

@@ -7,7 +7,6 @@ import { Logo } from "../icons/logo";
 
 export default function Footer() {
   const pathname = usePathname();
-  // Show border-top when not on home page
   const showBorderTop = pathname !== "/";
 
   return (
@@ -19,10 +18,10 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-2 py-6">
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="flex items-center gap-1 text-sm text-muted-foreground">
-            @{new Date().getFullYear()}
+            @2026
             <Logo size="md" className="inline-block" />
-            <span className="font-semibold">NotesNeo</span>
-            {/* Built with ❤️ for passionate developers. Free forever. */}
+            <span className="font-semibold">NotesNeo</span>- Built for MDU
+            Rohtak Students
           </p>
           <div className="flex font-medium text-xs md:text-sm text-muted-foreground">
             {/* <a 
