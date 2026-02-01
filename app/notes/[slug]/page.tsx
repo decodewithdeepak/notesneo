@@ -24,9 +24,33 @@ export async function generateMetadata({ params }: Props) {
     return { title: "Note Not Found" };
   }
 
+  const semesterText = `Semester ${note.semester}`;
+  const description = `${note.subject} - ${note.title}. Access comprehensive notes for ${semesterText} at MDU Rohtak. Download and study offline.`;
+
   return {
     title: note.title,
-    description: `${note.subject} - ${note.title}`,
+    description,
+    keywords: [
+      note.subject,
+      note.title,
+      semesterText,
+      "MDU notes",
+      "study material",
+      "academic notes",
+    ],
+    authors: note.author ? [{ name: note.author }] : undefined,
+    openGraph: {
+      title: note.title,
+      description,
+      type: "article",
+      publishedTime: note.date,
+      authors: note.author ? [note.author] : undefined,
+    },
+    twitter: {
+      card: "summary",
+      title: note.title,
+      description,
+    },
   };
 }
 
@@ -41,8 +65,40 @@ export default async function NotePage({ params }: Props) {
   // Generate GitHub edit URL using centralized utility
   const githubEditUrl = getGitHubEditUrl(slug);
 
+  // Structured data for SEO
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: note.title,
+    description: `${note.subject} - ${note.title}`,
+    author: {
+      "@type": "Person",
+      name: note.author || "NotesNeo",
+    },
+    datePublished: note.date || new Date().toISOString(),
+    dateModified: note.date || new Date().toISOString(),
+    publisher: {
+      "@type": "Organization",
+      name: "NotesNeo",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://notesneo.vercel.app/favicon.png",
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://notesneo.vercel.app/notes/${slug}`,
+    },
+  };
+
   return (
     <>
+      {/* Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+
       {/* Note Header */}
       <header className="py-5 px-4 sm:px-8 bg-background border-b border-border lg:mr-80">
         <div className="flex items-center justify-between gap-4 mb-3 flex-wrap">

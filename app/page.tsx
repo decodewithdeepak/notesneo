@@ -7,11 +7,37 @@ import Creator from "@/components/home/creator";
 import FAQs from "@/components/home/faqs";
 import CTA from "@/components/home/cta";
 
-const page = () => {
+export default function HomePage() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    name: "NotesNeo",
+    description:
+      "Access high-quality academic notes for MDU Rohtak. Download, save, and access personalized study resources on NotesNeo for efficient learning.",
+    url: "https://notesneo.vercel.app",
+    logo: "https://notesneo.vercel.app/favicon.png",
+    sameAs: [
+      "https://github.com/decodewithdeepak",
+      "https://twitter.com/deepakmodi_io",
+    ],
+    founder: {
+      "@type": "Person",
+      name: "Deepak Modi",
+      url: "https://deepakmodi.tech",
+    },
+  };
+
   return (
-    <main className="max-w-full flex flex-col min-h-full pt-10">
-      <div className="flex-1 border border-border">
-        <HeroSection />
+    <>
+      {/* Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+
+      <main className="max-w-full flex flex-col min-h-full pt-10">
+        <div className="flex-1 border border-border">
+          <HeroSection />
         <div className="h-8 bg-dashed"></div>
         <Features />
         <div className="h-8 bg-dashed"></div>
@@ -27,8 +53,8 @@ const page = () => {
         <div className="h-8 bg-dashed"></div>
         <CTA />
         <div className="h-8 bg-dashed"></div>
-      </div>
-    </main>
+        </div>
+      </main>
+    </>
   );
-};
-export default page;
+}
