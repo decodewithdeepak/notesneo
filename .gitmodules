@@ -1,0 +1,3 @@
+[submodule "notes-content"]
+	path = notes-content
+	url = https://github.com/decodewithdeepak/notesneo-content.git
