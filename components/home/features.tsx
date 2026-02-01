@@ -35,8 +35,8 @@ export default function Features() {
     },
     {
       icon: Smartphone,
-      title: "Multi-Device Access",
-      description: "Access your notes and study materials on any device",
+      title: "Offline Access",
+      description: "Access your notes anytime, even without an internet connection",
     },
     {
       icon: RefreshCw,

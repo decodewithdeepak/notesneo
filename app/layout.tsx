@@ -137,6 +137,30 @@ export default function RootLayout({
         <Analytics />
         <SpeedInsights />
 
+        {/* PWA Service Worker Registration */}
+        <Script id="sw-register" strategy="afterInteractive">
+          {`
+            if ('serviceWorker' in navigator) {
+              const registerSW = () => {
+                navigator.serviceWorker.register('/sw.js').then(
+                  (registration) => {
+                    console.log('[PWA] Service Worker registered successfully');
+                  },
+                  (err) => {
+                    console.error('[PWA] Service Worker registration failed:', err);
+                  }
+                );
+              };
+              
+              if (document.readyState === 'complete') {
+                registerSW();
+              } else {
+                window.addEventListener('load', registerSW);
+              }
+            }
+          `}
+        </Script>
+
         {/* Tawk.to AI Chatbot */}
         {/* <Script
           id="tawk-to-chatbot"
