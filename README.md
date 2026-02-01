@@ -49,9 +49,12 @@ A modern, responsive web application for browsing and downloading high-quality a
 ### Installation
 
 ```bash
-# Clone the repository
-git clone https://github.com/decodewithdeepak/notesneo.git
+# Clone the repository with submodules
+git clone --recurse-submodules https://github.com/decodewithdeepak/notesneo.git
 cd notesneo
+
+# If you already cloned without --recurse-submodules, initialize submodules:
+git submodule update --init --recursive
 
 # Install dependencies
 npm install
@@ -61,6 +64,8 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+> **Note:** This project uses a Git submodule for content management. The `notes-content/` folder links to a separate repository: [notesneo-content](https://github.com/decodewithdeepak/notesneo-content)
 
 ### Build for Production
 
@@ -181,15 +186,69 @@ All filters work independently:
 
 ---
 
+## Content Management
+
+### Content Repository
+
+Educational content is managed in a separate repository: [notesneo-content](https://github.com/decodewithdeepak/notesneo-content)
+
+This separation provides:
+- ✅ Independent version control for content
+- ✅ Easier collaboration on notes without code access
+- ✅ Cleaner git history
+- ✅ Reusable content across multiple projects
+
+### Updating Content
+
+```bash
+# Navigate to content directory
+cd notes-content
+
+# Make changes to markdown files
+vim 6th-sem/adbms/unit-1.md
+
+# Commit and push changes
+git add .
+git commit -m "Update ADBMS Unit 1 notes"
+git push
+
+# Return to main repo and update submodule pointer
+cd ..
+git add notes-content
+git commit -m "Update content submodule"
+git push
+```
+
+### Pulling Latest Content
+
+```bash
+# Update submodule to latest version
+git submodule update --remote notes-content
+
+# Or pull everything including submodules
+git pull --recurse-submodules
+```
+
+---
+
 ## Contributing
 
 We welcome contributions! To contribute:
 
-1. Fork the repository
+### Code Contributions
+
+1. Fork the main repository
 2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
 3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
+
+### Content Contributions
+
+1. Fork the [notesneo-content](https://github.com/decodewithdeepak/notesneo-content) repository
+2. Add or update notes following the existing format
+3. Submit a Pull Request with your changes
+4. Content will be reviewed and merged
 
 ---
 
