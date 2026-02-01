@@ -1,6 +1,12 @@
-# Unit 1: Introduction & Query Processing
+---
+title: "Unit 1: Introduction & Query Processing"
+description: "Architecture, Advantages, Disadvantages, Data models, relational algebra, SQL, Normal forms, and Query Processing strategies"
+author: "Deepak Modi"
+date: "2025-06-15"
+pdfUrl: "https://eoqzdypso1wwgvzf.public.blob.vercel-storage.com/Unit%201_%20Introduction%20%26%20Query%20Processing.pdf?download=1"
+---
 
-**Course:** PCC-CSE-310G | **Author:** [Deepak Modi](https://deepakmodi.tech) | **Website:** [NotesNeo](https://notesneo.vercel.app)
+## Syllabus:
 
 **Introduction:** Architecture, Advantages, Disadvantages, Data models, relational algebra, SQL, Normal forms.      
 **Query Processing:** General strategies for query processing, transformations, expected size, statistics in estimation, query improvement. Query evaluation, view processing, query processor.

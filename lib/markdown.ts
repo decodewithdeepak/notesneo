@@ -2,6 +2,7 @@ import { ACTIVE_SEMESTERS } from "./constants";
 import type { Note } from "./types/note";
 import fs from "fs";
 import path from "path";
+import matter from "gray-matter";
 
 export interface MarkdownNote {
   slug: string;
@@ -10,22 +11,43 @@ export interface MarkdownNote {
   semester: number;
   unit: number | string;
   content: string;
+  pdfUrl?: string;
+  author?: string;
+  description?: string;
+  date?: string;
 }
 
-// Parse note from content
+// Parse note from content with frontmatter support
 function parseNote(filePath: string, content: string, subject: string, semester: number): MarkdownNote {
   const slug = filePath.replace(/\.md$/, "").replace(/\//g, "-").replace(/\\/g, "-");
   const filename = path.basename(filePath, ".md");
-  const headingMatch = content.match(/^#\s+(.+)$/m);
-  const title = headingMatch ? headingMatch[1] : filename;
+  
+  // Parse frontmatter
+  const { data: frontmatter, content: markdownContent } = matter(content);
+  
+  // Title: frontmatter > first heading > filename
+  const headingMatch = markdownContent.match(/^#\s+(.+)$/m);
+  const title = frontmatter.title || (headingMatch ? headingMatch[1] : filename);
 
-  // Extract unit from filename or title
+  // Extract unit from frontmatter > filename > title
+  const unitFromFrontmatter = frontmatter.unit;
   const unitMatch = filename.match(/unit[- _]?(\d+)/i) || title.match(/unit[- _]?(\d+)/i);
   const isPYQ = /pyq|previous\s*year/i.test(filename) || /pyq|previous\s*year/i.test(title);
   const isSyllabus = /syllabus/i.test(filename) || /syllabus/i.test(title);
-  const unit: number | string = isPYQ ? "PYQ" : isSyllabus ? "SYLLABUS" : unitMatch ? parseInt(unitMatch[1]) : 1;
+  const unit: number | string = unitFromFrontmatter || (isPYQ ? "PYQ" : isSyllabus ? "SYLLABUS" : unitMatch ? parseInt(unitMatch[1]) : 1);
 
-  return { slug, title, subject: subject.toUpperCase(), semester, unit, content };
+  return { 
+    slug, 
+    title, 
+    subject: frontmatter.subject?.toUpperCase() || subject.toUpperCase(), 
+    semester: frontmatter.semester || semester, 
+    unit, 
+    content: markdownContent,
+    pdfUrl: frontmatter.pdfUrl,
+    author: frontmatter.author,
+    description: frontmatter.description,
+    date: frontmatter.date,
+  };
 }
 
 // Fetch from local filesystem
